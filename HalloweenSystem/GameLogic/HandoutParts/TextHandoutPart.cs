@@ -3,10 +3,10 @@ using HalloweenSystem.GameLoop;
 
 namespace HalloweenSystem.GameLogic.HandoutParts;
 
-public class TextHandoutPart(string Text) : HandoutPart
+public class TextHandoutPart(string text) : HandoutPart
 {
-	public override string Evaluate(Context context, Player? iteratedPlayer = null, TagType? iteratedTagType = null)
+	public override string Evaluate(Context context)
 	{
-		return Text;
+		return text;
 	}
 }

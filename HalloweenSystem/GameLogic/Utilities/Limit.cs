@@ -1,6 +1,9 @@
+using HalloweenSystem.GameLogic.Settings;
+using HalloweenSystem.GameLoop;
+
 namespace HalloweenSystem.GameLogic.Utilities;
 
-public class Limit<T>(string amount)
+public class Limit<T>(string amount) where T : GameObject
 {
 	public IEnumerable<T> Evaluate(IEnumerable<T> objects)
 	{

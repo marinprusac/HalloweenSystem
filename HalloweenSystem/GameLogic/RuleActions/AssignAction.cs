@@ -1,14 +1,16 @@
-using HalloweenSystem.GameLogic.PlayerSelectors;
-using HalloweenSystem.GameLogic.TagSelectors;
+using HalloweenSystem.GameLogic.Selectors;
+using HalloweenSystem.GameLogic.Selectors.PlayerSelectors;
+using HalloweenSystem.GameLogic.Selectors.TagSelectors;
+using HalloweenSystem.GameLogic.Settings;
 using HalloweenSystem.GameLoop;
 
 namespace HalloweenSystem.GameLogic.RuleActions;
 
-public class AssignAction(bool assignTogether, PlayerSelector playerSelector, TagSelector tagSelector)
+public class AssignAction(bool assignTogether, Selector<Player> playerSelector, Selector<Tag> tagSelector)
 	: RuleAction
 {
 
-	public AssignAction(PlayerSelector playerSelector, TagSelector tagSelector) : this(false, playerSelector, tagSelector)
+	public AssignAction(Selector<Player> playerSelector, Selector<Tag> tagSelector) : this(false, playerSelector, tagSelector)
 	{
 	}
 
@@ -28,7 +30,8 @@ public class AssignAction(bool assignTogether, PlayerSelector playerSelector, Ta
 		var players = playerSelector.Evaluate(context);
 		foreach (var player in players)
 		{
-			var tags = tagSelector.Evaluate(context, player);
+			context.CurrentPlayer = player;
+			var tags = tagSelector.Evaluate(context);
 			player.AssignTags(tags);
 		}
 	}

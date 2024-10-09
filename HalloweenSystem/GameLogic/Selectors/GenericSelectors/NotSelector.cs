@@ -1,0 +1,14 @@
+using HalloweenSystem.GameLogic.Selectors.PlayerSelectors;
+using HalloweenSystem.GameLogic.Settings;
+using HalloweenSystem.GameLoop;
+
+namespace HalloweenSystem.GameLogic.Selectors.GenericSelectors;
+
+public class NotSelector<T>(Selector<T> nestedSelector) : Selector<T> where T : GameObject, new()
+{
+	public override IEnumerable<T> Evaluate(Context context)
+	{
+		var gameObjects = nestedSelector.Evaluate(context);
+		return GameObject.Complement<T>(gameObjects, context).Cast<T>();
+	}
+}

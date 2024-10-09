@@ -1,14 +1,14 @@
 using HalloweenSystem.GameLogic.Settings;
 using HalloweenSystem.GameLoop;
 
-namespace HalloweenSystem.GameLogic.TagSelectors;
+namespace HalloweenSystem.GameLogic.Selectors.TagSelectors;
 
-public class GroupTagSelector(TagGroup tagGroup, TagSelector nestedTagSelector) : TagSelector
+public class GroupTagSelector(TagGroup tagGroup, Selector<Tag> nestedTagSelector) : Selector<Tag>
 {
-	public override IEnumerable<AssignedTag> Evaluate(Context context, Player? operatedPlayer = null)
+	public override IEnumerable<Tag> Evaluate(Context context)
 	{
-		var tags = nestedTagSelector.Evaluate(context, operatedPlayer);
-		var groupTags = tags.Where(t => tagGroup.Tags.Contains(t.Type));
+		var tags = nestedTagSelector.Evaluate(context);
+		var groupTags = tags.Where(t => tagGroup.Tags.Contains(t.Name));
 		return groupTags;
 	}
 }

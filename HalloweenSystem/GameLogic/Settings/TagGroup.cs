@@ -2,8 +2,8 @@ using HalloweenSystem.GameLoop;
 
 namespace HalloweenSystem.GameLogic.Settings;
 
-public class TagGroup(string name, IEnumerable<TagType> tags)
+public class TagGroup(string name, IEnumerable<string> tags)
 {
 	public string Name { get; init; } = name;
-	public IEnumerable<TagType> Tags = tags;
+	public readonly IEnumerable<string> Tags = tags;
 }

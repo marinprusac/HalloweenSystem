@@ -1,26 +1,16 @@
-using HalloweenSystem.GameLogic.PlayerSelectors;
 using HalloweenSystem.GameLogic.Settings;
-using HalloweenSystem.GameLogic.Utilities;
 using HalloweenSystem.GameLoop;
 
-namespace HalloweenSystem.GameLogic.PlayerSelectors;
+namespace HalloweenSystem.GameLogic.Selectors.PlayerSelectors;
 
-public class ExtractPlayerSelector(TagType tagType, PlayerSelector nestedSelector) : PlayerSelector
+public class ExtractPlayerSelector(Selector<Tag> nestedSelector) : Selector<Player>
 {
-	public override IEnumerable<Player> Evaluate(Context context, Player? operatedPlayer = null)
+	public override IEnumerable<Player> Evaluate(Context context)
 	{
-		var players = nestedSelector.Evaluate(context, operatedPlayer);
-		var resultingPlayers = new List<Player>();
-		foreach (var player in players)
-		{
-			if (!player.GetTagOfType(tagType, out var tag)) continue;
-			var playersWithTag = tag?.PlayerParameters;
-			if (playersWithTag != null)
-			{
-				resultingPlayers.AddRange(playersWithTag);
-			}
-		}
+		var tags = nestedSelector.Evaluate(context);
 
-		return resultingPlayers;
+		var playerParameters = tags.Select(tag => tag.PlayerParameters.AsEnumerable());
+
+		return GameObject.Union<Player>(playerParameters).Cast<Player>();
 	}
 }

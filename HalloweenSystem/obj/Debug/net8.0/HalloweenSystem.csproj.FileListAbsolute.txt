@@ -12,3 +12,4 @@
 /home/marin/Development/HalloweenSystem/HalloweenSystem/obj/Debug/net8.0/HalloweenSystem.pdb
 /home/marin/Development/HalloweenSystem/HalloweenSystem/obj/Debug/net8.0/HalloweenSystem.genruntimeconfig.cache
 /home/marin/Development/HalloweenSystem/HalloweenSystem/obj/Debug/net8.0/ref/HalloweenSystem.dll
+/home/marin/Development/HalloweenSystem/HalloweenSystem/obj/Debug/net8.0/HalloweenSystem.sourcelink.json

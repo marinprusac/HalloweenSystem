@@ -1,6 +1,3 @@
 namespace HalloweenSystem.GameLogic.Settings;
 
-public class Handout
-{
-	
-}
+public record Handout(string Text);

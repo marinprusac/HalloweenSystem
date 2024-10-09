@@ -3,7 +3,7 @@ using HalloweenSystem.GameLoop;
 
 namespace HalloweenSystem.GameLogic.HandoutParts;
 
-public abstract class HandoutPart
+public abstract class HandoutPart : IEvaluator<string>
 {
-	public abstract string Evaluate(Context context, Player? iteratedPlayer = null, TagType? iteratedTagType = null);
+	public abstract string Evaluate(Context context);
 }
