@@ -1,5 +1,5 @@
+using HalloweenSystem.GameLogic.Selectors.GenericSelectors;
 using HalloweenSystem.GameLogic.Settings;
-using HalloweenSystem.GameLoop;
 
 namespace HalloweenSystem.GameLogic.Selectors.TagSelectors;
 

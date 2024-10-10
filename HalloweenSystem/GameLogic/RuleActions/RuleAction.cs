@@ -1,4 +1,4 @@
-using HalloweenSystem.GameLoop;
+using HalloweenSystem.GameLogic.Settings;
 
 namespace HalloweenSystem.GameLogic.RuleActions;
 

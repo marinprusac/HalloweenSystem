@@ -1,9 +1,6 @@
-using HalloweenSystem.GameLogic.Settings;
-using HalloweenSystem.GameLogic.Utilities.Iterators;
+namespace HalloweenSystem.GameLogic.Settings;
 
-namespace HalloweenSystem.GameLoop;
-
-public struct Context(Setting setting, IEnumerable<Player> players)
+public class Context(Setting setting, IEnumerable<Player> players)
 {
 	public Setting Setting { get;} = setting;
 	public IEnumerable<Player> Players { get; } = players;

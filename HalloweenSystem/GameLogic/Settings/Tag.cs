@@ -1,5 +1,3 @@
-using HalloweenSystem.GameLoop;
-
 namespace HalloweenSystem.GameLogic.Settings;
 
 public class Tag(string name = "", IEnumerable<Player>? players = null, IEnumerable<string>? tags = null) : GameObject(name)

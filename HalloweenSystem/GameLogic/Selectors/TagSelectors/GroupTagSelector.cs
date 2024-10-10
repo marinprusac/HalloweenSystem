@@ -1,13 +1,18 @@
+using HalloweenSystem.GameLogic.Selectors.GenericSelectors;
 using HalloweenSystem.GameLogic.Settings;
-using HalloweenSystem.GameLoop;
 
 namespace HalloweenSystem.GameLogic.Selectors.TagSelectors;
 
-public class GroupTagSelector(TagGroup tagGroup, Selector<Tag> nestedTagSelector) : Selector<Tag>
+public class GroupTagSelector(string tagGroupName, Selector<Tag>? tagSelector=null) : Selector<Tag>
 {
+	private Selector<Tag>? _tagSelector = tagSelector;
+
 	public override IEnumerable<Tag> Evaluate(Context context)
 	{
-		var tags = nestedTagSelector.Evaluate(context);
+		_tagSelector ??= new EverySelector<Tag>();
+		var tags = _tagSelector.Evaluate(context);
+		var tagGroup = context.Setting.TagGroups.FirstOrDefault(tg => tg.Name == tagGroupName);
+		if (tagGroup == null) return Enumerable.Empty<Tag>();
 		var groupTags = tags.Where(t => tagGroup.Tags.Contains(t.Name));
 		return groupTags;
 	}

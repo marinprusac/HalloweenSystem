@@ -1,7 +1,6 @@
 using HalloweenSystem.GameLogic.Settings;
-using HalloweenSystem.GameLoop;
 
-namespace HalloweenSystem.GameLogic.Selectors;
+namespace HalloweenSystem.GameLogic.Selectors.GenericSelectors;
 
 public abstract class Selector<T> : IEvaluator<IEnumerable<T>> where T : GameObject
 {

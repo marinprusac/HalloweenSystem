@@ -1,6 +1,4 @@
-using HalloweenSystem.GameLogic.Settings;
-
-namespace HalloweenSystem.GameLoop;
+namespace HalloweenSystem.GameLogic.Settings;
 
 public class Player(string name) : GameObject(name)
 {

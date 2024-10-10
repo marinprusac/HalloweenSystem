@@ -1,5 +1,3 @@
-using HalloweenSystem.GameLoop;
-
 namespace HalloweenSystem.GameLogic.Settings;
 
 public class GameObject(string name = "") : IEquatable<GameObject>
@@ -7,7 +5,7 @@ public class GameObject(string name = "") : IEquatable<GameObject>
 
 	public string Name { get; } = name;
 
-
+	
 
 	public static IEnumerable<GameObject> Union<T>(IEnumerable<IEnumerable<GameObject>> objectSets) where T : GameObject, new()
 	{

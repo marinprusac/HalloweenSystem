@@ -1,5 +1,4 @@
 using HalloweenSystem.GameLogic.Settings;
-using HalloweenSystem.GameLoop;
 
 namespace HalloweenSystem.GameLogic.Selectors.GenericSelectors;
 
