@@ -5,7 +5,7 @@ using HalloweenSystem.GameLogic.Settings;
 
 namespace HalloweenSystem.GameLogic.Selectors.PlayerSelectors;
 
-public class ExtractPlayerSelector(Selector<Tag> nestedSelector) : Selector<Player>
+public class FromTagExtractPlayerSelector(Selector<Tag> nestedSelector) : Selector<Player>
 {
 	public override IEnumerable<Player> Evaluate(Context context)
 	{

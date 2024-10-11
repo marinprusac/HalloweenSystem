@@ -31,9 +31,6 @@ public class Iterator<T, TG> (string name, Selector<T> selector, IEvaluator<TG> 
 		
 		var returnValue = new List<TG>();
 		
-		
-		context.IteratingOrder.Add(Name);
-		
 		foreach (var parameter in parameters)
 		{
 			context.IteratingObjects[Name] = parameter;;

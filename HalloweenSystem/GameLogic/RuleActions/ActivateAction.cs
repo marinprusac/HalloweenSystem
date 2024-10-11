@@ -1,5 +1,4 @@
 using System.Linq;
-using HalloweenSystem.GameLogic.RuleSelectors;
 using HalloweenSystem.GameLogic.Selectors;
 using HalloweenSystem.GameLogic.Selectors.GenericSelectors;
 using HalloweenSystem.GameLogic.Settings;

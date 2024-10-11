@@ -8,7 +8,6 @@ public class Context(Setting setting, IEnumerable<Player> players)
 	public Setting Setting { get;} = setting;
 	public IEnumerable<Player> Players { get; } = players;
 	public Player? CurrentPlayer { get; set; }
-	public readonly List<string> IteratingOrder = [];
 	public readonly Dictionary<string, GameObject> IteratingObjects = new();
 	
 	public T GetIteratingObject<T>(string name) where T : GameObject, new()

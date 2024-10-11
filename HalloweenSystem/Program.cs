@@ -20,8 +20,7 @@ Setting setting = new(
 			"AssignVampires",
 			[
 				new AssignAction(
-					new RandomSelector<Player>("25%",
-						new AllSelector<Player>()),
+					new RandomSelector<Player>("25%"),
 					new TagSelector("Vampire"))
 			]),
 		new Rule(
@@ -29,16 +28,16 @@ Setting setting = new(
 			[
 				new AssignAction(
 					new ComplementSelector<Player>(
-						new HasTagTypePlayerSelector("Vampire",
-							new AllSelector<Player>()
-						)),
+						new HasTagTypePlayerSelector("Vampire")),
 					new TagSelector("Human"))
 			]),
 		new Rule("AssignVampirePlace",
 		[
-			new AssignAction(true,
+			new AssignAction(
+				true,
 				new HasTagTypePlayerSelector("Vampire"),
-				new TagSelector("VampirePlace", null,
+				new TagSelector("VampirePlace", 
+					null,
 					new RandomSelector<Tag>("1",
 						new GroupTagSelector("Places")
 					))),
