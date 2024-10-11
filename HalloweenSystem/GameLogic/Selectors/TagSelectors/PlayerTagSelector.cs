@@ -10,7 +10,7 @@ public class PlayerTagSelector(Selector<Tag> tagSelector, Selector<Player>? play
 
 	public override IEnumerable<Tag> Evaluate(Context context)
 	{
-		_playerSelector ??= new EverySelector<Player>();
+		_playerSelector ??= new AllSelector<Player>();
 		
 		var players =  _playerSelector.Evaluate(context);
 		

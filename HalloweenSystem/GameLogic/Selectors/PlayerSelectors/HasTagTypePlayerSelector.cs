@@ -8,7 +8,7 @@ public class HasTagTypePlayerSelector(string type, Selector<Player>? playerSelec
 	private Selector<Player>? _playerSelector = playerSelector;
 	public override IEnumerable<Player> Evaluate(Context context)
 	{
-		_playerSelector ??= new EverySelector<Player>();
+		_playerSelector ??= new AllSelector<Player>();
 		
 		var players = _playerSelector.Evaluate(context);
 		var filtered = players.Where(p => p.AssignedTags.Any(t => t.Name == type));

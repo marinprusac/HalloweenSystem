@@ -11,7 +11,7 @@ public class HasTagsPlayerSelector(Selector<Tag> tagSelector, Selector<Player>? 
 	
 	public override IEnumerable<Player> Evaluate(Context context)
 	{
-		_playerSelector ??= new EverySelector<Player>();
+		_playerSelector ??= new AllSelector<Player>();
 		
 		var players = _playerSelector?.Evaluate(context) ?? [];
 		var tags = tagSelector.Evaluate(context) ?? [];

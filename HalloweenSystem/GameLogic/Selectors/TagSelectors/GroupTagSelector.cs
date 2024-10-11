@@ -9,7 +9,7 @@ public class GroupTagSelector(string tagGroupName, Selector<Tag>? tagSelector=nu
 
 	public override IEnumerable<Tag> Evaluate(Context context)
 	{
-		_tagSelector ??= new EverySelector<Tag>();
+		_tagSelector ??= new AllSelector<Tag>();
 		var tags = _tagSelector.Evaluate(context);
 		var tagGroup = context.Setting.TagGroups.FirstOrDefault(tg => tg.Name == tagGroupName);
 		if (tagGroup == null) return Enumerable.Empty<Tag>();

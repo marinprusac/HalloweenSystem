@@ -1,13 +1,12 @@
+using HalloweenSystem.GameLogic.Selectors.PlayerSelectors;
 using HalloweenSystem.GameLogic.Settings;
 
 namespace HalloweenSystem.GameLogic.Selectors.GenericSelectors;
 
-public class AllSelector<T>(IEnumerable<Selector<T>> nestedSelectors) : Selector<T> where T : GameObject, new()
+public class AllSelector<T> : Selector<T> where T : GameObject, new()
 {
 	public override IEnumerable<T> Evaluate(Context context)
 	{
-		var evaluations = nestedSelectors.Select(selector => selector.Evaluate(context)).ToList();
-		var result = GameObject.Intersect<T>(evaluations);
-		return result.Cast<T>();
+		return GameObject.Everything<T>(context).Cast<T>();
 	}
 }

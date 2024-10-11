@@ -20,16 +20,16 @@ Setting setting = new(
 			[
 				new AssignAction(
 					new RandomSelector<Player>("25%",
-						new EverySelector<Player>()),
+						new AllSelector<Player>()),
 					new TagSelector("Vampire"))
 			]),
 		new Rule(
 			"AssignHumans",
 			[
 				new AssignAction(
-					new NotSelector<Player>(
+					new ComplementSelector<Player>(
 						new HasTagTypePlayerSelector("Vampire",
-							new EverySelector<Player>()
+							new AllSelector<Player>()
 						)),
 					new TagSelector("Human"))
 			]),
@@ -57,9 +57,9 @@ Setting setting = new(
 				
 				new TagSelector("Visited", null,
 					new RandomSelector<Tag>("1",
-						new AllSelector<Tag>([
+						new IntersectSelector<Tag>([
 							new GroupTagSelector("Places"),
-							new NotSelector<Tag>(
+							new ComplementSelector<Tag>(
 								new FromPlayerExtractTagSelector(
 									"Visited",
 									new CurrentPlayerSelector()

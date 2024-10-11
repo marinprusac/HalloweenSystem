@@ -18,7 +18,7 @@ public class Rule(string name, List<RuleAction> actions) : GameObject(name)
 		
 	}
 
-	private readonly Selector<Player> _requirement = new EverySelector<Player>();
+	private readonly Selector<Player> _requirement = new AllSelector<Player>();
 
 	public void Evaluate(Context context)
 	{
