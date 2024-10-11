@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using HalloweenSystem.GameLogic.Settings;
 
 namespace HalloweenSystem.GameLogic.Selectors.GenericSelectors;

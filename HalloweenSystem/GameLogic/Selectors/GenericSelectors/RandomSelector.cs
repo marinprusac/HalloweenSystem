@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using HalloweenSystem.GameLogic.Settings;
 using HalloweenSystem.GameLogic.Utilities;
 

@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace HalloweenSystem.GameLogic.Settings;
 
 public class Tag(string name = "", IEnumerable<Player>? players = null, IEnumerable<string>? tags = null) : GameObject(name)

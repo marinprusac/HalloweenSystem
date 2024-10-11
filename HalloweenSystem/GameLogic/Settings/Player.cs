@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Linq;
+
 namespace HalloweenSystem.GameLogic.Settings;
 
 public class Player(string name) : GameObject(name)

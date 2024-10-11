@@ -1,3 +1,4 @@
+using System;
 using HalloweenSystem.GameLogic.Settings;
 
 namespace HalloweenSystem.GameLogic.HandoutParts;
