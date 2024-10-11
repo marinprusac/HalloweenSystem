@@ -1,12 +1,11 @@
 ﻿using System;
-using HalloweenSystem.GameLogic.HandoutParts;
+using HalloweenSystem.GameLogic.GameObjects;
 using HalloweenSystem.GameLogic.RuleActions;
 using HalloweenSystem.GameLogic.Selectors.GenericSelectors;
+using HalloweenSystem.GameLogic.Selectors.HandoutSelectors;
 using HalloweenSystem.GameLogic.Selectors.PlayerSelectors;
 using HalloweenSystem.GameLogic.Selectors.TagSelectors;
 using HalloweenSystem.GameLogic.Settings;
-
-
 
 
 Setting setting = new(
@@ -36,25 +35,22 @@ Setting setting = new(
 			new AssignAction(
 				true,
 				new HasTagTypePlayerSelector("Vampire"),
-				new TagSelector("VampirePlace", 
+				new TagSelector("VampirePlace",
 					null,
 					new RandomSelector<Tag>("1",
 						new GroupTagSelector("Places")
 					))),
 			new AssignAction(
 				new HasTagTypePlayerSelector("VampirePlace"),
-				
 				new TagSelector("Visited", null,
-					
 					new FromPlayerExtractTagSelector(
 						"VampirePlace",
 						new HasTagTypePlayerSelector("VampirePlace")
-						)
 					)
-				),
+				)
+			),
 			new AssignAction(false,
 				new HasTagTypePlayerSelector("Vampire"),
-				
 				new TagSelector("Visited", null,
 					new RandomSelector<Tag>("1",
 						new IntersectSelector<Tag>([
@@ -64,10 +60,10 @@ Setting setting = new(
 									"Visited",
 									new CurrentPlayerSelector()
 								))
-							])
-						)
+						])
 					)
 				)
+			)
 		]),
 		new Rule("AssignRandomPlaces",
 			[
@@ -83,40 +79,36 @@ Setting setting = new(
 			[
 				new HandoutAction(
 					new HasTagTypePlayerSelector("Visited"),
-					
-					new ListHandoutPart([
-						
-						new TextHandoutPart("\nYou've seen some players before on the following destinations:\n"),
-						
-						new IterableHandoutPart<Tag>("\n", "place",
-
+					new ListSelector<Handout>(
+						new TextHandoutSelector("You've seen some players before on the following destinations:"),
+						new IteratingSelector<Tag, Handout>(
+							"place",
 							new FromPlayerExtractTagSelector(
 								"Visited",
 								new CurrentPlayerSelector()
 							),
-							
-							new ListHandoutPart([
-									new TextHandoutPart("\t"),
-									new FillHandoutPart("place"),
-									new TextHandoutPart(": "),
-									new IterableHandoutPart<Player>(", ", "player",
-										new RandomSelector<Player>("50%",
-
+							new ListSelector<Handout>(
+								new TransformAndJoinHandoutSelector<Tag>(";", "no places",
+									new ParameterSelector<Tag>("place")
+								),
+								new TextHandoutSelector(": "),
+								new TransformAndJoinHandoutSelector<Player>("+", "no one",
+									new ChanceSelector<Player>(0.5f,
 										new RemoveCurrentPlayerSelector(
 											new HasTagsPlayerSelector(
 												new TagSelector("Visited", null,
-													new FillSelector<Tag>("place")
-													)
+													new ParameterSelector<Tag>("place")
 												)
 											)
-										),
-										new FillHandoutPart("player")
+										)
 									)
-								]
-								))
-					])
+								)
+							)
+						)
 					)
-			]),
+				)
+			]
+		),
 	],
 	[
 		"AssignVampires",
