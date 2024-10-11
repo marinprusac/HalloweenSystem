@@ -11,7 +11,7 @@ namespace HalloweenSystem.GameLogic.Selectors.HandoutSelectors;
 /// <param name="joinString">The string used to join the text representations of the selected game objects.</param>
 /// <param name="placeholder">The placeholder text to use if no game objects are selected.</param>
 /// <param name="nestedSelector">The nested selector that evaluates to a collection of game objects.</param>
-public class TransformAndJoinHandoutSelector<TN>(string joinString, string placeholder, Selector<TN> nestedSelector) : Selector<Handout> where TN : GameObject
+public class TransformHandoutSelector<TN>(string joinString, string placeholder, Selector<TN> nestedSelector) : Selector<Handout> where TN : GameObject
 {
 	/// <summary>
 	/// Evaluates the selector in the given context and returns a collection of handouts with the joined text content.

@@ -10,71 +10,54 @@ using HalloweenSystem.GameLogic.Settings;
 
 Setting setting = new(
 	[
-		new TagGroup("Roles", ["Human", "Vampire"]),
+		new TagGroup("Roles", ["Human", "Mafia"]),
 		new TagGroup("Relationships", ["Lover", "Rival"]),
 		new TagGroup("Places", ["Tavern", "Gardens", "City Outskirts", "Sewers", "Castle", "Market"]),
 	],
 	[
 		new Rule(
-			"AssignVampires",
+			"AssignMafias",
 			[
 				new AssignAction(
 					new RandomSelector<Player>("25%"),
-					new TagSelector("Vampire"))
+					new UnionSelector<Tag>([
+							new TagSelector("Mafia"),
+							new TagSelector("Evil")
+						]
+					)
+				)
 			]),
+
 		new Rule(
 			"AssignHumans",
 			[
 				new AssignAction(
 					new ComplementSelector<Player>(
-						new HasTagTypePlayerSelector("Vampire")),
+						new HasTagTypePlayerSelector("Mafia")),
 					new TagSelector("Human"))
 			]),
-		new Rule("AssignVampirePlace",
+
+		new Rule("AssignMafiaPlace",
 		[
 			new AssignAction(
 				true,
-				new HasTagTypePlayerSelector("Vampire"),
-				new TagSelector("VampirePlace",
+				new HasTagTypePlayerSelector("Mafia"),
+				new TagSelector("MafiaPlace",
 					null,
 					new RandomSelector<Tag>("1",
 						new GroupTagSelector("Places")
 					))),
 			new AssignAction(
-				new HasTagTypePlayerSelector("VampirePlace"),
+				new HasTagTypePlayerSelector("MafiaPlace"),
 				new TagSelector("Visited", null,
 					new FromPlayerExtractTagSelector(
-						"VampirePlace",
-						new HasTagTypePlayerSelector("VampirePlace")
-					)
-				)
-			),
-			new AssignAction(false,
-				new HasTagTypePlayerSelector("Vampire"),
-				new TagSelector("Visited", null,
-					new RandomSelector<Tag>("1",
-						new IntersectSelector<Tag>([
-							new GroupTagSelector("Places"),
-							new ComplementSelector<Tag>(
-								new FromPlayerExtractTagSelector(
-									"Visited",
-									new CurrentPlayerSelector()
-								))
-						])
+						"MafiaPlace",
+						new HasTagTypePlayerSelector("MafiaPlace")
 					)
 				)
 			)
 		]),
-		new Rule("AssignRandomPlaces",
-			[
-				new AssignAction(false,
-					new HasTagTypePlayerSelector("Human"),
-					new TagSelector("Visited", null,
-						new RandomSelector<Tag>("2",
-							new GroupTagSelector("Places")
-						)))
-			]
-		),
+
 		new Rule("HandoutSeenPlayers",
 			[
 				new HandoutAction(
@@ -88,11 +71,11 @@ Setting setting = new(
 								new CurrentPlayerSelector()
 							),
 							new ListSelector<Handout>(
-								new TransformAndJoinHandoutSelector<Tag>(";", "no places",
+								new TransformHandoutSelector<Tag>(";", "no places",
 									new ParameterSelector<Tag>("place")
 								),
 								new TextHandoutSelector(": "),
-								new TransformAndJoinHandoutSelector<Player>("+", "no one",
+								new TransformHandoutSelector<Player>("+", "no one",
 									new ChanceSelector<Player>(0.5f,
 										new RemoveCurrentPlayerSelector(
 											new HasTagsPlayerSelector(
@@ -108,12 +91,12 @@ Setting setting = new(
 					)
 				)
 			]
-		),
+		)
 	],
 	[
-		"AssignVampires",
+		"AssignMafias",
 		"AssignHumans",
-		"AssignVampirePlace",
+		"AssignMafiaPlace",
 		"AssignRandomPlaces",
 		"HandoutSeenPlayers"
 	]
