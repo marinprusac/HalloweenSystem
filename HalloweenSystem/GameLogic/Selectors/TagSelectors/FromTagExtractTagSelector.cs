@@ -1,9 +1,11 @@
+using System.Collections.Generic;
+using System.Linq;
 using HalloweenSystem.GameLogic.Selectors.GenericSelectors;
 using HalloweenSystem.GameLogic.Settings;
 
 namespace HalloweenSystem.GameLogic.Selectors.TagSelectors;
 
-public class ExtractTagSelector(Selector<Tag> tagSelector) : Selector<Tag>
+public class FromTagExtractTagSelector(Selector<Tag> tagSelector) : Selector<Tag>
 {
 	public override IEnumerable<Tag> Evaluate(Context context)
 	{

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace HalloweenSystem.GameLogic.Settings;
 
 public class TagGroup(string name, IEnumerable<string> tags)

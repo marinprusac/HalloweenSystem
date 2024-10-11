@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Linq;
+
 namespace HalloweenSystem.GameLogic.Settings;
 
 public class Setting(IEnumerable<TagGroup> tagGroups, IEnumerable<Rule> rules, List<string> ruleActivationOrder)

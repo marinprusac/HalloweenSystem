@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using HalloweenSystem.GameLogic.Selectors;
 using HalloweenSystem.GameLogic.Selectors.GenericSelectors;
@@ -29,9 +30,6 @@ public class Iterator<T, TG> (string name, Selector<T> selector, IEvaluator<TG> 
 		var parameters = Selector.Evaluate(context);
 		
 		var returnValue = new List<TG>();
-		
-		
-		context.IteratingOrder.Add(Name);
 		
 		foreach (var parameter in parameters)
 		{
