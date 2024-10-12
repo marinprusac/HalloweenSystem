@@ -1,18 +1,18 @@
-using System.Collections.Generic;
-using System.Linq;
+using System.Xml;
+using HalloweenSystem.GameLogic.Parsing;
 using HalloweenSystem.GameLogic.RuleActions;
-using HalloweenSystem.GameLogic.Selectors;
 using HalloweenSystem.GameLogic.Selectors.GenericSelectors;
-using HalloweenSystem.GameLogic.Selectors.PlayerSelectors;
+using HalloweenSystem.GameLogic.Settings;
+using HalloweenSystem.GameLogic.Utilities;
 
-namespace HalloweenSystem.GameLogic.Settings;
+namespace HalloweenSystem.GameLogic.GameObjects;
 
 /// <summary>
 /// Represents a rule in the game logic, which consists of a name, a requirement selector, and a list of actions.
 /// </summary>
 /// <param name="name">The name of the rule.</param>
 /// <param name="actions">The list of actions to be executed when the rule is evaluated.</param>
-public class Rule(string name, List<RuleAction> actions) : GameObject(name)
+public class Rule(string name, List<IAction> actions) : GameObject(name), IParser<Rule>
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="Rule"/> class with a name, a requirement selector, and a list of actions.
@@ -20,7 +20,7 @@ public class Rule(string name, List<RuleAction> actions) : GameObject(name)
     /// <param name="name">The name of the rule.</param>
     /// <param name="requirement">The selector that determines whether the rule's actions should be executed.</param>
     /// <param name="actions">The list of actions to be executed when the rule is evaluated.</param>
-    public Rule(string name, Selector<Player> requirement, List<RuleAction> actions) : this(name, actions)
+    public Rule(string name, ISelector<Player> requirement, List<IAction> actions) : this(name, actions)
     {
         _requirement = requirement;
     }
@@ -35,7 +35,7 @@ public class Rule(string name, List<RuleAction> actions) : GameObject(name)
     /// <summary>
     /// The selector that determines whether the rule's actions should be executed.
     /// </summary>
-    private readonly Selector<Player> _requirement = new AllSelector<Player>();
+    private readonly ISelector<Player> _requirement = new AllSelector<Player>();
 
     /// <summary>
     /// Evaluates the rule in the given context. If the requirement selector returns any players, the rule's actions are executed.
@@ -66,5 +66,24 @@ public class Rule(string name, List<RuleAction> actions) : GameObject(name)
     protected override IEnumerable<GameObject> _complement(IEnumerable<GameObject> objectSet, Context context)
     {
         return context.Setting.Rules.Except(objectSet);
+    }
+
+    public static Rule Parse(XmlNode node)
+    {
+        if (node.Attributes?["name"] == null) throw new XmlException("Expected 'name' attribute.");
+        var name = node.Attributes["name"]!.Value;
+
+        var requirementNode = node.SelectSingleNode("requirement/*");
+        var actionsNode = node.SelectSingleNode("actions");
+
+        var requirement = requirementNode != null
+            ? Parser.ParseSelector<Player>(requirementNode)
+            : new AllSelector<Player>();
+
+        var actions = actionsNode != null
+            ? actionsNode.ChildNodes.Cast<XmlNode>().Select(Parser.ParseAction).ToList()
+            : [];
+
+        return new Rule(name, requirement, actions);
     }
 }

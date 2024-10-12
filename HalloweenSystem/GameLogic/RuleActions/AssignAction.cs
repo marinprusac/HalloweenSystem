@@ -1,9 +1,12 @@
 using System.Linq;
+using System.Xml;
+using HalloweenSystem.GameLogic.Parsing;
 using HalloweenSystem.GameLogic.Selectors;
 using HalloweenSystem.GameLogic.Selectors.GenericSelectors;
 using HalloweenSystem.GameLogic.Selectors.PlayerSelectors;
 using HalloweenSystem.GameLogic.Selectors.TagSelectors;
 using HalloweenSystem.GameLogic.Settings;
+using HalloweenSystem.GameLogic.Utilities;
 
 namespace HalloweenSystem.GameLogic.RuleActions;
 
@@ -13,15 +16,15 @@ namespace HalloweenSystem.GameLogic.RuleActions;
 /// <param name="assignTogether">Indicates whether to assign all tags to all players together.</param>
 /// <param name="playerSelector">The selector that evaluates to a collection of players.</param>
 /// <param name="tagSelector">The selector that evaluates to a collection of tags.</param>
-public class AssignAction(bool assignTogether, Selector<Player> playerSelector, Selector<Tag> tagSelector)
-	: RuleAction
+public class AssignAction(bool assignTogether, ISelector<Player> playerSelector, ISelector<Tag> tagSelector)
+	: IAction, IParser<AssignAction>
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="AssignAction"/> class with the specified player and tag selectors.
     /// </summary>
     /// <param name="playerSelector">The selector that evaluates to a collection of players.</param>
     /// <param name="tagSelector">The selector that evaluates to a collection of tags.</param>
-	public AssignAction(Selector<Player> playerSelector, Selector<Tag> tagSelector) : this(false, playerSelector, tagSelector)
+	public AssignAction(ISelector<Player> playerSelector, ISelector<Tag> tagSelector) : this(false, playerSelector, tagSelector)
 	{
 	}
 	
@@ -29,7 +32,7 @@ public class AssignAction(bool assignTogether, Selector<Player> playerSelector, 
     /// Evaluates the action in the given context by assigning tags to players.
     /// </summary>
     /// <param name="context">The context in which to evaluate the action.</param>
-	public override void Evaluate(Context context)
+	public void Evaluate(Context context)
 	{
 		var players = playerSelector.Evaluate(context);
 
@@ -52,5 +55,25 @@ public class AssignAction(bool assignTogether, Selector<Player> playerSelector, 
 				player.AssignTags(tags);
 			}
 		}
+	}
+
+	public static AssignAction Parse(XmlNode node)
+	{
+		var assignTogether = false;
+		
+		if(node.Attributes?["assignTogether"] != null)
+		{
+			assignTogether = bool.Parse(node.Attributes["assignTogether"]!.Value);
+		}
+		
+		var playerSelectorNode = node.SelectSingleNode("players/*");
+		var tagSelectorNode = node.SelectSingleNode("tags/*");
+		
+		if(playerSelectorNode == null) throw new XmlException("Expected player selector.");
+		if(tagSelectorNode == null) throw new XmlException("Expected tag selector.");
+		
+		return new AssignAction(assignTogether,
+			Parser.ParseSelector<Player>(playerSelectorNode),
+			Parser.ParseSelector<Tag>(tagSelectorNode));
 	}
 }

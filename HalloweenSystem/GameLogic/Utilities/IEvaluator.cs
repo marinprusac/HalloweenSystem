@@ -1,3 +1,4 @@
+using System.Xml;
 using HalloweenSystem.GameLogic.Settings;
 
 namespace HalloweenSystem.GameLogic.Utilities;
@@ -14,4 +15,6 @@ public interface IEvaluator<out T>
     /// <param name="context">The context to evaluate.</param>
     /// <returns>The result of the evaluation.</returns>
     T Evaluate(Context context);
+    
+
 }

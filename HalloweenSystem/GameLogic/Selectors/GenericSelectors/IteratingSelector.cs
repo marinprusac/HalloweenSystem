@@ -1,4 +1,6 @@
+using System.Xml;
 using HalloweenSystem.GameLogic.Settings;
+using HalloweenSystem.GameLogic.Utilities;
 
 namespace HalloweenSystem.GameLogic.Selectors.GenericSelectors;
 
@@ -12,15 +14,15 @@ namespace HalloweenSystem.GameLogic.Selectors.GenericSelectors;
 /// <param name="iteratingSelector">The selector used to evaluate the context for each parameter.</param>
 public class IteratingSelector<TP, TI>(
 	string parameterName,
-	Selector<TP> parameterSelector,
-	Selector<TI> iteratingSelector) : Selector<TI> where TI : GameObject where TP : GameObject
+	ISelector<TP> parameterSelector,
+	ISelector<TI> iteratingSelector) : ISelector<TI>, IParser<IteratingSelector<TP, TI>> where TI : GameObject where TP : GameObject
 {
 	/// <summary>
 	/// Evaluates the context and returns a collection of game objects by iterating over the parameters and applying the iterating selector.
 	/// </summary>
 	/// <param name="context">The context in which to evaluate the selector.</param>
 	/// <returns>An enumerable collection of game objects resulting from the iteration.</returns>
-	public override IEnumerable<TI> Evaluate(Context context)
+	public IEnumerable<TI> Evaluate(Context context)
 	{
 		var parameters = parameterSelector.Evaluate(context).ToList();
 		var result = new List<TI>();
@@ -33,5 +35,10 @@ public class IteratingSelector<TP, TI>(
 		}
 
 		return result;
+	}
+
+	public static IteratingSelector<TP, TI> Parse(XmlNode node)
+	{
+		throw new NotImplementedException();
 	}
 }

@@ -1,4 +1,7 @@
+using System.Xml;
+using HalloweenSystem.GameLogic.Parsing;
 using HalloweenSystem.GameLogic.Settings;
+using HalloweenSystem.GameLogic.Utilities;
 
 namespace HalloweenSystem.GameLogic.Selectors.GenericSelectors
 {
@@ -8,19 +11,28 @@ namespace HalloweenSystem.GameLogic.Selectors.GenericSelectors
 	/// <typeparam name="T">The type of game object to be selected. Must inherit from GameObject.</typeparam>
 	/// <param name="probability">The probability of selecting each game object.</param>
 	/// <param name="nestedSelector">The nested selector to use for selecting game objects.</param>
-	public class ChanceSelector<T>(float probability, Selector<T> nestedSelector) : Selector<T> where T : GameObject
+	public class ChanceSelector<T>(float probability, ISelector<T> nestedSelector) : ISelector<T>, IParser<ChanceSelector<T>> where T : GameObject, new()
 	{
 		/// <summary>
 		/// Evaluates the context and returns a collection of game objects based on the specified probability.
 		/// </summary>
 		/// <param name="context">The context in which to evaluate the selector.</param>
 		/// <returns>An enumerable collection of game objects selected based on the specified probability.</returns>
-		public override IEnumerable<T> Evaluate(Context context)
+		public IEnumerable<T> Evaluate(Context context)
 		{
 			var objects = nestedSelector.Evaluate(context);
 			var random = new Random();
 			var chosen = objects.Where(gameObject => random.NextSingle() < probability).ToList();
 			return chosen;
+		}
+
+		public static ChanceSelector<T> Parse(XmlNode node) 
+		{
+			if (node.Attributes?["probability"] == null) throw new XmlException("Expected 'probability' attribute.");
+			if (node.HasChildNodes == false) throw new XmlException("Expected a nested selector.");
+			var probability = float.Parse(node.Attributes["probability"]!.Value);
+			var nestedSelector = Parser.ParseSelector<T>(node.FirstChild!);
+			return new ChanceSelector<T>(probability, nestedSelector);
 		}
 	}
 }

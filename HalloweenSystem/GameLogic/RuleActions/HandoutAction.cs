@@ -1,8 +1,10 @@
+using System.Xml;
 using HalloweenSystem.GameLogic.GameObjects;
 using HalloweenSystem.GameLogic.Selectors;
 using HalloweenSystem.GameLogic.Selectors.GenericSelectors;
 using HalloweenSystem.GameLogic.Selectors.PlayerSelectors;
 using HalloweenSystem.GameLogic.Settings;
+using HalloweenSystem.GameLogic.Utilities;
 
 namespace HalloweenSystem.GameLogic.RuleActions;
 
@@ -12,15 +14,15 @@ namespace HalloweenSystem.GameLogic.RuleActions;
 /// <param name="handoutTogether">Indicates whether to hand out all items to all players together.</param>
 /// <param name="playerSelector">The selector that evaluates to a collection of players.</param>
 /// <param name="handoutSelector">The selector that evaluates to a collection of handouts.</param>
-public class HandoutAction(bool handoutTogether, Selector<Player> playerSelector, Selector<Handout> handoutSelector)
-	: RuleAction
+public class HandoutAction(bool handoutTogether, ISelector<Player> playerSelector, ISelector<Handout> handoutSelector)
+	: IAction, IParser<HandoutAction>
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="HandoutAction"/> class with the specified player and handout selectors.
     /// </summary>
     /// <param name="playerSelector">The selector that evaluates to a collection of players.</param>
     /// <param name="handoutSelector">The selector that evaluates to a collection of handouts.</param>
-	public HandoutAction(Selector<Player> playerSelector, Selector<Handout> handoutSelector) : this(false, playerSelector, handoutSelector)
+	public HandoutAction(ISelector<Player> playerSelector, ISelector<Handout> handoutSelector) : this(false, playerSelector, handoutSelector)
 	{
 	}
 
@@ -28,7 +30,7 @@ public class HandoutAction(bool handoutTogether, Selector<Player> playerSelector
     /// Evaluates the action in the given context by handing out items to players.
     /// </summary>
     /// <param name="context">The context in which to evaluate the action.</param>
-	public override void Evaluate(Context context)
+	public void Evaluate(Context context)
 	{
 		context.CurrentPlayer = null;
 		var players = playerSelector.Evaluate(context);
@@ -52,5 +54,10 @@ public class HandoutAction(bool handoutTogether, Selector<Player> playerSelector
 				player.Handouts.AddRange(handouts);
 			}
 		}
+	}
+
+	public static HandoutAction Parse(XmlNode node)
+	{
+		throw new NotImplementedException();
 	}
 }
