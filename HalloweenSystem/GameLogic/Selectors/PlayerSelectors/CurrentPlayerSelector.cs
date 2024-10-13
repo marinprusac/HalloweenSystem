@@ -23,6 +23,6 @@ public class CurrentPlayerSelector : ISelector<Player>, IParser<CurrentPlayerSel
 
 	public static CurrentPlayerSelector Parse(XmlNode node)
 	{
-		throw new NotImplementedException();
+		return new CurrentPlayerSelector();
 	}
 }

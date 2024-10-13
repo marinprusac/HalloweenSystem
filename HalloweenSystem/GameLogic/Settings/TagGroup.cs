@@ -26,7 +26,7 @@ public class TagGroup(string name, IEnumerable<string> tags) : IParser<TagGroup>
 		if(node.Attributes?["name"] == null) throw new XmlException("Expected 'name' attribute.");
 		var name = node.Attributes["name"]!.Value;
 		if(node.HasChildNodes == false) throw new XmlException("Expected at least one tag.");
-		var tagNodes = node.SelectNodes("tags/*")!.Cast<XmlNode>().ToList();
+		var tagNodes = node.ChildNodes!.Cast<XmlNode>().ToList();
 		if(tagNodes.Any(tn => tn.Attributes?["name"] == null)) throw new XmlException("Expected all tags to have a 'name' attribute.");
 		var tags = tagNodes.Select(tn => tn.Attributes!["name"]!.Value);
 		return new TagGroup(name, tags);

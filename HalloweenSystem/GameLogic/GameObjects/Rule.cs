@@ -74,14 +74,14 @@ public class Rule(string name, List<IAction> actions) : GameObject(name), IParse
         var name = node.Attributes["name"]!.Value;
 
         var requirementNode = node.SelectSingleNode("requirement/*");
-        var actionsNode = node.SelectSingleNode("actions");
+        var actionNodes = node.SelectNodes("actions/*");
 
         var requirement = requirementNode != null
             ? Parser.ParseSelector<Player>(requirementNode)
             : new AllSelector<Player>();
 
-        var actions = actionsNode != null
-            ? actionsNode.ChildNodes.Cast<XmlNode>().Select(Parser.ParseAction).ToList()
+        var actions = actionNodes != null
+            ? actionNodes.Cast<XmlNode>().Select(Parser.ParseAction).ToList()
             : [];
 
         return new Rule(name, requirement, actions);

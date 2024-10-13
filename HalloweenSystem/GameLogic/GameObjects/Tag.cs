@@ -1,8 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using HalloweenSystem.GameLogic.Settings;
 
-namespace HalloweenSystem.GameLogic.Settings;
+namespace HalloweenSystem.GameLogic.GameObjects;
 
 /// <summary>
 /// Represents a tag in the game logic, which can be associated with players and other tags.

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
+using HalloweenSystem.GameLogic.Parsing;
 using HalloweenSystem.GameLogic.Selectors.GenericSelectors;
 using HalloweenSystem.GameLogic.Settings;
 using HalloweenSystem.GameLogic.Utilities;
@@ -13,7 +14,7 @@ namespace HalloweenSystem.GameLogic.Selectors.PlayerSelectors;
 /// <param name="type">The type of tag to match in the players' assigned tags.</param>
 /// <param name="playerSelector">The optional selector that evaluates to a collection of players. If not provided, all players are considered.</param>
 public class HasTagTypePlayerSelector(string type, ISelector<Player>? playerSelector = null)
-	: ISelector<Player>, IParser<HasTagsPlayerSelector>
+	: ISelector<Player>, IParser<HasTagTypePlayerSelector>
 {
 	private ISelector<Player>? _playerSelector = playerSelector;
 
@@ -31,8 +32,12 @@ public class HasTagTypePlayerSelector(string type, ISelector<Player>? playerSele
 		return filtered;
 	}
 
-	public static HasTagsPlayerSelector Parse(XmlNode node)
+	public static HasTagTypePlayerSelector Parse(XmlNode node)
 	{
-		throw new NotImplementedException();
+		var type = node.Attributes?["tag"]?.Value ?? throw new XmlException("Expected a tag attribute.");
+		var playerSelectorNode = node.FirstChild;
+		var playerSelector = playerSelectorNode == null ? null : Parser.ParseSelector<Player>(playerSelectorNode);
+		return new HasTagTypePlayerSelector(type, playerSelector);
+		
 	}
 }

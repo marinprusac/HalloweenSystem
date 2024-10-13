@@ -25,7 +25,9 @@ namespace HalloweenSystem.GameLogic.Selectors.GenericSelectors
 
 		public static ParameterSelector<T> Parse(XmlNode node)
 		{
-			throw new NotImplementedException();
+			if (node.Attributes?["name"] == null) throw new XmlException("Expected 'name' attribute.");
+			var parameterName = node.Attributes["name"]!.Value;
+			return new ParameterSelector<T>(parameterName);
 		}
 	}
 }

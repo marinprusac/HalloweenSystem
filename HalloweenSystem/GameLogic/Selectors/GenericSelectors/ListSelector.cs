@@ -1,4 +1,5 @@
 using System.Xml;
+using HalloweenSystem.GameLogic.Parsing;
 using HalloweenSystem.GameLogic.Settings;
 using HalloweenSystem.GameLogic.Utilities;
 
@@ -9,7 +10,7 @@ namespace HalloweenSystem.GameLogic.Selectors.GenericSelectors;
 /// </summary>
 /// <typeparam name="T">The type of game object to be selected. Must inherit from GameObject.</typeparam>
 /// <param name="selectorList">The list of selectors to combine.</param>
-public class ListSelector<T>(IEnumerable<ISelector<T>> selectorList) : ISelector<T>, IParser<ListSelector<T>> where T : GameObject
+public class ListSelector<T>(IEnumerable<ISelector<T>> selectorList) : ISelector<T>, IParser<ListSelector<T>> where T : GameObject, new()
 {
 	/// <summary>
 	/// Evaluates the context and returns a combined collection of game objects from all selectors in the list.
@@ -24,6 +25,8 @@ public class ListSelector<T>(IEnumerable<ISelector<T>> selectorList) : ISelector
 
 	public static ListSelector<T> Parse(XmlNode node)
 	{
-		throw new NotImplementedException();
+		if (node.ChildNodes.Count == 0) throw new XmlException("Expected at least 1 child node.");
+		var selectors = (from XmlNode child in node.ChildNodes select Parser.ParseSelector<T>(child)).ToList();
+		return new ListSelector<T>(selectors);
 	}
 }

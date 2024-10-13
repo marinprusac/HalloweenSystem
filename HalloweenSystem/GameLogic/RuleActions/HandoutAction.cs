@@ -1,5 +1,6 @@
 using System.Xml;
 using HalloweenSystem.GameLogic.GameObjects;
+using HalloweenSystem.GameLogic.Parsing;
 using HalloweenSystem.GameLogic.Selectors;
 using HalloweenSystem.GameLogic.Selectors.GenericSelectors;
 using HalloweenSystem.GameLogic.Selectors.PlayerSelectors;
@@ -14,7 +15,7 @@ namespace HalloweenSystem.GameLogic.RuleActions;
 /// <param name="handoutTogether">Indicates whether to hand out all items to all players together.</param>
 /// <param name="playerSelector">The selector that evaluates to a collection of players.</param>
 /// <param name="handoutSelector">The selector that evaluates to a collection of handouts.</param>
-public class HandoutAction(bool handoutTogether, ISelector<Player> playerSelector, ISelector<Handout> handoutSelector)
+public class HandoutAction(bool handoutTogether, ListSelector<Player> playerSelector, ListSelector<Handout> handoutSelector)
 	: IAction, IParser<HandoutAction>
 {
     /// <summary>
@@ -22,7 +23,7 @@ public class HandoutAction(bool handoutTogether, ISelector<Player> playerSelecto
     /// </summary>
     /// <param name="playerSelector">The selector that evaluates to a collection of players.</param>
     /// <param name="handoutSelector">The selector that evaluates to a collection of handouts.</param>
-	public HandoutAction(ISelector<Player> playerSelector, ISelector<Handout> handoutSelector) : this(false, playerSelector, handoutSelector)
+	public HandoutAction(ListSelector<Player> playerSelector, ListSelector<Handout> handoutSelector) : this(false, playerSelector, handoutSelector)
 	{
 	}
 
@@ -58,6 +59,20 @@ public class HandoutAction(bool handoutTogether, ISelector<Player> playerSelecto
 
 	public static HandoutAction Parse(XmlNode node)
 	{
-		throw new NotImplementedException();
+		var handoutTogether = node.Attributes?["together"]?.Value == "true";
+		
+		var playerSelectorNodes = node.SelectNodes("players/*");
+		if (playerSelectorNodes == null) throw new XmlException("Expected a players element.");
+		
+		var handoutSelectorNodes = node.SelectNodes("handouts/*");
+		if (handoutSelectorNodes == null) throw new XmlException("Expected a handouts element.");
+		
+		var playerSelectors = playerSelectorNodes.Cast<XmlNode>().Select(Parser.ParseSelector<Player>);
+		var handoutSelectors = handoutSelectorNodes.Cast<XmlNode>().Select(Parser.ParseSelector<Handout>);
+		
+		var playerList = new ListSelector<Player>(playerSelectors);
+		var handoutList = new ListSelector<Handout>(handoutSelectors);
+		
+		return new HandoutAction(handoutTogether, playerList, handoutList);
 	}
 }

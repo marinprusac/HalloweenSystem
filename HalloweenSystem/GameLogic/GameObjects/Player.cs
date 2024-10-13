@@ -88,16 +88,17 @@ public class Player(string name) : GameObject(name)
     {
         var text = "";
         text += Name + " { ";
-        text += "Tags: [ ";
+        text += "Tags[ ";
         text = AssignedTags.Aggregate(text, (current, tag) => current + (tag.ToString() + ", "));
         if (AssignedTags.Count > 0)
             text = text[..^2];
         text += " ]";
 
-        text += " Handouts: [ ";
-        text = Handouts.Aggregate(text, (current, handout) => current + handout);
+        text += " Handouts[\n";
 
-        text += " ]";
+        text += string.Join("\n", Handouts);
+        
+        text += "\n]";
         text += " }";
         return text;
     }

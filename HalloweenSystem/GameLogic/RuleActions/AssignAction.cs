@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Xml;
+using HalloweenSystem.GameLogic.GameObjects;
 using HalloweenSystem.GameLogic.Parsing;
 using HalloweenSystem.GameLogic.Selectors;
 using HalloweenSystem.GameLogic.Selectors.GenericSelectors;
@@ -16,7 +17,7 @@ namespace HalloweenSystem.GameLogic.RuleActions;
 /// <param name="assignTogether">Indicates whether to assign all tags to all players together.</param>
 /// <param name="playerSelector">The selector that evaluates to a collection of players.</param>
 /// <param name="tagSelector">The selector that evaluates to a collection of tags.</param>
-public class AssignAction(bool assignTogether, ISelector<Player> playerSelector, ISelector<Tag> tagSelector)
+public class AssignAction(bool assignTogether, ListSelector<Player> playerSelector, ListSelector<Tag> tagSelector)
 	: IAction, IParser<AssignAction>
 {
     /// <summary>
@@ -24,7 +25,7 @@ public class AssignAction(bool assignTogether, ISelector<Player> playerSelector,
     /// </summary>
     /// <param name="playerSelector">The selector that evaluates to a collection of players.</param>
     /// <param name="tagSelector">The selector that evaluates to a collection of tags.</param>
-	public AssignAction(ISelector<Player> playerSelector, ISelector<Tag> tagSelector) : this(false, playerSelector, tagSelector)
+	public AssignAction(ListSelector<Player> playerSelector, ListSelector<Tag> tagSelector) : this(false, playerSelector, tagSelector)
 	{
 	}
 	
@@ -61,19 +62,30 @@ public class AssignAction(bool assignTogether, ISelector<Player> playerSelector,
 	{
 		var assignTogether = false;
 		
-		if(node.Attributes?["assignTogether"] != null)
+		if(node.Attributes?["together"] != null)
 		{
-			assignTogether = bool.Parse(node.Attributes["assignTogether"]!.Value);
+			var togetherValue = node.Attributes["together"]!.Value.ToLower();
+			assignTogether = togetherValue switch
+			{
+				"yes" => true,
+				"no" => false,
+				_ => throw new XmlException("Invalid value for 'together' attribute.")
+			};
 		}
 		
-		var playerSelectorNode = node.SelectSingleNode("players/*");
-		var tagSelectorNode = node.SelectSingleNode("tags/*");
+		var playerSelectorNodes = node.SelectNodes("players/*");
+		var tagSelectorNodes = node.SelectNodes("tags/*");
 		
-		if(playerSelectorNode == null) throw new XmlException("Expected player selector.");
-		if(tagSelectorNode == null) throw new XmlException("Expected tag selector.");
+		if(playerSelectorNodes == null) throw new XmlException("Expected player selector.");
+		if(tagSelectorNodes == null) throw new XmlException("Expected tag selector.");
+
+
+		var playerSelectors = (from XmlNode selectorNode in playerSelectorNodes select Parser.ParseSelector<Player>(selectorNode)).ToList();
+		var playerList = new ListSelector<Player>(playerSelectors);
 		
-		return new AssignAction(assignTogether,
-			Parser.ParseSelector<Player>(playerSelectorNode),
-			Parser.ParseSelector<Tag>(tagSelectorNode));
+		var tagSelectors = (from XmlNode selectorNode in tagSelectorNodes select Parser.ParseSelector<Tag>(selectorNode)).ToList();
+		var tagList = new ListSelector<Tag>(tagSelectors);
+		
+		return new AssignAction(assignTogether, playerList, tagList);
 	}
 }

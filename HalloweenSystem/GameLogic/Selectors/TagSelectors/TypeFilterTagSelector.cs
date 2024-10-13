@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
+using HalloweenSystem.GameLogic.GameObjects;
+using HalloweenSystem.GameLogic.Parsing;
 using HalloweenSystem.GameLogic.Selectors.GenericSelectors;
 using HalloweenSystem.GameLogic.Settings;
 using HalloweenSystem.GameLogic.Utilities;
@@ -27,6 +29,14 @@ public class TypeFilterTagSelector(string tagType, ISelector<Tag> tagSelector) :
 
     public static TypeFilterTagSelector Parse(XmlNode node)
     {
-        throw new NotImplementedException();
+        if (node.Attributes?["type"] == null) throw new XmlException("Expected 'type' attribute.");
+        var tagType = node.Attributes["type"]!.Value;
+
+        var tagSelectorNode = node.FirstChild;
+        var tagSelector = tagSelectorNode == null
+            ? throw new XmlException("Expected a tag selector.")
+            : Parser.ParseSelector<Tag>(tagSelectorNode);
+
+        return new TypeFilterTagSelector(tagType, tagSelector);
     }
 }

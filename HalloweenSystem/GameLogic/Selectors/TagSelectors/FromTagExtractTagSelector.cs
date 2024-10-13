@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
+using HalloweenSystem.GameLogic.GameObjects;
+using HalloweenSystem.GameLogic.Parsing;
 using HalloweenSystem.GameLogic.Selectors.GenericSelectors;
 using HalloweenSystem.GameLogic.Selectors.PlayerSelectors;
 using HalloweenSystem.GameLogic.Settings;
@@ -29,6 +31,10 @@ public class FromTagExtractTagSelector(ISelector<Tag> tagSelector)
 
 	public static FromTagExtractPlayerSelector Parse(XmlNode node)
 	{
-		throw new NotImplementedException();
+		var tagSelectorNode = node.FirstChild;
+		var tagSelector = tagSelectorNode == null
+			? throw new XmlException("Expected a tag selector.")
+			: Parser.ParseSelector<Tag>(tagSelectorNode);
+		return new FromTagExtractPlayerSelector(tagSelector);
 	}
 }

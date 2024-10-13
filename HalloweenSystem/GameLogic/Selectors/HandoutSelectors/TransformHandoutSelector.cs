@@ -1,5 +1,6 @@
 using System.Xml;
 using HalloweenSystem.GameLogic.GameObjects;
+using HalloweenSystem.GameLogic.Parsing;
 using HalloweenSystem.GameLogic.Selectors.GenericSelectors;
 using HalloweenSystem.GameLogic.Settings;
 using HalloweenSystem.GameLogic.Utilities;
@@ -14,7 +15,7 @@ namespace HalloweenSystem.GameLogic.Selectors.HandoutSelectors;
 /// <param name="placeholder">The placeholder text to use if no game objects are selected.</param>
 /// <param name="nestedSelector">The nested selector that evaluates to a collection of game objects.</param>
 public class TransformHandoutSelector<TN>(string joinString, string placeholder, ISelector<TN> nestedSelector)
-	: ISelector<Handout>, IParser<TransformHandoutSelector<TN>> where TN : GameObject
+	: ISelector<Handout>, IParser<TransformHandoutSelector<TN>> where TN : GameObject, new()
 {
 	/// <summary>
 	/// Evaluates the selector in the given context and returns a collection of handouts with the joined text content.
@@ -37,6 +38,10 @@ public class TransformHandoutSelector<TN>(string joinString, string placeholder,
 
 	public static TransformHandoutSelector<TN> Parse(XmlNode node)
 	{
-		throw new NotImplementedException();
+		var joinString = node.Attributes?["separator"]?.Value ?? "";
+		var placeholder = node.Attributes?["placeholder"]?.Value ?? "";
+		if (node.HasChildNodes == false) throw new XmlException("Expected a nested selector.");
+		var nestedSelector = Parser.ParseSelector<TN>(node.FirstChild!);
+		return new TransformHandoutSelector<TN>(joinString, placeholder, nestedSelector);
 	}
 }

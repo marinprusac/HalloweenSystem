@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
+using HalloweenSystem.GameLogic.GameObjects;
+using HalloweenSystem.GameLogic.Parsing;
 using HalloweenSystem.GameLogic.Selectors.GenericSelectors;
 using HalloweenSystem.GameLogic.Settings;
 using HalloweenSystem.GameLogic.Utilities;
@@ -34,6 +36,9 @@ public class GroupTagSelector(string tagGroupName, ISelector<Tag>? tagSelector =
 
 	public static GroupTagSelector Parse(XmlNode node)
 	{
-		throw new NotImplementedException();
+		var tagGroupName = node.Attributes?["name"]?.Value ?? throw new XmlException("Expected a name attribute.");
+		var tagSelectorNode = node.FirstChild;
+		var tagSelector = tagSelectorNode == null ? null : Parser.ParseSelector<Tag>(tagSelectorNode);
+		return new GroupTagSelector(tagGroupName, tagSelector);
 	}
 }

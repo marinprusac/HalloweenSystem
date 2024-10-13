@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
+using HalloweenSystem.GameLogic.GameObjects;
 using HalloweenSystem.GameLogic.Selectors.GenericSelectors;
 using HalloweenSystem.GameLogic.Settings;
 using HalloweenSystem.GameLogic.Utilities;
@@ -26,6 +27,6 @@ public class UsedTagSelector : ISelector<Tag>, IParser<UsedTagSelector>
 
     public static UsedTagSelector Parse(XmlNode node)
     {
-        throw new NotImplementedException();
+        return new UsedTagSelector();
     }
 }

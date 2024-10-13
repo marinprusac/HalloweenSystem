@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
+using HalloweenSystem.GameLogic.GameObjects;
 using HalloweenSystem.GameLogic.Parsing;
 using HalloweenSystem.GameLogic.Selectors.GenericSelectors;
 using HalloweenSystem.GameLogic.Selectors.PlayerSelectors;
@@ -40,7 +41,7 @@ public class TagSelector(string type, ISelector<Player>? playerSelector = null, 
 		if(node.Attributes?["name"] == null) throw new XmlException("Expected 'name' attribute.");
 		var type = node.Attributes["name"]!.Value;
 		
-		var playerSelectorNode = node.SelectSingleNode("player/*");
+		var playerSelectorNode = node.SelectSingleNode("players/*");
 		var tagSelectorNode = node.SelectSingleNode("tags/*");
 		
 		return new TagSelector(type,

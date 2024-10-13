@@ -1,16 +1,23 @@
 ﻿using HalloweenSystem.GameLogic.Parsing;
 
 
-var path = "/home/marin/Development/HalloweenSystem/HalloweenSystem/example";
+const string path = "/home/marin/Development/HalloweenSystem/HalloweenSystem/example";
 
 var s = Parser.LoadGame(path);
 
-var ctx = s.Run(["Marin", "Jelena", "Patrik", "Borna", "Viktor", "Michelle", "Mia", "Lucija"]);
+var ctx = s.RunWithTags(new Dictionary<string, List<string>>()
+{
+	{"Marin", ["Wanderer"]},
+	{"Patrik", ["Guard"]},
+	{"Juraj", ["Wanderer"]},
+	{"Borna", ["Social"]},
+	{"Jelena", ["Social"]},
+	{"Lucija", ["Social"]},
+	{"Silvija", ["Guard"]},
+	{"Mauro", ["Social"]},
+	{"Luka", ["Social"]},
+	{"Nika", ["Royal"]},
+});
 
 Console.WriteLine(ctx.ToString());
 
-
-
-
-//var context = setting.Run(["Marin", "Jelena", "Patrik", "Borna", "Viktor", "Michelle", "Mia", "Lucija"]);
-//Console.WriteLine(context.ToString());

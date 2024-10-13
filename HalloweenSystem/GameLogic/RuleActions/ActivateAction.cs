@@ -13,7 +13,7 @@ namespace HalloweenSystem.GameLogic.RuleActions;
 /// Represents an action that activates rules based on a specified rule selector.
 /// </summary>
 /// <param name="ruleSelector">The selector that evaluates to a collection of rules to be activated.</param>
-public class ActivateAction(ISelector<Rule> ruleSelector) : IAction, IParser<ActivateAction>
+public class ActivateAction(ListSelector<Rule> ruleSelector) : IAction, IParser<ActivateAction>
 {
     /// <summary>
     /// Evaluates the action in the given context by activating the rules selected by the rule selector.
@@ -27,7 +27,13 @@ public class ActivateAction(ISelector<Rule> ruleSelector) : IAction, IParser<Act
     public static ActivateAction Parse(XmlNode node)
     {
         if(!node.HasChildNodes) throw new XmlException("Expected a rule selector child node.");
-        var ruleSelector = Parser.ParseSelector<Rule>(node.FirstChild!);
-        return new ActivateAction(ruleSelector);
+        
+        var selectorNodes = node.ChildNodes.Cast<XmlNode>().ToList();
+
+        var selectors = selectorNodes.Select(Parser.ParseSelector<Rule>);
+
+        var list = new ListSelector<Rule>(selectors);
+        
+        return new ActivateAction(list);
     }
 }

@@ -24,6 +24,8 @@ public class TextHandoutSelector(string text) : ISelector<Handout>, IParser<Text
 
 	public static TextHandoutSelector Parse(XmlNode node)
 	{
-		throw new NotImplementedException();
+		var text = node.Attributes?["text"]?.Value;
+		if (text == null) throw new XmlException("Expected 'text' attribute.");
+		return new TextHandoutSelector(text);
 	}
 }

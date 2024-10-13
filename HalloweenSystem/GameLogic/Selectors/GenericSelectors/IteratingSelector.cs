@@ -1,4 +1,5 @@
 using System.Xml;
+using HalloweenSystem.GameLogic.Parsing;
 using HalloweenSystem.GameLogic.Settings;
 using HalloweenSystem.GameLogic.Utilities;
 
@@ -15,7 +16,7 @@ namespace HalloweenSystem.GameLogic.Selectors.GenericSelectors;
 public class IteratingSelector<TP, TI>(
 	string parameterName,
 	ISelector<TP> parameterSelector,
-	ISelector<TI> iteratingSelector) : ISelector<TI>, IParser<IteratingSelector<TP, TI>> where TI : GameObject where TP : GameObject
+	ISelector<TI> iteratingSelector) : ISelector<TI>, IParser<IteratingSelector<TP, TI>> where TI : GameObject, new() where TP : GameObject, new()
 {
 	/// <summary>
 	/// Evaluates the context and returns a collection of game objects by iterating over the parameters and applying the iterating selector.
@@ -39,6 +40,17 @@ public class IteratingSelector<TP, TI>(
 
 	public static IteratingSelector<TP, TI> Parse(XmlNode node)
 	{
-		throw new NotImplementedException();
+		if (node.Attributes?["name"] == null) throw new XmlException("Expected 'name' attribute.");
+		var parameterName = node.Attributes["name"]!.Value;
+		var parameterNode = node.SelectSingleNode("parameter_selector/*");
+		var iterableNode = node.SelectSingleNode("iterable_selector/*");
+		
+		if (parameterNode == null) throw new XmlException("Expected 'parameter_selector' child node.");
+		if (iterableNode == null) throw new XmlException("Expected 'iterable_selector' child node.");
+		
+		var parameterSelector = Parser.ParseSelector<TP>(parameterNode);
+		var iterableSelector = Parser.ParseSelector<TI>(iterableNode);
+		
+		return new IteratingSelector<TP, TI>(parameterName, parameterSelector, iterableSelector);
 	}
 }

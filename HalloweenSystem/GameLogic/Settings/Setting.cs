@@ -45,6 +45,15 @@ public class Setting(IEnumerable<TagGroup> tagGroups, IEnumerable<string> ruleNa
 		ruleActivationOrder.ForEach(ruleName => Rules.FirstOrDefault(rule => rule.Name == ruleName)?.Evaluate(context));
 		return context;
 	}
+	
+	public Context RunWithTags(Dictionary<string, List<string>> playerTags)
+	{
+		
+		var players = playerTags.Select(pt => new Player(pt.Key, pt.Value.Select( tagName => new Tag(tagName)))).ToList();
+		var context = new Context(this, players);
+		ruleActivationOrder.ForEach(ruleName => Rules.FirstOrDefault(rule => rule.Name == ruleName)?.Evaluate(context));
+		return context;
+	}
 
 	public void LoadRules(XmlNode[] ruleNodes)
 	{
@@ -58,8 +67,8 @@ public class Setting(IEnumerable<TagGroup> tagGroups, IEnumerable<string> ruleNa
 		var tagGroupsNode = node.SelectSingleNode("tag_groups");
 		if(tagGroupsNode == null) throw new XmlException("Expected 'tagGroups' node.");
 		if(tagGroupsNode.HasChildNodes == false) throw new XmlException("Expected at least one tag group.");
-		var tagGroups = tagGroupsNode.SelectNodes("group")!.Cast<XmlNode>();
-		var tagGroupsList =tagGroups.Select(TagGroup.Parse).ToList();
+		var tagGroups = tagGroupsNode.SelectNodes("tag_group")!.Cast<XmlNode>();
+		var tagGroupsList = tagGroups.Select(TagGroup.Parse).ToList();
 		
 		var rulesNode = node.SelectSingleNode("rules");
 		if(rulesNode == null) throw new XmlException("Expected 'rules' node.");
