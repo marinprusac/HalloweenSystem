@@ -35,8 +35,10 @@ public class HasTagTypePlayerSelector(string type, ISelector<Player>? playerSele
 	public static HasTagTypePlayerSelector Parse(XmlNode node)
 	{
 		var type = node.Attributes?["tag"]?.Value ?? throw new XmlException("Expected a tag attribute.");
-		var playerSelectorNode = node.FirstChild;
-		var playerSelector = playerSelectorNode == null ? null : Parser.ParseSelector<Player>(playerSelectorNode);
+
+		ISelector<Player> playerSelector;
+		if (node.HasChildNodes) playerSelector = ListSelector<Player>.Parse(node);
+		else playerSelector = new AllSelector<Player>();
 		return new HasTagTypePlayerSelector(type, playerSelector);
 		
 	}

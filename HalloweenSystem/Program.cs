@@ -16,7 +16,7 @@ var ctx = s.RunWithTags(new Dictionary<string, List<string>>()
 	{"Silvija", ["Guard"]},
 	{"Mauro", ["Social"]},
 	{"Luka", ["Social"]},
-	{"Nika", ["Royal"]},
+	{"Nika", ["Royal"]}
 });
 
 Console.WriteLine(ctx.ToString());

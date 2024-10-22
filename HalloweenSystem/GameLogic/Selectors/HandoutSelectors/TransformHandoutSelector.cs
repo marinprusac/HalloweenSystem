@@ -40,8 +40,7 @@ public class TransformHandoutSelector<TN>(string joinString, string placeholder,
 	{
 		var joinString = node.Attributes?["separator"]?.Value ?? "";
 		var placeholder = node.Attributes?["placeholder"]?.Value ?? "";
-		if (node.HasChildNodes == false) throw new XmlException("Expected a nested selector.");
-		var nestedSelector = Parser.ParseSelector<TN>(node.FirstChild!);
+		var nestedSelector = ListSelector<TN>.Parse(node);
 		return new TransformHandoutSelector<TN>(joinString, placeholder, nestedSelector);
 	}
 }

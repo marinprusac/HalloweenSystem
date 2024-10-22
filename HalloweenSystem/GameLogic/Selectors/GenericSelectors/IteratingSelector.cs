@@ -42,14 +42,14 @@ public class IteratingSelector<TP, TI>(
 	{
 		if (node.Attributes?["name"] == null) throw new XmlException("Expected 'name' attribute.");
 		var parameterName = node.Attributes["name"]!.Value;
-		var parameterNode = node.SelectSingleNode("parameter_selector/*");
-		var iterableNode = node.SelectSingleNode("iterable_selector/*");
+		var parameterNode = node.SelectSingleNode("parameter_selector");
+		var iterableNode = node.SelectSingleNode("iterable_selector");
 		
 		if (parameterNode == null) throw new XmlException("Expected 'parameter_selector' child node.");
 		if (iterableNode == null) throw new XmlException("Expected 'iterable_selector' child node.");
 		
-		var parameterSelector = Parser.ParseSelector<TP>(parameterNode);
-		var iterableSelector = Parser.ParseSelector<TI>(iterableNode);
+		var parameterSelector = ListSelector<TP>.Parse(parameterNode);
+		var iterableSelector = ListSelector<TI>.Parse(iterableNode);
 		
 		return new IteratingSelector<TP, TI>(parameterName, parameterSelector, iterableSelector);
 	}

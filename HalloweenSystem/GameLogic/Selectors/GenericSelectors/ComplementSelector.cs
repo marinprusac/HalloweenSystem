@@ -25,10 +25,7 @@ namespace HalloweenSystem.GameLogic.Selectors.GenericSelectors
 
 		public static ComplementSelector<T> Parse(XmlNode node)
 		{
-			if(node.Name != "complement") throw new XmlException("Expected <complement> node.");
-			if(node.ChildNodes.Count != 1) throw new XmlException("Expected exactly one child node.");
-			var child = node.ChildNodes[0]!;
-			var nestedSelector = Parser.ParseSelector<T>(child);
+			var nestedSelector = ListSelector<T>.Parse(node);
 			return new ComplementSelector<T>(nestedSelector);
 		}
 	}

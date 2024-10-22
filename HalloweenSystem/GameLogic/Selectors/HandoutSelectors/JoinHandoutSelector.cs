@@ -7,7 +7,7 @@ using HalloweenSystem.GameLogic.Utilities;
 
 namespace HalloweenSystem.GameLogic.Selectors.HandoutSelectors;
 
-public class JoinHandoutSelector(string separator, string placeholder, ListSelector<Handout> nestedHandouts) : ISelector<Handout>, IParser<JoinHandoutSelector>
+public class JoinHandoutSelector(string separator, string placeholder, ISelector<Handout> nestedHandouts) : ISelector<Handout>, IParser<JoinHandoutSelector>
 {
 	
 	
@@ -25,13 +25,7 @@ public class JoinHandoutSelector(string separator, string placeholder, ListSelec
 		var separator = node.Attributes?["separator"]?.Value ?? "";
 		var placeholder = node.Attributes?["placeholder"]?.Value ?? "";
 		
-		if (node.HasChildNodes == false) throw new XmlException("Expected nested selectors.");
-
-		var nestedSelectors = node.ChildNodes;
-		
-		var selectors = (from XmlNode nestedSelector in nestedSelectors select Parser.ParseSelector<Handout>(nestedSelector)).ToList();
-
-		var list = new ListSelector<Handout>(selectors);
+		var list = ListSelector<Handout>.Parse(node);
 		
 		return new JoinHandoutSelector(separator, placeholder, list);
 	}

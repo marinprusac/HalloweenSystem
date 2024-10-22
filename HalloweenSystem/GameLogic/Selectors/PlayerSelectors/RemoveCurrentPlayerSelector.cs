@@ -30,10 +30,7 @@ public class RemoveCurrentPlayerSelector(ISelector<Player> playerSelector)
 
 	public static RemoveCurrentPlayerSelector Parse(XmlNode node)
 	{
-		var playerSelectorNode = node.FirstChild;
-		var playerSelector = playerSelectorNode == null
-			? throw new XmlException("Expected a player selector.")
-			: Parser.ParseSelector<Player>(playerSelectorNode);
+		var playerSelector = ListSelector<Player>.Parse(node);
 		return new RemoveCurrentPlayerSelector(playerSelector);
 	}
 }

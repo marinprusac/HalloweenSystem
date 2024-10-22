@@ -37,10 +37,7 @@ public class FromPlayerExtractTagSelector(string tagType, ISelector<Player> play
 	public static FromPlayerExtractTagSelector Parse(XmlNode node)
 	{
 		var tagType = node.Attributes?["tag"]?.Value ?? throw new XmlException("Expected a tag attribute.");
-		var playerSelectorNode = node.FirstChild;
-		var playerSelector = playerSelectorNode == null
-			? throw new XmlException("Expected a player selector.")
-			: Parser.ParseSelector<Player>(playerSelectorNode);
+		var playerSelector = ListSelector<Player>.Parse(node);
 		return new FromPlayerExtractTagSelector(tagType, playerSelector);
 	}
 }

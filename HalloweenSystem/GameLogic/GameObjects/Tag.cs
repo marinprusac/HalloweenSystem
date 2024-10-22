@@ -196,28 +196,20 @@ public class Tag(string name = "", IEnumerable<Player>? players = null, IEnumera
     public override string ToString()
     {
         var text = Name;
+
         if (PlayerParameters.Count > 0 || TagTypeParameters.Count > 0)
-            text += " { ";
-        if (PlayerParameters.Count > 0)
         {
-            text += "Players[";
+            text += "[";
+            
             text = PlayerParameters.Aggregate(text, (current, player) => current + (player.Name + ", "));
-            text = text[..^2];
-            text += "]";
-        }
 
-        if (PlayerParameters.Count > 0 && TagTypeParameters.Count > 0)
-            text += ", ";
+            if (PlayerParameters.Count > 0)
+                text += ", ";
 
-        if (TagTypeParameters.Count > 0)
-        {
-            text += "Tags[";
             text = TagTypeParameters.Aggregate(text, (current, name) => current + (name + ", "));
             text = text[..^2];
             text += "]";
         }
-        if (PlayerParameters.Count > 0 || TagTypeParameters.Count > 0)
-            text += " }";
         return text;
     }
 }

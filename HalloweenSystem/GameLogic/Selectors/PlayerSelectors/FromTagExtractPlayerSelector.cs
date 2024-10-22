@@ -32,8 +32,7 @@ public class FromTagExtractPlayerSelector(ISelector<Tag> nestedSelector)
 
 	public static FromTagExtractPlayerSelector Parse(XmlNode node)
 	{
-		if (node.HasChildNodes == false) throw new XmlException("Expected a nested selector.");
-		var nestedSelector = Parser.ParseSelector<Tag>(node.FirstChild!);
+		var nestedSelector = ListSelector<Tag>.Parse(node);
 		return new FromTagExtractPlayerSelector(nestedSelector);
 	}
 }

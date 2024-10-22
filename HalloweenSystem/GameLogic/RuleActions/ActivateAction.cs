@@ -26,14 +26,8 @@ public class ActivateAction(ListSelector<Rule> ruleSelector) : IAction, IParser<
 
     public static ActivateAction Parse(XmlNode node)
     {
-        if(!node.HasChildNodes) throw new XmlException("Expected a rule selector child node.");
-        
-        var selectorNodes = node.ChildNodes.Cast<XmlNode>().ToList();
 
-        var selectors = selectorNodes.Select(Parser.ParseSelector<Rule>);
-
-        var list = new ListSelector<Rule>(selectors);
-        
+        var list = ListSelector<Rule>.Parse(node);
         return new ActivateAction(list);
     }
 }

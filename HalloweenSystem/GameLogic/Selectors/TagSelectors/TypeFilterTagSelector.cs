@@ -31,12 +31,9 @@ public class TypeFilterTagSelector(string tagType, ISelector<Tag> tagSelector) :
     {
         if (node.Attributes?["type"] == null) throw new XmlException("Expected 'type' attribute.");
         var tagType = node.Attributes["type"]!.Value;
-
-        var tagSelectorNode = node.FirstChild;
-        var tagSelector = tagSelectorNode == null
-            ? throw new XmlException("Expected a tag selector.")
-            : Parser.ParseSelector<Tag>(tagSelectorNode);
-
+        
+        ISelector<Tag> tagSelector = ListSelector<Tag>.Parse(node);
+        
         return new TypeFilterTagSelector(tagType, tagSelector);
     }
 }

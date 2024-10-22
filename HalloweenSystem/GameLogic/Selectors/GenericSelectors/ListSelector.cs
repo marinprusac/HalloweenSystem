@@ -25,7 +25,6 @@ public class ListSelector<T>(IEnumerable<ISelector<T>> selectorList) : ISelector
 
 	public static ListSelector<T> Parse(XmlNode node)
 	{
-		if (node.ChildNodes.Count == 0) throw new XmlException("Expected at least 1 child node.");
 		var selectors = (from XmlNode child in node.ChildNodes select Parser.ParseSelector<T>(child)).ToList();
 		return new ListSelector<T>(selectors);
 	}

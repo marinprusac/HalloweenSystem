@@ -73,18 +73,14 @@ public class AssignAction(bool assignTogether, ListSelector<Player> playerSelect
 			};
 		}
 		
-		var playerSelectorNodes = node.SelectNodes("players/*");
-		var tagSelectorNodes = node.SelectNodes("tags/*");
+		var playerSelectorNode = node.SelectSingleNode("players");
+		var tagSelectorNode = node.SelectSingleNode("tags");
 		
-		if(playerSelectorNodes == null) throw new XmlException("Expected player selector.");
-		if(tagSelectorNodes == null) throw new XmlException("Expected tag selector.");
-
-
-		var playerSelectors = (from XmlNode selectorNode in playerSelectorNodes select Parser.ParseSelector<Player>(selectorNode)).ToList();
-		var playerList = new ListSelector<Player>(playerSelectors);
+		if(playerSelectorNode == null) throw new XmlException("Expected player selector.");
+		if(tagSelectorNode == null) throw new XmlException("Expected tag selector.");
 		
-		var tagSelectors = (from XmlNode selectorNode in tagSelectorNodes select Parser.ParseSelector<Tag>(selectorNode)).ToList();
-		var tagList = new ListSelector<Tag>(tagSelectors);
+		var playerList = ListSelector<Player>.Parse(playerSelectorNode);
+		var tagList = ListSelector<Tag>.Parse(tagSelectorNode);
 		
 		return new AssignAction(assignTogether, playerList, tagList);
 	}

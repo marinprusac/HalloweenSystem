@@ -33,7 +33,7 @@ public class RandomSelector<T>(string amount, ISelector<T>? nestedSelector=null)
 		if(node.Attributes?["amount"] == null) throw new XmlException("Expected 'amount' attribute.");
 		if(node.ChildNodes.Count != 1) throw new XmlException("Expected exactly one nested selector.");
 		var amount = node.Attributes["amount"]!.Value;
-		var nestedSelector = node.ChildNodes.Count == 0 ? null : Parser.ParseSelector<T>(node.ChildNodes[0]!);
+		var nestedSelector = ListSelector<T>.Parse(node);
 		return new RandomSelector<T>(amount, nestedSelector);
 	}
 }

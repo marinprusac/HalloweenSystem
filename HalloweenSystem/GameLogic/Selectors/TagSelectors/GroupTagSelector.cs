@@ -29,7 +29,7 @@ public class GroupTagSelector(string tagGroupName, ISelector<Tag>? tagSelector =
 		_tagSelector ??= new AllSelector<Tag>();
 		var tags = _tagSelector.Evaluate(context);
 		var tagGroup = context.Setting.TagGroups.FirstOrDefault(tg => tg.Name == tagGroupName);
-		if (tagGroup == null) return Enumerable.Empty<Tag>();
+		if (tagGroup == null) return [];
 		var groupTags = tags.Where(t => tagGroup.Tags.Contains(t.Name));
 		return groupTags;
 	}
@@ -37,8 +37,11 @@ public class GroupTagSelector(string tagGroupName, ISelector<Tag>? tagSelector =
 	public static GroupTagSelector Parse(XmlNode node)
 	{
 		var tagGroupName = node.Attributes?["name"]?.Value ?? throw new XmlException("Expected a name attribute.");
-		var tagSelectorNode = node.FirstChild;
-		var tagSelector = tagSelectorNode == null ? null : Parser.ParseSelector<Tag>(tagSelectorNode);
+
+		ISelector<Tag> tagSelector;
+		if (node.HasChildNodes) tagSelector = ListSelector<Tag>.Parse(node);
+		else tagSelector = new AllSelector<Tag>();
+		
 		return new GroupTagSelector(tagGroupName, tagSelector);
 	}
 }

@@ -27,8 +27,6 @@ namespace HalloweenSystem.GameLogic.Selectors.GenericSelectors
 
 		public static IntersectSelector<T> Parse(XmlNode node)
 		{
-			if (node.Name != "intersect") throw new XmlException("Expected <intersect> node.");
-			if (node.ChildNodes.Count == 0) throw new XmlException("Expected at least 1 child node.");
 			var selectors = (from XmlNode child in node.ChildNodes select Parser.ParseSelector<T>(child)).ToList();
 			return new IntersectSelector<T>(selectors);
 		}

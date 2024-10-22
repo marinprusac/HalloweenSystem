@@ -50,9 +50,8 @@ public class Context(Setting setting, IEnumerable<Player> players)
 	/// <returns>A string representation of the context.</returns>
 	public override string ToString()
 	{
-		var ret = Players.Aggregate("Context {\n", (current, player) => current + (player + "\n"));
+		var ret = Players.Aggregate("\n", (current, player) => current + (player + "\n----------------------------------------------\n"));
 
-		ret += "}";
 
 		return ret;
 	}

@@ -37,13 +37,13 @@ public class HasTagPlayerSelector(ISelector<Tag> tagSelector, ISelector<Player>?
 
 	public static HasTagPlayerSelector Parse(XmlNode node)
 	{
-		var playerSelectorNode = node.SelectSingleNode("players/*");
-		var tagSelectorNode = node.SelectSingleNode("tags/*");
+		var playerSelectorNode = node.SelectSingleNode("players");
+		var tagSelectorNode = node.SelectSingleNode("tags");
 
-		var playerSelector = playerSelectorNode == null ? null : Parser.ParseSelector<Player>(playerSelectorNode);
+		var playerSelector = playerSelectorNode == null ? null : ListSelector<Player>.Parse(playerSelectorNode);
 		var tagSelector = tagSelectorNode == null
 			? throw new XmlException("Expected a tag selector.")
-			: Parser.ParseSelector<Tag>(tagSelectorNode);
+			: ListSelector<Tag>.Parse(tagSelectorNode);
 
 		return new HasTagPlayerSelector(tagSelector, playerSelector);
 	}

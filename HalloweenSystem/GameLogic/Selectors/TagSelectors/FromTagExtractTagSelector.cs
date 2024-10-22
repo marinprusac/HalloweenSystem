@@ -15,7 +15,7 @@ namespace HalloweenSystem.GameLogic.Selectors.TagSelectors;
 /// </summary>
 /// <param name="tagSelector">The selector that evaluates to a collection of tags.</param>
 public class FromTagExtractTagSelector(ISelector<Tag> tagSelector)
-	: ISelector<Tag>, IParser<FromTagExtractPlayerSelector>
+	: ISelector<Tag>, IParser<FromTagExtractTagSelector>
 {
 	/// <summary>
 	/// Evaluates the selector in the given context and returns a collection of tags extracted from the evaluated tags.
@@ -29,12 +29,9 @@ public class FromTagExtractTagSelector(ISelector<Tag> tagSelector)
 		return extractedTags.Select(tag => new Tag(tag));
 	}
 
-	public static FromTagExtractPlayerSelector Parse(XmlNode node)
+	public static FromTagExtractTagSelector Parse(XmlNode node)
 	{
-		var tagSelectorNode = node.FirstChild;
-		var tagSelector = tagSelectorNode == null
-			? throw new XmlException("Expected a tag selector.")
-			: Parser.ParseSelector<Tag>(tagSelectorNode);
-		return new FromTagExtractPlayerSelector(tagSelector);
+		var tagSelector = ListSelector<Tag>.Parse(node);
+		return new FromTagExtractTagSelector(tagSelector);
 	}
 }

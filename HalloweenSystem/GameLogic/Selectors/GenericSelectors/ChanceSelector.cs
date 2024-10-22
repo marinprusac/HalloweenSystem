@@ -29,9 +29,8 @@ namespace HalloweenSystem.GameLogic.Selectors.GenericSelectors
 		public static ChanceSelector<T> Parse(XmlNode node) 
 		{
 			if (node.Attributes?["probability"] == null) throw new XmlException("Expected 'probability' attribute.");
-			if (node.HasChildNodes == false) throw new XmlException("Expected a nested selector.");
 			var probability = float.Parse(node.Attributes["probability"]!.Value);
-			var nestedSelector = Parser.ParseSelector<T>(node.FirstChild!);
+			var nestedSelector = ListSelector<T>.Parse(node);
 			return new ChanceSelector<T>(probability, nestedSelector);
 		}
 	}

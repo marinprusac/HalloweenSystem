@@ -61,17 +61,14 @@ public class HandoutAction(bool handoutTogether, ListSelector<Player> playerSele
 	{
 		var handoutTogether = node.Attributes?["together"]?.Value == "true";
 		
-		var playerSelectorNodes = node.SelectNodes("players/*");
-		if (playerSelectorNodes == null) throw new XmlException("Expected a players element.");
+		var playerSelectorNode = node.SelectSingleNode("players");
+		var handoutSelectorNode = node.SelectSingleNode("handouts");
 		
-		var handoutSelectorNodes = node.SelectNodes("handouts/*");
-		if (handoutSelectorNodes == null) throw new XmlException("Expected a handouts element.");
+		if (playerSelectorNode == null) throw new XmlException("Expected a players element.");
+		if (handoutSelectorNode == null) throw new XmlException("Expected a handouts element.");
 		
-		var playerSelectors = playerSelectorNodes.Cast<XmlNode>().Select(Parser.ParseSelector<Player>);
-		var handoutSelectors = handoutSelectorNodes.Cast<XmlNode>().Select(Parser.ParseSelector<Handout>);
-		
-		var playerList = new ListSelector<Player>(playerSelectors);
-		var handoutList = new ListSelector<Handout>(handoutSelectors);
+		var playerList = ListSelector<Player>.Parse(playerSelectorNode);
+		var handoutList = ListSelector<Handout>.Parse(handoutSelectorNode);
 		
 		return new HandoutAction(handoutTogether, playerList, handoutList);
 	}

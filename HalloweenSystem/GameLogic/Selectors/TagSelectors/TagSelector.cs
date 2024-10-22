@@ -41,21 +41,18 @@ public class TagSelector(string type, ISelector<Player>? playerSelector = null, 
 		if(node.Attributes?["name"] == null) throw new XmlException("Expected 'name' attribute.");
 		var type = node.Attributes["name"]!.Value;
 		
-		var playerSelectorNode = node.SelectSingleNode("players/*");
-		var tagSelectorNode = node.SelectSingleNode("tags/*");
+		var playerSelectorNode = node.SelectSingleNode("players");
+		var tagSelectorNode = node.SelectSingleNode("tags");
 		
-		return new TagSelector(type,
-			playerSelectorNode != null
-				? Parser.ParseSelector<Player>(playerSelectorNode)
-				: null, 
-			tagSelectorNode != null
-				? Parser.ParseSelector<Tag>(tagSelectorNode)
-				: null);
-
-
-
-
-
+		var playerSelector = playerSelectorNode != null
+			? ListSelector<Player>.Parse(playerSelectorNode)
+			: null;
+		
+		var tagSelector = tagSelectorNode != null 
+			? ListSelector<Tag>.Parse(tagSelectorNode)
+			: null;
+		
+		return new TagSelector(type, playerSelector, tagSelector);
 
 	}
 }

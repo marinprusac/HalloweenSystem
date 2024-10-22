@@ -86,20 +86,16 @@ public class Player(string name) : GameObject(name)
     /// <returns>A string representation of the player.</returns>
     public override string ToString()
     {
-        var text = "";
-        text += Name + " { ";
-        text += "Tags[ ";
-        text = AssignedTags.Aggregate(text, (current, tag) => current + (tag.ToString() + ", "));
+        var text = Name + "\n";
+        text += "Tags: ";
+        text = AssignedTags.Aggregate(text, (current, tag) => current + (tag + ", "));
         if (AssignedTags.Count > 0)
             text = text[..^2];
-        text += " ]";
 
-        text += " Handouts[\n";
+        text += "\nHandouts:";
 
-        text += string.Join("\n", Handouts);
+        text = Handouts.Aggregate(text, (current, handout) => current + "\n- " + handout);
         
-        text += "\n]";
-        text += " }";
         return text;
     }
 
