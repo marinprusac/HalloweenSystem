@@ -200,14 +200,14 @@ public class Tag(string name = "", IEnumerable<Player>? players = null, IEnumera
         if (PlayerParameters.Count > 0 || TagTypeParameters.Count > 0)
         {
             text += "[";
-            
-            text = PlayerParameters.Aggregate(text, (current, player) => current + (player.Name + ", "));
 
-            if (PlayerParameters.Count > 0)
+            text += string.Join(", ", PlayerParameters.Select(p => p.Name)); 
+
+            if (PlayerParameters.Count > 0 && TagTypeParameters.Count > 0)
                 text += ", ";
+            
+            text += string.Join(", ", TagTypeParameters); 
 
-            text = TagTypeParameters.Aggregate(text, (current, name) => current + (name + ", "));
-            text = text[..^2];
             text += "]";
         }
         return text;

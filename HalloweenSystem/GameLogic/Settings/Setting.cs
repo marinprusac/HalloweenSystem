@@ -31,7 +31,7 @@ public class Setting(IEnumerable<TagGroup> tagGroups, IEnumerable<string> ruleNa
 	/// <summary>
 	/// Gets the collection of tags from all tag groups.
 	/// </summary>
-	public IEnumerable<string> Tags => TagGroups.SelectMany(tg => tg.Tags);
+	public IEnumerable<string> Tags => TagGroups.SelectMany(tg => tg.Tags).Distinct();
 
 	/// <summary>
 	/// Runs the setting with the specified player names, creating a context and evaluating rules in the specified order.

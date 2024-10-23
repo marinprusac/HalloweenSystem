@@ -15,7 +15,7 @@ namespace HalloweenSystem.GameLogic.Selectors.TagSelectors;
 /// </summary>
 /// <param name="tagSelector">The selector that evaluates to a collection of tags.</param>
 /// <param name="playerSelector">The optional selector that evaluates to a collection of players. If not provided, all players are considered.</param>
-public class PlayerAssignedTagSelector(ISelector<Tag> tagSelector, ISelector<Player>? playerSelector = null)
+public class PlayerAssignedTagSelector(ISelector<Tag>? tagSelector, ISelector<Player>? playerSelector = null)
 	: ISelector<Tag>, IParser<PlayerAssignedTagSelector>
 {
 	private ISelector<Player>? _playerSelector = playerSelector;
@@ -30,13 +30,14 @@ public class PlayerAssignedTagSelector(ISelector<Tag> tagSelector, ISelector<Pla
 		_playerSelector ??= new AllSelector<Player>();
 
 		var players = _playerSelector.Evaluate(context);
+		
+		var tags = tagSelector?.Evaluate(context) ?? new AllSelector<Tag>().Evaluate(context);
 
-		var tags = tagSelector.Evaluate(context);
 		var playerTags = players.Select(player => player.AssignedTags.AsEnumerable());
 		var joinedTags = GameObject.Union<Tag>(playerTags).Cast<Tag>();
 
 		var result = joinedTags.Where(jt => tags.Any(jt.Covers));
-		return result.Cast<Tag>();
+		return result;
 	}
 
 	public static PlayerAssignedTagSelector Parse(XmlNode node)
@@ -45,9 +46,7 @@ public class PlayerAssignedTagSelector(ISelector<Tag> tagSelector, ISelector<Pla
 		var tagSelectorNode = node.SelectSingleNode("tags");
 
 		var playerSelector = playerSelectorNode == null ? null : ListSelector<Player>.Parse(playerSelectorNode);
-		var tagSelector = tagSelectorNode == null
-			? throw new XmlException("Expected a tag selector.")
-			: ListSelector<Tag>.Parse(tagSelectorNode);
+		var tagSelector = tagSelectorNode == null ? null : ListSelector<Tag>.Parse(tagSelectorNode);
 
 		return new PlayerAssignedTagSelector(tagSelector, playerSelector);
 	}

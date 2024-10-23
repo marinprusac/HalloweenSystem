@@ -29,7 +29,7 @@ public class HasTagPlayerSelector(ISelector<Tag> tagSelector, ISelector<Player>?
 	{
 		_playerSelector ??= new AllSelector<Player>();
 
-		var players = _playerSelector?.Evaluate(context) ?? [];
+		var players = _playerSelector?.Evaluate(context) ?? new AllSelector<Player>().Evaluate(context);
 		var tags = tagSelector.Evaluate(context) ?? [];
 
 		return players.Where(player => tags.All(tag => player.GetQueriedTag(tag, out _)));

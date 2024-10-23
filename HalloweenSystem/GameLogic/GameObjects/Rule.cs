@@ -73,7 +73,7 @@ public class Rule(string name, List<IAction> actions) : GameObject(name), IParse
         if (node.Attributes?["name"] == null) throw new XmlException("Expected 'name' attribute.");
         var name = node.Attributes["name"]!.Value;
 
-        var requirementNode = node.SelectSingleNode("requirement/*");
+        var requirementNode = node.SelectSingleNode("requirements/*");
         var actionNodes = node.SelectNodes("actions/*");
 
         var requirement = requirementNode != null

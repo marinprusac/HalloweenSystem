@@ -49,6 +49,7 @@ public static class Parser
 	{
 		return node.Name switch
 		{
+			"all_if_any" => AllIfAnySelector<T>.Parse(node),
 			"all" => AllSelector<T>.Parse(node),
 			"chance" => ChanceSelector<T>.Parse(node),
 			"complement" => ComplementSelector<T>.Parse(node),
