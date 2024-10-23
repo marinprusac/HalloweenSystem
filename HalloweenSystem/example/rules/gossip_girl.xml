@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Choose gossip girl">
+    <actions>
+        <assign>
+            <players>
+                <chance probability="0.20">
+                    <has_type tag="Social"/>
+                    <intersect>
+                        <has_type tag="Aristocrat"/>
+                        <has_type tag="Social"/>
+                    </intersect>
+                </chance>
+            </players>
+            
+            <tags>
+                <tag name="Gossip girl"/>
+            </tags>
+        </assign>
+    </actions>
+</rule>

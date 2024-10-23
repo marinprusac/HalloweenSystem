@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Choose fiancee">
+    <actions>
+        <assign> <!-- Choose a fiancée among non-princess and non-queen players that have either a good or same alignment as princess -->
+            <players>
+                <random amount="1">
+                    <intersect>
+                        <union>
+                            <has_type tag="Sectarian"/>
+                            <has_type tag="Goodwin"/>
+                            <has_tag>
+                                <tags>
+                                    <group_tag name="Alliance members">
+                                        <player_assigned_tag>
+                                            <players>
+                                                <has_type tag="Princess"/>
+                                            </players>
+                                        </player_assigned_tag>
+                                    </group_tag>
+                                </tags>
+                            </has_tag>
+                        </union>
+                        <complement>
+                            <has_type tag="Princess"/>
+                            <has_type tag="Queen"/>
+                            <has_type tag="Loner"/>
+                            <has_type tag="Bastard"/>
+                        </complement>
+                        <has_type tag="Aristocrat"/>
+                    </intersect>
+                </random>
+            </players>
+
+            <tags>
+                <tag name="Fiancee"/>
+            </tags>
+        </assign>
+    </actions>
+</rule>

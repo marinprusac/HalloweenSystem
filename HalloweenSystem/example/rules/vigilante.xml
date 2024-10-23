@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Choose vigilante">
+    <actions>
+        <assign>
+            
+            <players>
+                <random amount="2">
+                    <intersect>
+                        <union>
+                            <has_type tag="Soldier"/>
+                            <has_type tag="Guard"/>
+                            <has_type tag="Army general"/>
+                        </union>
+                        
+                        <has_type tag="Goodwin"/>
+                        
+                        <complement>
+                            <has_tag>
+                                <tags>
+                                    <group_tag name="Sketchy"/>
+                                </tags>
+                            </has_tag>
+                        </complement>
+                        
+                    </intersect>
+                    
+                    <intersect>
+                        <has_type tag="Goodwin"/>
+                        <complement>
+                            <has_type tag="Princess"/>
+                        </complement>
+                        <has_type tag="Commoner"/>
+                        <complement>
+                            <has_tag>
+                                <tags>
+                                    <group_tag name="Sketchy"/>
+                                </tags>
+                            </has_tag>
+                        </complement>
+                    </intersect>
+                </random>
+            </players>
+            
+            <tags>
+                <tag name="Vigilante"/>
+            </tags>
+            
+            
+        </assign>
+    </actions>
+</rule>

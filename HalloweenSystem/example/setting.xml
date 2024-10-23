@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<setting name="Mafia game">
+    
+    
+    <tag_groups>
+
+        <tag_group name="pick">
+            <tag name="Guard"/>
+            <tag name="Soldier"/>
+            <tag name="Young"/>
+            <tag name="Old"/>
+            <tag name="Social"/>
+            <tag name="Loner"/>
+            <tag name="Commoner"/>
+            <tag name="Aristocrat"/>
+            <tag name="Queen"/>
+        </tag_group>
+        
+        <tag_group name="Alliance members">
+            <tag name="Goodwin"/>
+            <tag name="Rebel"/>
+            <tag name="Mafia"/>
+            <tag name="Sectarian"/>
+            <tag name="Vampire"/>
+            <tag name="Necromancer"/>
+        </tag_group>
+        
+        <tag_group name="Sketchy">
+            <tag name="Rebel"/>
+            <tag name="Mafia"/>
+            <tag name="Sectarian"/>
+            <tag name="Vampire"/>
+        </tag_group>
+
+    </tag_groups>
+    
+    <rules>
+        <rule name="Choose evil"/>
+        <rule name="Assign rebellion"/>
+        <rule name="Assign mafia"/>
+        <rule name="Assign coven"/>
+        <rule name="Assign sect"/>
+        
+        <rule name="Choose necromancer"/>
+        <rule name="Assign goodwin"/>
+        <rule name="Choose princess"/>
+        <rule name="Choose bastard"/>
+        <rule name="Choose fiancee"/>
+        <rule name="Choose frog"/>
+        <rule name="Choose vigilante"/>
+        <rule name="Choose maid"/>
+        <rule name="Choose gossip girl"/>
+    </rules>
+    
+    <order>
+        <rule name="Choose evil"/>
+        <rule name="Choose necromancer"/>
+        <rule name="Assign goodwin"/>
+        <rule name="Choose princess"/>
+        <rule name="Choose bastard"/>
+        <rule name="Choose fiancee"/>
+        <rule name="Choose frog"/>
+        <rule name="Choose vigilante"/>
+        <rule name="Choose maid"/>
+        <rule name="Choose gossip girl"/>
+    </order>
+    
+</setting>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Choose evil">
+    <actions>
+        <activate>
+            <random amount="2">
+                <rule name="Assign mafia"/>
+                <rule name="Assign rebellion"/>
+                <rule name="Assign coven"/>
+                <rule name="Assign sect"/>
+            </random>
+        </activate>
+    </actions>
+</rule>

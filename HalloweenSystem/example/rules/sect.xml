@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Assign sect">
+    
+    <actions>
+        <assign>
+            <players>
+                <random amount="20%">
+                    <complement>
+                        <iterate name="tag" parameter_type="tag">
+                            <parameter_selector>
+                                <group_tag name="Alliance members"/>
+                            </parameter_selector>
+                            <iterable_selector>
+                                <has_tag>
+                                    <tags>
+                                        <parameter name="tag"/>
+                                    </tags>
+                                </has_tag>
+                            </iterable_selector>
+                        </iterate>
+                        <has_type tag="Queen"/>
+                        <has_type tag="Bishop"/>
+                    </complement>
+                </random>
+            </players>
+            
+            <tags>
+                <tag name="Sectarian"/>
+            </tags>
+            
+        </assign>
+    </actions>
+
+</rule>

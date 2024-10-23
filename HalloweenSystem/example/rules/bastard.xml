@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Choose bastard">
+    <actions>
+        <assign> <!-- Choose a bastard among non-princess and non-queen players that have either a good or different allignment from princess -->
+            <players>
+                <random amount="1">
+                    <intersect>
+                        <union>
+                            <has_type tag="Goodwin"/>
+                            <iterate name="tag" parameter_type="tag">
+                                <parameter_selector>
+                                    <group_tag name="Alliance members">
+                                        <complement>
+                                            <player_assigned_tag>
+                                                <players>
+                                                    <has_type tag="Princess"/>
+                                                </players>
+                                            </player_assigned_tag>
+                                        </complement>
+                                    </group_tag>
+                                </parameter_selector>
+
+                                <iterable_selector>
+                                    <has_tag>
+                                        <tags>
+                                            <parameter name="tag"/>
+                                        </tags>
+                                    </has_tag>
+                                </iterable_selector>
+                            </iterate>
+                        </union>
+                        <complement>
+                            <has_type tag="Princess"/>
+                            <has_type tag="Queen"/>
+                            <has_type tag="Old"/>
+                            <has_type tag="Vampire"/>
+                        </complement>
+                    </intersect>
+                </random>
+            </players>
+
+            <tags>
+                <tag name="Bastard"/>
+            </tags>
+
+        </assign>
+    </actions>
+</rule>

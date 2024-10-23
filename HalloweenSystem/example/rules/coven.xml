@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Assign coven">
+    <actions>
+        <assign> <!-- 20% of non alligned players become vampires -->
+            <players>
+                <random amount="20%">
+                    <complement>
+                        <iterate name="tag" parameter_type="tag">
+                            <parameter_selector>
+                                <group_tag name="Alliance members"/>
+                            </parameter_selector>
+                            <iterable_selector>
+                                <has_tag>
+                                    <tags>
+                                        <parameter name="tag"/>
+                                    </tags>
+                                </has_tag>
+                            </iterable_selector>
+                        </iterate>
+                        <has_type tag="Queen"/>
+                    </complement>
+                </random>
+            </players>
+            <tags>
+                <tag name="Vampire"/>
+            </tags>
+        </assign>
+
+        <assign> <!-- assign a random vampire non-young aristocrat to be an elder -->
+            <players>
+                <random amount="1">
+                    <intersect>
+                        <has_type tag="Vampire"/>
+                        <has_type tag="Aristocrat"/>
+                        <complement>
+                            <has_type tag="Young"/>
+                        </complement>
+                    </intersect>
+                </random>
+            </players>
+            <tags>
+                <tag name="Elder"/>
+            </tags>
+        </assign>
+
+
+        <assign> <!-- if there was no vampire aristocrats, choose among the rest -->
+            <players>
+                <random amount="1">
+                    <intersect>
+                        <complement>
+                            <all_if_any>
+                                <has_type tag="Elder"/>
+                            </all_if_any>
+                        </complement>
+                        <has_type tag="Vampire"/>
+                    </intersect>
+                </random>
+            </players>
+            <tags>
+                <tag name="Elder"/>
+            </tags>
+        </assign>
+
+        <assign> <!-- 33% chance that a non leder vampire becomes a count -->
+            <players>
+                <chance probability="0.33">
+                    <random amount="1">
+                        <intersect>
+                            <has_type tag="Vampire"/>
+                            <complement>
+                                <has_type tag="Elder"/>
+                            </complement>
+                        </intersect>
+                    </random>
+                </chance>
+            </players>
+            <tags>
+                <tag name="Count"/>
+            </tags>
+        </assign>
+
+    </actions>
+</rule>
