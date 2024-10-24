@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rule name="Assign coven">
     <actions>
-        <assign> <!-- 20% of non alligned players become vampires -->
+        <assign together="yes"> <!-- 20% of non alligned players become vampires -->
             <players>
                 <random amount="20%">
                     <complement>
@@ -23,9 +23,38 @@
             </players>
             <tags>
                 <tag name="Vampire"/>
+                <tag name="Coven's business place">
+                    <tags>
+                        <random amount="1">
+                            <intersect>
+                                <group_tag name="Locations"/>
+                                <complement>
+                                    <tag name="Church"/>
+                                    <tag name="Market"/>
+                                </complement>
+                            </intersect>
+                        </random>
+                    </tags>
+                </tag>
             </tags>
         </assign>
 
+        <assign>
+            <players>
+                <has_type tag="Vampire"/>
+            </players>
+            
+            <tags>
+                <tag name="Visited">
+                    <tags>
+                        <from_player_extract_tag tag="Coven's business place">
+                            <current_player/>
+                        </from_player_extract_tag>
+                    </tags>
+                </tag>
+            </tags>
+        </assign>
+        
         <assign> <!-- assign a random vampire non-young aristocrat to be an elder -->
             <players>
                 <random amount="1">
@@ -34,6 +63,7 @@
                         <has_type tag="Aristocrat"/>
                         <complement>
                             <has_type tag="Young"/>
+                            <has_type tag="Loner"/>
                         </complement>
                     </intersect>
                 </random>
@@ -43,26 +73,7 @@
             </tags>
         </assign>
 
-
-        <assign> <!-- if there was no vampire aristocrats, choose among the rest -->
-            <players>
-                <random amount="1">
-                    <intersect>
-                        <complement>
-                            <all_if_any>
-                                <has_type tag="Elder"/>
-                            </all_if_any>
-                        </complement>
-                        <has_type tag="Vampire"/>
-                    </intersect>
-                </random>
-            </players>
-            <tags>
-                <tag name="Elder"/>
-            </tags>
-        </assign>
-
-        <assign> <!-- 33% chance that a non leder vampire becomes a count -->
+        <assign> <!-- 33% chance that a non elder vampire becomes a count -->
             <players>
                 <chance probability="0.33">
                     <random amount="1">

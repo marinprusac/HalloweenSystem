@@ -2,7 +2,7 @@
 <rule name="Assign sect">
     
     <actions>
-        <assign>
+        <assign together="yes">
             <players>
                 <random amount="20%">
                     <complement>
@@ -26,9 +26,55 @@
             
             <tags>
                 <tag name="Sectarian"/>
+                <tag name="Sect's business place">
+                    <tags>
+                        <random amount="1">
+                            <intersect>
+                                <group_tag name="Locations"/>
+                                <complement>
+                                    <tag name="Market"/>
+                                    <tag name="Tavern"/>
+                                    <tag name="Church"/>
+                                </complement>
+                            </intersect>
+                        </random>
+                    </tags>
+                </tag>
             </tags>
-            
         </assign>
+
+        <assign>
+            <players>
+                <has_type tag="Sectarian"/>
+            </players>
+            <tags>
+                <tag name="Visited">
+                    <tags>
+                        <from_player_extract_tag tag="Sect's business place">
+                            <current_player/>
+                        </from_player_extract_tag>
+                    </tags>
+                </tag>
+            </tags>
+        </assign>>
+        
+        <assign>
+            <players>
+                <random amount="1">
+                    <intersect>
+                        <has_type tag="Sectarian"/>
+                        <complement>
+                            <has_type tag="Loner"/>
+                        </complement>
+                    </intersect>
+                </random>
+            </players>
+            
+            <tags>
+                <tag name="High priest"/>
+            </tags>
+        </assign>
+        
     </actions>
 
 </rule>

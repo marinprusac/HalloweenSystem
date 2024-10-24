@@ -65,6 +65,7 @@ public static class Parser
 			"transform" => ParseTransformSelector<T>(node),
 			"current_player" => (ISelector<T>)CurrentPlayerSelector.Parse(node),
 			"from_tag_extract_player" => (ISelector<T>)FromTagExtractPlayerSelector.Parse(node),
+			"has_group" => (ISelector<T>)HasTagGroupPlayerSelector.Parse(node),
 			"has_tag" => (ISelector<T>)HasTagPlayerSelector.Parse(node),
 			"has_type" => (ISelector<T>)HasTagTypePlayerSelector.Parse(node),
 			"remove_current_player" => (ISelector<T>)RemoveCurrentPlayerSelector.Parse(node),

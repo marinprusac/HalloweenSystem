@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<rule name="Choose neutral">
+    <actions>
+        <activate>
+            <random amount="1">
+                <rule name="Choose assassin"/>
+                <rule name="Choose necromancer"/>
+            </random>
+            
+        </activate>
+    </actions>
+</rule>

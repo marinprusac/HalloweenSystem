@@ -14,7 +14,7 @@ var ctx = s.RunWithTags(new Dictionary<string, List<string>>()
 	{"Viktor", ["Commoner", "Social"]},
 	{"Jelena", ["Aristocrat", "Social", "Inheritor"]},
 	{"Tin", ["Aristocrat", "Court mage"]},
-	{"Lucija", ["Commoner", "Social"]},
+	{"Lucija", ["Commoner", "Soldier", "Social"]},
 	{"Silvija", ["Commoner", "Guard"]},
 	{"Rino", ["Aristocrat", "Army general", "Old"]},
 	{"Luka", ["Commoner", "Loner"]},

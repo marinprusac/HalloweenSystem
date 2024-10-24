@@ -14,7 +14,7 @@ namespace HalloweenSystem.GameLogic.Selectors.TagSelectors;
 /// </summary>
 /// <param name="tagType">The type of tag to extract from the players' assigned tags.</param>
 /// <param name="playerSelector">The selector that evaluates to a collection of players.</param>
-public class FromPlayerExtractTagSelector(string tagType, ISelector<Player> playerSelector)
+public class FromPlayerExtractTagSelector(string tagType, ISelector<Player>? playerSelector)
 	: ISelector<Tag>, IParser<FromPlayerExtractTagSelector>
 {
 	/// <summary>
@@ -24,7 +24,7 @@ public class FromPlayerExtractTagSelector(string tagType, ISelector<Player> play
 	/// <returns>A collection of tags extracted from the players.</returns>
 	public IEnumerable<Tag> Evaluate(Context context)
 	{
-		var players = playerSelector.Evaluate(context);
+		var players = playerSelector!=null ? playerSelector.Evaluate(context) : new AllSelector<Player>().Evaluate(context);
 		var tags = players.Select(p => p.AssignedTags.AsEnumerable());
 		var unionizedTags = GameObject.Union<Tag>(tags);
 		var filtered = unionizedTags.Where(t => t.Name == tagType).Cast<Tag>();
@@ -37,7 +37,8 @@ public class FromPlayerExtractTagSelector(string tagType, ISelector<Player> play
 	public static FromPlayerExtractTagSelector Parse(XmlNode node)
 	{
 		var tagType = node.Attributes?["tag"]?.Value ?? throw new XmlException("Expected a tag attribute.");
-		var playerSelector = ListSelector<Player>.Parse(node);
+		
+		var playerSelector = node.HasChildNodes ? ListSelector<Player>.Parse(node) : null;
 		return new FromPlayerExtractTagSelector(tagType, playerSelector);
 	}
 }

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<rule name="Choose drunk">
+    <actions>
+        <assign>
+            <players>
+                <chance probability="0.33">
+                    <intersect>
+                        <has_type tag="Social"/>
+                        <complement>
+                            <has_type tag="Drunk"/>
+                        </complement>
+                    </intersect>
+                </chance>
+            </players>
+            <tags>
+                <tag name="Drunk"/>
+                <tag name="Visited">
+                    <tags>
+                        <tag name="Tavern"/>
+                    </tags>
+                </tag>
+            </tags>
+        </assign>
+    </actions>
+</rule>

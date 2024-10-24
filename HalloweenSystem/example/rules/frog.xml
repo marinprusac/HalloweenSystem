@@ -39,6 +39,11 @@
 
             <tags>
                 <tag name="Frog"/>
+                <tag name="Visited">
+                    <tags>
+                        <tag name="Woods"/>
+                    </tags>
+                </tag>
             </tags>
             
         </assign>

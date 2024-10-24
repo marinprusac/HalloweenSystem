@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Everyone visiting">
+    <actions>
+        <assign>
+            <players>
+                <complement>
+                    <has_type tag="Loner"/>
+                    <has_type tag="Queen"/>
+                    <has_type tag="Princess"/>
+                </complement>
+            </players>
+            
+            <tags>
+                <tag name="Visited">
+                    <tags>
+                        <random amount="1">
+                            <group_tag name="Locations"/>
+                        </random>
+                    </tags>
+                </tag>
+            </tags>
+        </assign>
+        
+        
+        <assign>
+            <players>
+                <has_type tag="Social"/>
+            </players>
+            <tags>
+                <tag name="Visited">
+                    <tags>
+                        <random amount="1">
+                            <group_tag name="Locations"/>
+                        </random>
+                    </tags>
+                </tag>
+            </tags>
+        </assign>
+        
+        <assign>
+            <players>
+                <has_type tag="Bishop"/>
+            </players>
+            <tags>
+                <tag name="Visited">
+                    <tags>
+                        <tag name="Church"/>
+                    </tags>
+                </tag>
+            </tags>
+        </assign>
+    </actions>
+</rule>

@@ -33,6 +33,11 @@
 
             <tags>
                 <tag name="Fiancee"/>
+                <tag name="Visited">
+                    <tags>
+                        <tag name="Castle"/>
+                    </tags>
+                </tag>
             </tags>
         </assign>
     </actions>

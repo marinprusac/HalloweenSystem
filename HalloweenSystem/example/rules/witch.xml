@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rule name="Choose princess">
+<rule name="Choose witch">
     <actions>
         <assign>
             <players>
                 <random amount="1">
                     <complement>
-                        <has_type tag="Queen"/>
-                        <has_type tag="Vampire"/>
                         <has_type tag="Mafia"/>
-                        <has_type tag="Old"/>
-                        <has_type tag="Loner"/>
-                        <has_type tag="Drunk"/>
+                        <has_type tag="Vampire"/>
+                        <has_type tag="Frog"/>
+                        <has_type tag="Fiancee"/>
+                        <has_type tag="Princess"/>
+                        <has_type tag="Queen"/>
+                        <has_group name="Servitor"/>
                     </complement>
                 </random>
             </players>
             <tags>
-                <tag name="Princess"/>
+                <tag name="Witch"/>
                 <tag name="Visited">
                     <tags>
-                        <tag name="Castle"/>
+                        <tag name="Market"/>
+                        <tag name="Woods"/>
                     </tags>
                 </tag>
             </tags>

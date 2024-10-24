@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rule name="Choose necromancer">
-    
+<rule name="Choose assassin">
     <actions>
         <assign>
             <players>
@@ -19,18 +18,13 @@
                             </iterable_selector>
                         </iterate>
                         <has_type tag="Queen"/>
+                        <has_group name="Servitor"/>
                     </complement>
                 </random>
             </players>
             <tags>
-                <tag name="Necromancer"/>
-                <tag name="Visited">
-                    <tags>
-                        <tag name="Graveyard"/>
-                    </tags>
-                </tag>
+                <tag name="Assassin"/>
             </tags>
         </assign>
     </actions>
-    
 </rule>

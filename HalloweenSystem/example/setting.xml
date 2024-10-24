@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <setting name="Mafia game">
-    
-    
     <tag_groups>
 
-        <tag_group name="pick">
+        <tag_group name="Pick">
             <tag name="Guard"/>
             <tag name="Soldier"/>
             <tag name="Young"/>
@@ -23,6 +21,14 @@
             <tag name="Sectarian"/>
             <tag name="Vampire"/>
             <tag name="Necromancer"/>
+            <tag name="Assassin"/>
+        </tag_group>
+
+        <tag_group name="Leaders">
+            <tag name="Rebellion leader"/>
+            <tag name="Godfather"/>
+            <tag name="High priest"/>
+            <tag name="Elder"/>
         </tag_group>
         
         <tag_group name="Sketchy">
@@ -30,8 +36,28 @@
             <tag name="Mafia"/>
             <tag name="Sectarian"/>
             <tag name="Vampire"/>
+            <tag name="Witch"/>
+            <tag name="Drug dealer"/>
+            <tag name="Assassin"/>
+            <tag name="Poisoner"/>
+            <tag name="Necromancer"/>
         </tag_group>
-
+        
+        <tag_group name="Servitor">
+            <tag name="Witch"/>
+            <tag name="Drug dealer"/>
+            <tag name="Assassin"/>
+            <tag name="Poisoner"/>
+        </tag_group>
+        
+        <tag_group name="Locations">
+            <tag name="Tavern"/>
+            <tag name="Market"/>
+            <tag name="Church"/>
+            <tag name="Castle"/>
+            <tag name="Woods"/>
+            <tag name="Graveyard"/>
+        </tag_group>
     </tag_groups>
     
     <rules>
@@ -40,8 +66,9 @@
         <rule name="Assign mafia"/>
         <rule name="Assign coven"/>
         <rule name="Assign sect"/>
-        
+        <rule name="Choose neutral"/>
         <rule name="Choose necromancer"/>
+        <rule name="Choose assassin"/>
         <rule name="Assign goodwin"/>
         <rule name="Choose princess"/>
         <rule name="Choose bastard"/>
@@ -50,11 +77,18 @@
         <rule name="Choose vigilante"/>
         <rule name="Choose maid"/>
         <rule name="Choose gossip girl"/>
+        <rule name="Choose true prosecutor"/>
+        <rule name="Choose fake prosecutor"/>
+        <rule name="Choose witch"/>
+        <rule name="Choose drug dealer"/>
+        <rule name="Choose collector"/>
+        <rule name="Choose drunk"/>
+        <rule name="Everyone visiting"/>
     </rules>
     
     <order>
         <rule name="Choose evil"/>
-        <rule name="Choose necromancer"/>
+        <rule name="Choose neutral"/>
         <rule name="Assign goodwin"/>
         <rule name="Choose princess"/>
         <rule name="Choose bastard"/>
@@ -63,6 +97,13 @@
         <rule name="Choose vigilante"/>
         <rule name="Choose maid"/>
         <rule name="Choose gossip girl"/>
+        <rule name="Choose true prosecutor"/>
+        <rule name="Choose fake prosecutor"/>
+        <rule name="Choose witch"/>
+        <rule name="Choose drug dealer"/>
+        <rule name="Choose collector"/>
+        <rule name="Choose drunk"/>
+        <rule name="Everyone visiting"/>
     </order>
     
 </setting>
