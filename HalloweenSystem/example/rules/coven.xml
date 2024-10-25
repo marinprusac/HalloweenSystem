@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rule name="Assign coven">
     <actions>
-        <assign together="yes"> <!-- 20% of non alligned players become vampires -->
+        <assign together="yes"> <!-- 20% of non-aligned players become vampires -->
             <players>
                 <random amount="20%">
                     <complement>
@@ -90,6 +90,5 @@
                 <tag name="Count"/>
             </tags>
         </assign>
-
     </actions>
 </rule>

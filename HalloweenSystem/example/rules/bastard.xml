@@ -34,7 +34,9 @@
                             <has_type tag="Queen"/>
                             <has_type tag="Old"/>
                             <has_type tag="Vampire"/>
+                            <has_type tag="Foreigner"/>
                         </complement>
+                        <has_type tag="Commoner"/>
                     </intersect>
                 </random>
             </players>

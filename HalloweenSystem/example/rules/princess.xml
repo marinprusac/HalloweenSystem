@@ -9,8 +9,6 @@
                         <has_type tag="Vampire"/>
                         <has_type tag="Mafia"/>
                         <has_type tag="Old"/>
-                        <has_type tag="Loner"/>
-                        <has_type tag="Drunk"/>
                     </complement>
                 </random>
             </players>
