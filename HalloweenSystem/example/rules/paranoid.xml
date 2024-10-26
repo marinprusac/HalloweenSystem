@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<rule name="Choose paranoid">
+    <requirements>
+        <has_type tag="Scary"/>
+    </requirements>
+    
+    <actions>
+        <assign>
+            <players>
+                <random amount="1">
+                    <complement>
+                        <has_type tag="Scary"/>
+                        <has_type tag="Queen"/>
+                    </complement>
+                </random>
+            </players>
+            <tags>
+                <tag name="Paranoid"/>
+            </tags>
+        </assign>
+    </actions>
+</rule>

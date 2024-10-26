@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Choose unmarried">
+    <actions>
+        <assign>
+            <players>
+                <random amount="1">
+                    <intersect>
+                        <has_type tag="Aristocrat"/>
+                        <complement>
+                            <has_type tag="Princess"/>
+                            <has_type tag="Frog"/>
+                            <has_type tag="Fiancee"/>
+                            <has_type tag="Queen"/>
+                            <has_type tag="Clergy"/>
+                        </complement>
+                    </intersect>
+                </random>
+            </players>
+            <tags>
+                <tag name="Unmarried"/>
+            </tags>
+        </assign>
+    </actions>
+</rule>

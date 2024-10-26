@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Choose medium">
+    <actions>
+        <assign>
+            <players>
+                <random amount="1">
+                    <intersect>
+                        <all/>
+                        <complement>
+                            <has_group name="Magic wielders"/>
+                            <has_group name="Clergy"/>
+                            <has_type tag="Queen"/>
+                        </complement>
+                    </intersect>
+                    <intersect>
+                        <has_type tag="Sectarian"/>
+                        <complement>
+                            <has_group name="Magic wielders"/>
+                            <has_group name="Clergy"/>
+                            <has_type tag="Queen"/>
+                        </complement>
+                    </intersect>
+                </random>
+            </players>
+            <tags>
+                <tag name="Medium"/>
+            </tags>
+        </assign>
+        
+    </actions>
+</rule>

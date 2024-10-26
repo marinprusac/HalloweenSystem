@@ -19,6 +19,8 @@
                             </iterable_selector>
                         </iterate>
                         <has_type tag="Queen"/>
+                        <has_group name="Magic wielders"/>
+                        <has_group name="Clergy"/>
                     </complement>
                 </random>
             </players>

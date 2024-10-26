@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Choose cheater">
+    <actions>
+        <assign>
+            <players>
+                <random amount="1">
+                    <complement>
+                        <has_type tag="Loner"/>
+                        <has_type tag="Frog"/>
+                        <has_type tag="Princess"/>
+                        <has_type tag="Fiancee"/>
+                        <has_type tag="Vigilante"/>
+                        <has_type tag="Queen"/>
+                        <has_group name="Clergy"/>
+                    </complement>
+                </random>
+            </players>
+            <tags>
+                <tag name="Cheater"/>
+            </tags>
+        </assign>
+    </actions>
+</rule>

@@ -7,21 +7,19 @@ var s = Parser.LoadGame(path);
 
 var ctx = s.RunWithTags(new Dictionary<string, List<string>>()
 {
-	{"Marin", ["Commoner", "Soldier", "Old"]},
-	{"Patrik", ["Commoner", "Loner", "Guard", "Young"]},
-	{"Juraj", ["Aristocrat", "Ambassador"]},
-	{"Borna", ["Aristocrat", "Social", "Young"]},
-	{"Viktor", ["Commoner", "Social"]},
-	{"Jelena", ["Aristocrat", "Social", "Inheritor"]},
-	{"Tin", ["Aristocrat", "Court mage"]},
-	{"Lucija", ["Commoner", "Soldier", "Social"]},
-	{"Silvija", ["Commoner", "Guard"]},
-	{"Rino", ["Aristocrat", "Army general", "Old"]},
-	{"Luka", ["Commoner", "Loner"]},
-	{"Nika", ["Aristocrat", "Queen"]},
-	{"Michelle", ["Commoner", "Librarian", "Old"]},
-	{"Mathea", ["Commoner", "Bard"]},
-	{"Mia", ["Aristocrat", "Governor", "Young"]},
+	{"Marin", ["Old", "Social", "Commoner", "Tavern Keeper"]},
+	{"Patrik", ["Loner", "Foreigner", "Commoner", "Librarian"]},
+	{"Juraj", ["Young", "Scary", "Aristocrat", "Army general"]},
+	{"Borna", ["Old", "Scary", "Commoner", "Merchant"]},
+	{"Jelena", ["Social", "Foreigner", "Commoner", "Soldier"]},
+	{"Tin", ["Smart", "Foreigner", "Aristocrat", "Court mage"]},
+	{"Lucija", ["Smart", "Romantic", "Aristocrat", "Inheritor"]},
+	{"Silvija", ["Scary", "Romantic", "Aristocrat", "Inheritor"]},
+	{"Rino", ["Young", "Social", "Aristocrat", "Spymaster"]},
+	{"Nika", ["Queen"]},
+	{"Michelle", ["Old", "Loner", "Aristocrat", "Archbishop"]},
+	{"Mathea", ["Young", "Social", "Commoner", "Mayor"]},
+	{"Mia", ["Scary", "Foreigner", "Commoner", "Librarian"]},
 });
 
 Console.WriteLine(ctx.ToString());

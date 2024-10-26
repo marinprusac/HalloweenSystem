@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<rule name="Choose sympathizer">
+    <requirements>
+        <intersect>
+            <has_type tag="Vampire"/>
+            <complement>
+                <has_type tag="Elder"/>
+            </complement>
+        </intersect>
+    </requirements>
+
+    <actions>
+        <assign>
+            <players>
+                <random amount="1">
+                    <complement>
+                        <has_type tag="Queen"/>
+                        <has_type tag="Vampire"/>
+                        <has_type tag="Princess"/>
+                        <has_type tag="Frog"/>
+                        <has_type tag="Fiancee"/>
+                        <has_type tag="Vigilante"/>
+                        <has_type tag="Puritan fanatic"/>
+                    </complement>
+                </random>
+            </players>
+            
+            <tags>
+                <tag name="Sympathizer"/>
+            </tags>
+        </assign>
+    </actions>
+    
+</rule>

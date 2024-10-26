@@ -4,7 +4,7 @@
         <assign>
             
             <players>
-                <random amount="2">
+                <random amount="1">
                     <intersect>
                         <union>
                             <has_type tag="Soldier"/>

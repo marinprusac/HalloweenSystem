@@ -21,7 +21,6 @@
             <tag name="Sectarian"/>
             <tag name="Vampire"/>
             <tag name="Necromancer"/>
-            <tag name="Assassin"/>
         </tag_group>
 
         <tag_group name="Leaders">
@@ -38,7 +37,6 @@
             <tag name="Vampire"/>
             <tag name="Witch"/>
             <tag name="Drug dealer"/>
-            <tag name="Assassin"/>
             <tag name="Poisoner"/>
             <tag name="Necromancer"/>
         </tag_group>
@@ -46,7 +44,6 @@
         <tag_group name="Servitor">
             <tag name="Witch"/>
             <tag name="Drug dealer"/>
-            <tag name="Assassin"/>
             <tag name="Poisoner"/>
         </tag_group>
         
@@ -58,6 +55,43 @@
             <tag name="Woods"/>
             <tag name="Graveyard"/>
         </tag_group>
+
+        <tag_group name="Magic wielders">
+            <tag name="Court mage"/>
+            <tag name="Witch"/>
+            <tag name="Seer"/>
+            <tag name="Medium"/>
+            <tag name="Necromancer"/>
+            <tag name="Spell thief"/>
+        </tag_group>
+
+        <tag_group name="Clergy">
+            <tag name="Archbishop"/>
+            <tag name="Exorcist"/>
+            <tag name="Puritan fanatic"/>
+        </tag_group>
+        
+        <tag_group name="Need signature">
+            <tag name="Vampire"/>
+            <tag name="Gold digger"/>
+            <tag name="Bastard"/>
+            <tag name="Seer"/>
+            <tag name="Stalker"/>
+            <tag name="Pretender"/>
+            <tag name="Frog"/>
+            <tag name="Princess"/>
+            <tag name="Fake prosecutor"/>
+            <tag name="True prosecutor"/>
+        </tag_group>
+        
+        <tag_group name="Give signature">
+            <tag name="Frog"/>
+            <tag name="Princess"/>
+            <tag name="Witch"/>
+            <tag name="Unmarried"/>
+        </tag_group>
+        
+        
     </tag_groups>
     
     <rules>
@@ -66,9 +100,7 @@
         <rule name="Assign mafia"/>
         <rule name="Assign coven"/>
         <rule name="Assign sect"/>
-        <rule name="Choose neutral"/>
         <rule name="Choose necromancer"/>
-        <rule name="Choose assassin"/>
         <rule name="Assign goodwin"/>
         <rule name="Choose princess"/>
         <rule name="Choose bastard"/>
@@ -79,16 +111,34 @@
         <rule name="Choose gossip girl"/>
         <rule name="Choose true prosecutor"/>
         <rule name="Choose fake prosecutor"/>
+        <rule name="Choose medium"/>
+        <rule name="Choose seer"/>
         <rule name="Choose witch"/>
+        <rule name="Choose poisoner"/>
         <rule name="Choose drug dealer"/>
+        <rule name="Choose forger"/>
+        <rule name="Choose puritan fanatic"/>
+        <rule name="Choose exorcist"/>
+        <rule name="Choose sympathizer"/>
+        <rule name="Choose spy"/>
+        <rule name="Choose stalker"/>
+        <rule name="Choose cheater"/>
+        <rule name="Choose princess pretender"/>
         <rule name="Choose collector"/>
         <rule name="Choose drunk"/>
+        <rule name="Choose drug addict"/>
+        <rule name="Choose wanderer"/>
+        <rule name="Choose paranoid"/>
         <rule name="Everyone visiting"/>
+        <rule name="Choose unmarried"/>
+        <rule name="Choose gold digger"/>
+        <rule name="Choose spell thief"/>
+        <rule name="Choose pen pal"/>
     </rules>
     
     <order>
         <rule name="Choose evil"/>
-        <rule name="Choose neutral"/>
+        <rule name="Choose necromancer"/>
         <rule name="Assign goodwin"/>
         <rule name="Choose princess"/>
         <rule name="Choose bastard"/>
@@ -96,13 +146,31 @@
         <rule name="Choose frog"/>
         <rule name="Choose vigilante"/>
         <rule name="Choose maid"/>
+        <rule name="Choose princess pretender"/>
+        <rule name="Choose stalker"/>
         <rule name="Choose gossip girl"/>
         <rule name="Choose true prosecutor"/>
         <rule name="Choose fake prosecutor"/>
+        <rule name="Choose medium"/>
+        <rule name="Choose seer"/>
         <rule name="Choose witch"/>
+        <rule name="Choose spell thief"/>
+        <rule name="Choose poisoner"/>
         <rule name="Choose drug dealer"/>
+        <rule name="Choose forger"/>
+        <rule name="Choose puritan fanatic"/>
+        <rule name="Choose exorcist"/>
+        <rule name="Choose sympathizer"/>
+        <rule name="Choose spy"/>
+        <rule name="Choose cheater"/>
         <rule name="Choose collector"/>
+        <rule name="Choose wanderer"/>
+        <rule name="Choose paranoid"/>
         <rule name="Choose drunk"/>
+        <rule name="Choose drug addict"/>
+        <rule name="Choose unmarried"/>
+        <rule name="Choose gold digger"/>
+        <rule name="Choose pen pal"/>
         <rule name="Everyone visiting"/>
     </order>
     

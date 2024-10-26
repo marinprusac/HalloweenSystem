@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Choose puritan fanatic">
+    <requirements>
+        <has_type tag="Archbishop"/>
+    </requirements>
+    <actions>
+        <assign>
+            <players>
+                <random amount="1">
+                    <complement>
+                        <has_group name="Clergy"/>
+                        <has_group name="Magic wielders"/>
+                        <has_type tag="Queen"/>
+                        <has_type tag="Frog"/>
+                        <has_type tag="Maid"/>
+                        <has_type tag="Cheater"/>
+                        <has_type tag="Sectarian"/>
+                        <has_type tag="Vampire"/>
+                    </complement>
+                </random>
+            </players>
+            <tags>
+                <tag name="Puritan fanatic"/>
+            </tags>
+        </assign>
+    </actions>
+</rule>

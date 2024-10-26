@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Choose stalker">
+    <actions>
+        <assign>
+            <players>
+                <random amount="1">
+                    <complement>
+                        <has_type tag="Queen"/>
+                        <has_type tag="Princess"/>
+                        <has_type tag="Frog"/>
+                        <has_type tag="Fiancee"/>
+                    </complement>
+                </random>
+            </players>
+            <tags>
+                <tag name="Stalker"/>
+            </tags>
+        </assign>
+    </actions>
+</rule>

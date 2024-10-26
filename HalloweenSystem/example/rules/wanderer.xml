@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Choose wanderer">
+    <actions>
+        <assign>
+            <players>
+                <random amount="1">
+                    <has_type tag="Loner"/>
+                </random>
+            </players>
+            <tags>
+                <tag name="Wanderer"/>
+            </tags>
+        </assign>
+    </actions>
+</rule>

@@ -19,7 +19,7 @@
                             </iterable_selector>
                         </iterate>
                         <has_type tag="Queen"/>
-                        <has_type tag="Bishop"/>
+                        <has_type tag="Archbishop"/>
                     </complement>
                 </random>
             </players>

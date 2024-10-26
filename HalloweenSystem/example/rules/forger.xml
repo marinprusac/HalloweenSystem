@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Choose forger">
+    <requirements>
+        <has_group name="Need signature"/>
+    </requirements>
+    <actions>
+        <assign>
+            <players>
+                <random amount="1">
+                    <complement>
+                        <has_group name="Need signature"/>
+                        <has_group name="Give signature"/>
+                        <has_group name="Servitor"/>
+                        <has_type tag="Fiancee"/>
+                        <has_type tag="Queen"/>
+                        <has_type tag="Vigilante"/>
+                    </complement>
+                </random>
+            </players>
+            <tags>
+                <tag name="Forger"/>
+            </tags>
+        </assign>
+    </actions>
+</rule>

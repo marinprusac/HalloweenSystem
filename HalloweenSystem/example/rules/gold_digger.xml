@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Choose gold digger">
+    <requirements>
+        <has_type tag="Unmarried"/>
+    </requirements>
+    <actions>
+        <assign>
+            <players>
+                <random amount="1">
+                    <intersect>
+                        <has_type tag="Commoner"/>
+                        <complement>
+                            <has_type tag="Princess"/>
+                            <has_type tag="Frog"/>
+                            <has_type tag="Fiancee"/>
+                            <has_group name="Clergy"/>
+                        </complement>
+                    </intersect>
+                </random>
+            </players>
+            
+            <tags>
+                <tag name="Gold digger"/>
+            </tags>
+        </assign>
+    </actions>
+</rule>

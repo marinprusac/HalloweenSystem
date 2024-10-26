@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rule name="Choose princess">
+<rule name="Choose princess pretender">
     <actions>
         <assign>
             <players>
                 <random amount="1">
                     <complement>
                         <has_type tag="Queen"/>
-                        <has_type tag="Vampire"/>
-                        <has_type tag="Mafia"/>
+                        <has_type tag="Princess"/>
+                        <has_type tag="Fiancee"/>
+                        <has_type tag="Frog"/>
+                        <has_type tag="Maid"/>
+                        <has_type tag="Bastard"/>
                         <has_type tag="Old"/>
-                        <has_type tag="Archbishop"/>
                     </complement>
                 </random>
             </players>
             <tags>
-                <tag name="Princess"/>
-                <tag name="Visited">
-                    <tags>
-                        <tag name="Castle"/>
-                    </tags>
-                </tag>
+                <tag name="Pretender"/>
             </tags>
         </assign>
     </actions>
