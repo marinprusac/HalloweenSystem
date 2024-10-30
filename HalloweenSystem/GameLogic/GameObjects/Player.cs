@@ -86,12 +86,12 @@ public class Player(string name) : GameObject(name)
     /// <returns>A string representation of the player.</returns>
     public override string ToString()
     {
-        var text = Name + "\n\n";
-        text += "--- TAGS ---\n";
-        text = AssignedTags.Aggregate(text, (current, tag) => current + (tag + "\n"));
-        text += "\n--- HANDOUTS ---";
+        var text = "**" + Name + "**\n\n";
+        text = AssignedTags.Aggregate(text, (current, tag) => current + "#\ufe0f\u20e3 " + tag + "\n");
 
-        text = Handouts.Aggregate(text, (current, handout) => current + "\n- " + handout);
+        text += '\n';
+        
+        text += string.Join("\n\n", Handouts.Select(handout => handout.ToHandoutText()));
         
         return text;
     }

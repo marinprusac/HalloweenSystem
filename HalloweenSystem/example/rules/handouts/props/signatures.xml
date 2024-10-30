@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Signature handout">
+    <actions>
+        <handout>
+            <players>
+                <complement>
+                    <has_type tag="Queen"/>
+                    <has_type tag="Forger"/>
+                </complement>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text='‼️ OUT-OF-CHARACTER TASK: Lost signature'/>
+                    <text text='Take a piece of paper and write your signature on one side the flip the paper and write the word "FORGER" on the other side.'/>
+                    <join separator="">
+                        <text text='Leave it somewhere in the '/>
+                        <transform type="tag">
+                            <random amount="1">
+                                <group_tag name="Event places"/>
+                            </random>
+                        </transform>
+                        <text text="."/>
+                    </join>
+                </join>
+            </handouts>
+        </handout>
+    </actions>
+    
+</rule>

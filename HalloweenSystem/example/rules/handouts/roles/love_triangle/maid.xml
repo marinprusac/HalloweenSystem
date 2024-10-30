@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Maid handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Maid"/>
+            </players>
+            <handouts>
+
+                <join separator="newline">
+                    <text text="👤 IDENTITY: The Maid 💆‍♀️"/>
+                    <text text="You are the princess' best friend and care for her a lot."/>
+                </join>
+                
+                
+                <join separator="newline">
+                    <text text="ℹ️ INFO: Princess' true identity"/>
+                    
+                    <join>
+                        <text text="You know who the princess is. It is "/>
+                        <transform type="player">
+                            <has_type tag="Princess"/>
+                        </transform>
+                        <text text="."/>
+                    </join>
+                    <text text="Keep that information private!"/>
+                </join>
+
+                <join separator="newline">
+                    <text text="☑️ TASK: Keep the princess safe"/>
+                    <text text="You two might have your differences, but you care for the princess and will do anything for her safety."/>
+                    <text text="Make sure the gossip girls of this tavern don't find about princess' true identity."/>
+                    <text text="You may want to help princess achieve her own goals, but the most important thing is keeping her alive!"/>
+                </join>
+            </handouts>
+        </handout>
+    </actions>
+</rule>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<rule name="Choose maid">
+    <actions>
+      <assign>
+          
+          <players>
+              <random amount="1">
+                  <intersect>
+                      <union>
+                          <has_type tag="Goodwin"/>
+                          <has_type tag="Sectarian"/>
+                          <has_tag>
+                              <tags>
+                                  <group_tag name="Alliance members">
+                                      <player_assigned_tag>
+                                          <players>
+                                              <has_type tag="Princess"/>
+                                          </players>
+                                      </player_assigned_tag>
+                                  </group_tag>
+                              </tags>
+                          </has_tag>
+                      </union>
+                      <complement>
+                          <has_type tag="Princess"/>
+                          <has_type tag="Queen"/>
+                          <has_type tag="Bastard"/>
+                          <has_type tag="Frog"/>
+                      </complement>
+                      <has_type tag="Commoner"/>
+                  </intersect>
+              </random>
+          </players>
+          
+          <tags>
+              <tag name="Maid"/>
+          </tags>
+          
+      </assign>
+    </actions>
+</rule>

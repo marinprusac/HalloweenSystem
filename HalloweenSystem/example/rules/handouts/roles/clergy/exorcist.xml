@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Exorcist handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Exorcist"/>
+            </players>
+            <handouts>
+                <text text=""/>
+            </handouts>
+        </handout>
+    </actions>
+</rule>

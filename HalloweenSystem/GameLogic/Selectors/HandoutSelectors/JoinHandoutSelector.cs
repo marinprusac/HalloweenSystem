@@ -15,14 +15,15 @@ public class JoinHandoutSelector(string separator, string placeholder, ISelector
 	{
 		var handouts = nestedHandouts.Evaluate(context).ToList();
 		var text = placeholder;
-		if(handouts.Count > 0)
-			text = string.Join(separator, handouts.Select(handout => handout.ToHandoutText()));
+		if (handouts.Count <= 0) return [new Handout(text)];
+		text = separator == "newline" ? string.Join("\n", handouts.Select(handout => handout.ToHandoutText())) : string.Join(separator, handouts.Select(handout => handout.ToHandoutText()));
 		return [new Handout(text)];
 	}
 
 	public static JoinHandoutSelector Parse(XmlNode node)
 	{
 		var separator = node.Attributes?["separator"]?.Value ?? "";
+		
 		var placeholder = node.Attributes?["placeholder"]?.Value ?? "";
 		
 		var list = ListSelector<Handout>.Parse(node);

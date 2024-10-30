@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Assign random lovers">
+    <actions>
+        <assign>
+            <players>
+                <intersect>
+                    <complement>
+                        <has_type tag="Loner"/>
+                        <has_type tag="Engaged"/>
+                        <has_type tag="Lover"/>
+                        <has_type tag="Queen"/>
+                        <has_group name="Clergy"/>
+                    </complement>
+                    <has_type tag="Romantic"/>
+                </intersect>
+                <chance probability="0.25">
+                    <complement>
+                        <has_type tag="Loner"/>
+                        <has_type tag="Engaged"/>
+                        <has_type tag="Lover"/>
+                        <has_type tag="Queen"/>
+                        <has_group name="Clergy"/>
+                    </complement>
+                </chance>
+            </players>
+            
+            <tags>
+                <tag name="Lover">
+                    <players>
+                        <random amount="1">
+                            <complement>
+                                <has_type tag="Loner"/>
+                                <has_type tag="Engaged"/>
+                                <has_type tag="Lover"/>
+                                <has_type tag="Queen"/>
+                                <has_group name="Clergy"/>
+                                <current_player/>
+                            </complement>
+                            <intersect>
+                                <complement>
+                                    <has_type tag="Loner"/>
+                                    <has_type tag="Engaged"/>
+                                    <has_type tag="Lover"/>
+                                    <has_type tag="Queen"/>
+                                    <has_group name="Clergy"/>
+                                    <current_player/>
+                                </complement>
+                                <has_type tag="Romantic"/>
+                            </intersect>
+                        </random>
+                    </players>
+                </tag>
+            </tags>
+            
+        </assign>
+        
+         <assign>
+             <players>
+                 <from_tag_extract_player>
+                     <type_filter tag="Lover">
+                        <used_tag/>
+                     </type_filter>
+                 </from_tag_extract_player>
+             </players>
+             <tags>
+                 <tag name="Lover">
+                     <players>
+                         <has_tag>
+                             <tags>
+                                 <tag name="Lover">
+                                     <players>
+                                         <current_player/>
+                                     </players>
+                                 </tag>
+                             </tags>
+                         </has_tag>
+                     </players>
+                 </tag>
+             </tags>
+         </assign>
+        
+        <assign>
+            <players>
+                
+                <iterate name="p" parameter_type="player">
+                    <parameter_selector>
+                        <has_type tag="Lover"/>
+                    </parameter_selector>
+                    <iterable_selector>
+                        <intersect>
+                            <all_if_any>
+                                <intersect>
+                                    <from_player_extract_player tag="Lover">
+                                        <parameter name="p"/>
+                                    </from_player_extract_player>
+                                    <complement>
+                                        <random amount="1">
+                                            <from_player_extract_player tag="Lover">
+                                                <parameter name="p"/>
+                                            </from_player_extract_player>
+                                        </random>
+                                    </complement>
+                                </intersect>
+                            </all_if_any>
+                            <parameter name="p"/>
+                        </intersect>
+                    </iterable_selector>
+                </iterate>
+            </players>
+            
+            <tags>
+                <tag name="Cheater"/>
+            </tags>
+        </assign>
+    </actions>
+</rule>

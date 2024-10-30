@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Witch handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Witch"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="👤 IDENTITY: The Witch 🧙"/>
+                    <text text="Not that you like to brag, but you are probably the strongest magic wielder at this party."/>
+                    <text text="But with great power, comes great responsibility."/>
+                </join>
+
+                <join separator="newline">
+                    <text text="☑️ TASK: Power sharing"/>
+                    <text text="You want to be kind and let others play with some of your magic."/>
+                    <text text="Not for free, of course, it would be nice to earn some money on the way."/>
+                    <text text="Earn at least 20 gold selling spells."/>
+                </join>
+                
+            </handouts>
+        </handout>
+        <handout>
+            <players>
+                <intersect>
+                    <has_type tag="Witch"/>
+                    <all_if_any>
+                        <has_type tag="Frog"/>
+                    </all_if_any>
+                </intersect>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="ℹ️ INFO: The poor frog's identity"/>
+                    <join>
+                        <text text="Not too long ago you threw a curse on "/>
+                        <transform type="player">
+                            <has_type tag="Frog"/>
+                        </transform>
+                        <text text="."/>
+                    </join><text text="Not that you really had much of a choice..."/>
+                    <text text="You were commanded by her majesty's the queen to curse him in order to distance him from the princess."/>
+                    <text text="Now those two poor souls can't recognize each other."/>
+                </join>
+            </handouts>
+        </handout>
+    </actions>
+</rule>

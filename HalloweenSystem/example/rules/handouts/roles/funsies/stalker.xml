@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Stalker handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Stalker"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="☑️ TASK: Eye on the prize"/>
+                    <text text="Choose a person at the start of the party."/>
+                    <text text="Admire them by being close to them at all times and hanging out with them."/>
+                    <text text="Find out as much about them as possible."/>
+                    <text text="Draw them out on a paper, respecting all of the features that you like about them."/>
+                    <text text="Get their signature."/>
+                </join>
+            </handouts>
+        </handout>
+    </actions>
+</rule>

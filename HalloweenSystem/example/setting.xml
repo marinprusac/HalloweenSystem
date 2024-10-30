@@ -3,15 +3,35 @@
     <tag_groups>
 
         <tag_group name="Pick">
-            <tag name="Guard"/>
-            <tag name="Soldier"/>
             <tag name="Young"/>
             <tag name="Old"/>
             <tag name="Social"/>
             <tag name="Loner"/>
-            <tag name="Commoner"/>
+            <tag name="Scary"/>
+            <tag name="Smart"/>
+            <tag name="Foreigner"/>
+            <tag name="Romantic"/>
+            
             <tag name="Aristocrat"/>
+            <tag name="Commoner"/>
+
             <tag name="Queen"/>
+            <tag name="Governor"/>
+            <tag name="Archbishop"/>
+            <tag name="Court mage"/>
+            <tag name="Army general"/>
+            <tag name="Royal advisor"/>
+            <tag name="Spymaster"/>
+            <tag name="Inheritor"/>
+
+            <tag name="Mayor"/>
+            <tag name="Guard"/>
+            <tag name="Soldier"/>
+            <tag name="Bard"/>
+            <tag name="Librarian"/>
+            <tag name="Executioner"/>
+            <tag name="Merchant"/>
+            
         </tag_group>
         
         <tag_group name="Alliance members">
@@ -20,13 +40,13 @@
             <tag name="Mafia"/>
             <tag name="Sectarian"/>
             <tag name="Vampire"/>
-            <tag name="Necromancer"/>
+            <tag name="Reaper"/>
         </tag_group>
 
         <tag_group name="Leaders">
             <tag name="Rebellion leader"/>
             <tag name="Godfather"/>
-            <tag name="High priest"/>
+            <tag name="Sect leader"/>
             <tag name="Elder"/>
         </tag_group>
         
@@ -38,13 +58,22 @@
             <tag name="Witch"/>
             <tag name="Drug dealer"/>
             <tag name="Poisoner"/>
-            <tag name="Necromancer"/>
+            <tag name="Forger"/>
+            <tag name="Reaper"/>
         </tag_group>
         
         <tag_group name="Servitor">
             <tag name="Witch"/>
             <tag name="Drug dealer"/>
             <tag name="Poisoner"/>
+            <tag name="Forger"/>
+        </tag_group>
+
+        <tag_group name="Customer">
+            <tag name="Drug addict"/>
+            <tag name="Drunk"/>
+            <tag name="Wanderer"/>
+            <tag name="Bastard"/>
         </tag_group>
         
         <tag_group name="Locations">
@@ -54,6 +83,33 @@
             <tag name="Castle"/>
             <tag name="Woods"/>
             <tag name="Graveyard"/>
+            <tag name="Enemy kingdom"/>
+        </tag_group>
+
+        <tag_group name="Event places">
+            <tag name="Lower stairwell"/>
+            <tag name="Middle stairwell"/>
+            <tag name="Upper stairwell"/>
+            
+            <tag name="Kitchen"/>
+            <tag name="Hangout room"/>
+            <tag name="Dining room"/>
+            <tag name="Tavern keeper's room"/>
+            <tag name="Main balcony"/>
+            <tag name="Side balcony"/>
+            
+            <tag name="Inn's balcony"/>
+            <tag name="Inn's lounge"/>
+            <tag name="Inn's left room"/>
+            <tag name="Inn's right room"/>
+        </tag_group>
+        
+        <tag_group name="Dark market event places">
+            <tag name="Main balcony"/>
+            <tag name="Lower stairwell"/>
+            <tag name="Inn's balcony"/>
+            <tag name="Inn's left room"/>
+            <tag name="Inn's right room"/>
         </tag_group>
 
         <tag_group name="Magic wielders">
@@ -61,7 +117,7 @@
             <tag name="Witch"/>
             <tag name="Seer"/>
             <tag name="Medium"/>
-            <tag name="Necromancer"/>
+            <tag name="Reaper"/>
             <tag name="Spell thief"/>
         </tag_group>
 
@@ -69,6 +125,16 @@
             <tag name="Archbishop"/>
             <tag name="Exorcist"/>
             <tag name="Puritan fanatic"/>
+        </tag_group>
+
+        <tag_group name="Courtiers">
+            <tag name="Queen"/>
+            <tag name="Princess"/>
+            <tag name="Maid"/>
+            <tag name="Fiancee"/>
+            <tag name="Royal advisor"/>
+            <tag name="Court mage"/>
+            <tag name="Spymaster"/>
         </tag_group>
         
         <tag_group name="Need signature">
@@ -90,88 +156,20 @@
             <tag name="Witch"/>
             <tag name="Unmarried"/>
         </tag_group>
-        
-        
+
+        <tag_group name="Gossip">
+            <tag name="Princess"/>
+            <tag name="Maid"/>
+            <tag name="Fiancee"/>
+            <tag name="Frog"/>
+        </tag_group>
     </tag_groups>
     
-    <rules>
-        <rule name="Choose evil"/>
-        <rule name="Assign rebellion"/>
-        <rule name="Assign mafia"/>
-        <rule name="Assign coven"/>
-        <rule name="Assign sect"/>
-        <rule name="Choose necromancer"/>
-        <rule name="Assign goodwin"/>
-        <rule name="Choose princess"/>
-        <rule name="Choose bastard"/>
-        <rule name="Choose fiancee"/>
-        <rule name="Choose frog"/>
-        <rule name="Choose vigilante"/>
-        <rule name="Choose maid"/>
-        <rule name="Choose gossip girl"/>
-        <rule name="Choose true prosecutor"/>
-        <rule name="Choose fake prosecutor"/>
-        <rule name="Choose medium"/>
-        <rule name="Choose seer"/>
-        <rule name="Choose witch"/>
-        <rule name="Choose poisoner"/>
-        <rule name="Choose drug dealer"/>
-        <rule name="Choose forger"/>
-        <rule name="Choose puritan fanatic"/>
-        <rule name="Choose exorcist"/>
-        <rule name="Choose sympathizer"/>
-        <rule name="Choose spy"/>
-        <rule name="Choose stalker"/>
-        <rule name="Choose cheater"/>
-        <rule name="Choose princess pretender"/>
-        <rule name="Choose collector"/>
-        <rule name="Choose drunk"/>
-        <rule name="Choose drug addict"/>
-        <rule name="Choose wanderer"/>
-        <rule name="Choose paranoid"/>
-        <rule name="Everyone visiting"/>
-        <rule name="Choose unmarried"/>
-        <rule name="Choose gold digger"/>
-        <rule name="Choose spell thief"/>
-        <rule name="Choose pen pal"/>
-    </rules>
-    
     <order>
-        <rule name="Choose evil"/>
-        <rule name="Choose necromancer"/>
-        <rule name="Assign goodwin"/>
-        <rule name="Choose princess"/>
-        <rule name="Choose bastard"/>
-        <rule name="Choose fiancee"/>
-        <rule name="Choose frog"/>
-        <rule name="Choose vigilante"/>
-        <rule name="Choose maid"/>
-        <rule name="Choose princess pretender"/>
-        <rule name="Choose stalker"/>
-        <rule name="Choose gossip girl"/>
-        <rule name="Choose true prosecutor"/>
-        <rule name="Choose fake prosecutor"/>
-        <rule name="Choose medium"/>
-        <rule name="Choose seer"/>
-        <rule name="Choose witch"/>
-        <rule name="Choose spell thief"/>
-        <rule name="Choose poisoner"/>
-        <rule name="Choose drug dealer"/>
-        <rule name="Choose forger"/>
-        <rule name="Choose puritan fanatic"/>
-        <rule name="Choose exorcist"/>
-        <rule name="Choose sympathizer"/>
-        <rule name="Choose spy"/>
-        <rule name="Choose cheater"/>
-        <rule name="Choose collector"/>
-        <rule name="Choose wanderer"/>
-        <rule name="Choose paranoid"/>
-        <rule name="Choose drunk"/>
-        <rule name="Choose drug addict"/>
-        <rule name="Choose unmarried"/>
-        <rule name="Choose gold digger"/>
-        <rule name="Choose pen pal"/>
-        <rule name="Everyone visiting"/>
+        <rule name="Assign roles"/>
+        <rule name="Assign relationships"/>
+        <rule name="Assign visits"/>
+        <rule name="Give handouts"/>
     </order>
     
 </setting>

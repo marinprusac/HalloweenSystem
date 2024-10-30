@@ -12,6 +12,20 @@ namespace HalloweenSystem.GameLogic.Parsing;
 
 public static class Parser
 {
+	private static List<string> GetRuleFiles(string ruleDirPath)
+	{
+		
+		var ruleFiles = Directory.GetFiles(ruleDirPath).ToList();
+
+		foreach (var d in Directory.GetDirectories(ruleDirPath))
+		{
+			var newRules = GetRuleFiles(d);
+			ruleFiles.AddRange(newRules);
+		}
+
+		return ruleFiles;
+	}
+	
 	public static Setting LoadGame(string path)
 	{
 		var settingPath = path + "/setting.xml";
@@ -24,7 +38,7 @@ public static class Parser
 
 		var setting = Setting.Parse(settingDoc.DocumentElement);
 
-		var ruleFiles = Directory.GetFiles(rulesPath).ToList();
+		var ruleFiles = GetRuleFiles(rulesPath);
 
 
 		var ruleNodes = ruleFiles.Select(file =>
@@ -32,14 +46,15 @@ public static class Parser
 			var doc = new XmlDocument();
 			doc.Load(file);
 			return doc;
-		});
+		}).ToList();
 
-		var validRules = ruleNodes.Where(doc => doc.DocumentElement != null)
-			.Select(XmlNode (doc) => doc.DocumentElement!).Where(node => node.Attributes?["name"] != null)
-			.Where(node => setting.RuleNames.Contains(node.Attributes!["name"]!.Value)).ToArray();
+		var ruleDocuments = ruleNodes.Where(doc => doc.DocumentElement != null);
+		var validRules = ruleDocuments.Select(XmlNode (doc) => doc.DocumentElement!)
+			.Where(node => node.Attributes?["name"] != null)
+			.ToArray();
 
-		if (setting.RuleNames.Count() != validRules.Length) throw new XmlException("Invalid rule file.");
-
+		if (ruleNodes.Count != validRules.Length) throw new XmlException("Invalid rule file.");
+		
 		setting.LoadRules(validRules);
 
 		return setting;
@@ -64,6 +79,7 @@ public static class Parser
 			"text" => (ISelector<T>)TextHandoutSelector.Parse(node),
 			"transform" => ParseTransformSelector<T>(node),
 			"current_player" => (ISelector<T>)CurrentPlayerSelector.Parse(node),
+			"from_player_extract_player" => (ISelector<T>)FromPlayerExtractPlayerSelector.Parse(node),
 			"from_tag_extract_player" => (ISelector<T>)FromTagExtractPlayerSelector.Parse(node),
 			"has_group" => (ISelector<T>)HasTagGroupPlayerSelector.Parse(node),
 			"has_any_tag" => (ISelector<T>)HasAnyTagPlayerSelector.Parse(node),

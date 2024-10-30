@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Paranoid handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Paranoid"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="☑️ TASK: So spooked!"/>
+                    <join separator=" ">
+                        <transform type="player">
+                            <random amount="1">
+                                <has_type tag="Scary"/>
+                            </random>
+                        </transform>
+                        <text text="is so scary! You should avoid them before they do something nasty to you..."/>
+                    </join>
+                </join>
+            </handouts>
+        </handout>
+    </actions>
+</rule>

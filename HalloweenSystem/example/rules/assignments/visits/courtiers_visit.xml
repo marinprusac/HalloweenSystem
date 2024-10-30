@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Courtiers visiting">
+    <actions>
+        <assign>
+            <players>
+                <has_group name="Courtiers"/>
+            </players>
+            <tags>
+                <tag name="Visited">
+                    <tags>
+                        <tag name="Castle"/>
+                    </tags>
+                </tag>
+            </tags>
+        </assign>
+    </actions>
+</rule>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Pretender handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Pretender"/>
+            </players>
+            <handouts>
+                
+                <join separator="newline">
+                    <text text="☑️ TASK: Play pretend"/>
+                    <join>
+                        <text text="You've always kinda liked "/>
+                        <transform type="player">
+                            <has_type tag="Frog"/>
+                        </transform>
+                        <text text="."/>
+                    </join>
+                    <text text="But for some reason they really insist on getting dirty with the princess."/>
+                    <text text="They even got cursed by the witch (by queen's command) in order to distance them two."/>
+                    <text text="They can't recognize each other because of the curse."/>
+                    <text text="In order to ensure that they don't even end up together, the queen tasked you to pretend like you're the real princess."/>
+                    <text text="This is a perfect opportunity to get the frog's love!"/>
+                    <text text="Get their signature and seal the deal."/>
+                </join>
+                
+            </handouts>
+        </handout>
+    </actions>
+</rule>

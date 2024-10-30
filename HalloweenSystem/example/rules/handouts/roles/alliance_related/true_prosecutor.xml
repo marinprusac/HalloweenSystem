@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="True prosecutor handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="True prosecutor"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="👤 IDENTITY: The True Prosecutor 🧑‍⚖️"/>
+                    <text text="You are an honest prosecutor."/>
+                    <text text="You are trying to get rid of the evil in this world."/>
+                </join>
+                
+                <join separator="newline">
+                    <text text="☑️ TASK: Prosecuting the evil"/>
+                    <text text="Collect evidence by collecting people's signatures and their statements."/>
+                    <text text="Present the evidence to the jury at the trial and make sure all the killers and evil organization leaders are voted guilty."/>
+                </join>
+            </handouts>
+        </handout>
+    </actions>
+</rule>

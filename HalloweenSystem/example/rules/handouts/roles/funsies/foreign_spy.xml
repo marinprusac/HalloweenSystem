@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Foreign spy handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Foreign spy"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="👤 IDENTITY: The Foreign Spy 🕵️"/>
+                    <text text="You are sent by the neighboring, enemy kingdom, to find some crucial information and execute an important target."/>
+                </join>
+
+                <join separator="newline">
+                    <text text="☑️ TASK: Find some info"/>
+                    <text text="TODO"/>
+                </join>
+
+                <join separator="newline">
+                    <text text="☑️ TASK: Execute"/>
+                    <text text="TODO"/>
+                </join>
+            </handouts>
+        </handout>
+    </actions>
+</rule>
+
+<!-- TODO -->

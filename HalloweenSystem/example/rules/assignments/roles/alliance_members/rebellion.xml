@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Assign rebellion">
+    <actions>
+        <assign>
+            <players>
+                <random amount="3">
+                    <complement>
+                        <iterate name="tag" parameter_type="tag">
+                            <parameter_selector>
+                                <group_tag name="Alliance members"/>
+                            </parameter_selector>
+                            <iterable_selector>
+                                <has_tag>
+                                    <tags>
+                                        <parameter name="tag"/>
+                                    </tags>
+                                </has_tag>
+                            </iterable_selector>
+                        </iterate>
+                        <has_type tag="Queen"/>
+                    </complement>
+                </random>
+            </players>
+            <tags>
+                <tag name="Rebel"/>
+            </tags>
+        </assign>
+
+        <assign>
+            <players>
+                <random amount="1">
+                    <intersect>
+                        <has_type tag="Rebel"/>
+                        <complement>
+                            <has_type tag="Loner"/>
+                        </complement>
+                    </intersect>
+                </random>
+            </players>
+            <tags>
+                <tag name="Rebellion leader"/>
+            </tags>
+        </assign>
+    </actions>
+</rule>

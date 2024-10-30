@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Reaper handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Reaper"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="🫂 ALLEGIANCE: ON YOUR OWN 🌑"/>
+                    <text text="You don't have a team, you are alone on this journey."/>
+                    <text text="You may still cooperate with others."/>
+                </join>
+                
+                <join separator="newline">
+                    <text text="👤 IDENTITY: The Reaper 🧟"/>
+                    <text text="You may work with other living people or... control the DEAD!"/>
+                    <text text="You may give commands to ghosts which they may or may not obey, but they can't act on their own. Try to compromise!"/>
+                </join>
+
+                <join separator="newline">
+                    <text text="☑️ TASK: Reap"/>
+                    <text text="Your goal is to ensure that at least a third of all people die at the following party."/>
+                </join>
+            </handouts>
+        </handout>
+    </actions>
+</rule>

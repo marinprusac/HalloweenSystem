@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Assign visits">
+    <actions>
+        <activate>
+            <rule name="Everyone visiting"/>
+            <rule name="Social visiting"/>
+            <rule name="Clergy visiting"/>
+            <rule name="Merchants visiting"/>
+            <rule name="Courtiers visiting"/>
+            <rule name="Enemy kingdom visiting"/>
+        </activate>
+    </actions>
+</rule>

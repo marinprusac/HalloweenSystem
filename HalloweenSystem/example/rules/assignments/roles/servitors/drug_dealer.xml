@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Choose drug dealer">
+    <actions>
+        <assign>
+            <players>
+                <random amount="1">
+                    <union>
+                        <intersect>
+                            <has_type tag="Mafia"/>
+                            <complement>
+                                <has_group name="Servitor"/>
+                                <has_type tag="Vigilante"/>
+                            </complement>
+                        </intersect>
+                    </union>
+                    <intersect>
+                        <complement>
+                            <has_type tag="Queen"/>
+                            <has_type tag="Vampire"/>
+                            <has_type tag="Sect"/>
+                            <has_type tag="Vigilante"/>
+                            <has_group name="Servitor"/>
+                        </complement>
+                    </intersect>
+                </random>
+            </players>
+            <tags>
+                <tag name="Drug dealer"/>
+                <tag name="Visited">
+                    <tags>
+                        <tag name="Tavern"/>
+                    </tags>
+                </tag>
+            </tags>
+        </assign>
+    </actions>
+</rule>

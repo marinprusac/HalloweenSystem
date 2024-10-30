@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Queen handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Queen"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <join>
+                        
+                        <text text="👤 IDENTITY: The Queen 👑
+You are the queen of the flawed, but beautiful, kingdom of the Caripati peninsula.
+Your reign has been tough from the start. The constant threat of coup posed by the rebellion has forced you to compromise in many ways which significantly weakened your position to combat other evil forces.
+The wounds from the war on mafia are still present and are waiting any moment now to tear open.
+The ancient vampire bloodline which once ruled over humans is now working on satisfying its ambitions of bringing back the old order.
+And The sect of the demon god has lost all of its patience asking for compensations for their god who crushed the vampire rule.
+You, unlike others, know how impossible the situation is to handle and that all your efforts can do no more than delay the inevitable which is the fall of the kingdom.
+Knowing the dangers of this world, you prohibited your daughter, "/>
+                        
+                        <transform type="player">
+                            <has_type tag="Princess"/>
+                        </transform>
+                        
+                        <text text=
+", from wandering outside the castle walls.
+This caused your daughter to hate you even more than when you forced her to engage to an undesirable, but trustworthy, match - "/>
+
+                        <transform type="player">
+                            <has_type tag="Fiancee"/>
+                        </transform>
+                        
+                        <text text=".
+You even commanded her one true soulmate to be cursed in order to distance them from each other forever.
+To this day she hasn't forgiven you, nor have you forgiven yourself, but you are comforted in thought that you've done the best you can do to protect your daughter.
+This time, however, feeling how this could be your last day alive, you allowed your daughter to come to the annual celebration in the city tavern with you, but disguised so that nobody can recognize her.
+You are fear for her safety, but you understand that keeping her locked up forever will not get her ready to reign over this broken kingdom.
+You hope that her fiancee and her best friend and maid, "/>
+                        
+                        <transform type="player">
+                            <has_type tag="Maid"/>
+                        </transform>
+                        
+                        <text text=
+", will be all the protection she will ever need."/>
+                    </join>
+                </join>
+            <join separator="newline">
+                <text text="ℹ️ INFO: Your councillors"/>
+                    <text text="You see that some of your court councillors and loyal advisors are present: "/>
+                    <iterate parameter_type="player" name="councillor">
+                        <parameter_selector>
+                            <union>
+                                <has_type tag="Spymaster"/>
+                                <has_type tag="Court mage"/>
+                                <has_type tag="Army general"/>
+                                <has_type tag="Royal advisor"/>
+                            </union>
+                        </parameter_selector>
+                        <iterable_selector>
+                            <join>
+                                <transform type="player">
+                                    <parameter name="councillor"/>
+                                </transform>
+                                <text text=" - the "/>
+                                <transform type="tag">
+                                    
+                                    <player_assigned_tag>
+                                        <players>
+                                            <parameter name="councillor"/>
+                                        </players>
+                                        <tags>
+                                            <tag name="Spymaster"/>
+                                            <tag name="Court mage"/>
+                                            <tag name="Army general"/>
+                                            <tag name="Royal advisor"/>
+                                        </tags>
+                                    </player_assigned_tag>
+                                </transform>
+                            </join>
+                        </iterable_selector>
+                    </iterate>
+                </join>
+                
+                <join separator="newline">
+                    <text text="ℹ️ INFO: The tavern keeper"/>
+                    <join>
+                        <text text="You've met the tavern keeper, "/>
+                        <transform type="player">
+                            <has_type tag="Tavern keeper"/>
+                        </transform>
+                        <text text=", before."/>
+                    </join>
+                    <text text="You are on good terms, working together to organize this consequential event."/>
+                </join>
+
+                <join separator="newline">
+                    <text text="☑️ TASK: Keep princess' identity hidden"/>
+                    <text text="Your daughter has come in a disguise, making it impossible for other to recognize her."/>
+                    <text text="Her fiancee and maid know about her, and that is okay, but you should make sure that nobody else finds out who she really is."/>
+                    <text text="You can't trust anyone with this information."/>
+                </join>
+
+                <join separator="newline">
+                    <text text="☑️ TASK: Queen's speech"/>
+                    <text text="After the tavern keeper opens up the event. You are to deliver a speech to the participant in hopes of boosting the kingdom's morale."/>
+                </join>
+
+                <join separator="newline">
+                    <text text="‼️ OUR-OF-CHARACTER TASK: First to die"/>
+                    <text text="You will be the first to die in this game."/>
+                    <text text="In order for the game to run smoothly, you have to let yourself be an easy target."/>
+                    <text text="Someone from the following list of people (evil players) may try to kill you:"/>
+                    <transform separator="newline" type="player">
+                        <complement>
+                            <has_type tag="Goodwin"/>
+                            <has_type tag="Neutral"/>
+                        </complement>
+                    </transform>
+                    <text text="They may kill you with poison, spell or weapon and you should let them."/>
+                    <text text="Make it easy for them."/>
+                </join>
+            </handouts>
+        </handout>
+    </actions>
+</rule>

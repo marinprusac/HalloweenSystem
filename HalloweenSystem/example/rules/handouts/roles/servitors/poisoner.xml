@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Poisoner handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Poisoner"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="👤 IDENTITY: The Poisoner 🧪"/>
+                    <text text="Knowing so much about the science of nature is satisfying."/>
+                    <text text="It is even better when people stand in lines hoping to find a... chemical solution to their problems."/>
+                    <text text="That solution is nothing more than a simple poison, which only YOU can provide."/>
+                </join>
+
+                <join separator="newline">
+                    <text text="☑️ TASK: Find poison components"/>
+                    <text text="You couldn't bring the pre-made poisons because of the tavern security checking everyone at the entrance."/>
+                    <text text="But you thought in advance and brought the poison chemicals a few days prior, hiding them at the places that you can't remember, whoops."/>
+                    <text text="Find those chemicals!"/>
+                    <text text="The poison also has to be made in perfect glassware."/>
+                    <text text="Find the specific flasks that will suit your needs."/>
+                    <text text="Mix in the flasks the poison chemicals and water and the poison is ready to be served, cheers!"/>
+                </join>
+
+                <join separator="newline">
+                    <text text="☑️ TASK: Sell the poisons"/>
+                    <text text="You could find use in these poisons as well, but you'd rather exchange most of them for money."/>
+                    <text text="Scientists just aren't paid enough these days!"/>
+                    <text text="Earn at least 15 gold, selling poisons!"/>
+                </join>
+            </handouts>
+        </handout>
+    </actions>
+</rule>

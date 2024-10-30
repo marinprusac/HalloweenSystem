@@ -54,7 +54,7 @@ public class Rule(string name, List<IAction> actions) : GameObject(name), IParse
     /// <returns>A collection of game objects associated with the rule.</returns>
     protected override IEnumerable<GameObject> _everything(Context context)
     {
-        return context.Setting.Rules;
+        return context.Setting.rules;
     }
 
     /// <summary>
@@ -65,7 +65,7 @@ public class Rule(string name, List<IAction> actions) : GameObject(name), IParse
     /// <returns>A collection of game objects that are not in the given set.</returns>
     protected override IEnumerable<GameObject> _complement(IEnumerable<GameObject> objectSet, Context context)
     {
-        return context.Setting.Rules.Except(objectSet);
+        return context.Setting.rules.Except(objectSet);
     }
 
     public static Rule Parse(XmlNode node)

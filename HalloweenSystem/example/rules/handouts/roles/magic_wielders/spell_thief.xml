@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Spell thief handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Spell thief"/>
+            </players>
+            <handouts>
+
+                <join separator="newline">
+                    <text text="☑️ TASK: In search of the blue spell essence"/>
+                    <text text="You have a Speculum Clypeus spell, but in order to use it, you have to get some blue essence."/>
+                    <text text="You may be lucky and find it in an odd place, or maybe you would rather but it from someone... but who and where?"/>
+                </join>
+                
+                <join separator="newline">
+                    <text text="☑️ TASK: CONSUUUUMEEEE!!!"/>
+                    <text text="You've had your past being around magic and you love it."/>
+                    <text text="Even more you like the feeling of being blown by a spell, non-lethally, of course."/>
+                    <text text="Absorb a spell targeted at you by using Speculum Clypeus spell."/>
+                </join>
+            </handouts>
+        </handout>
+    </actions>
+</rule>

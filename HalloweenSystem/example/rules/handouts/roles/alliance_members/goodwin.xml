@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Goodwin handout">
+    <actions>
+        <handout>
+            <players>
+                <intersect>
+                    <has_type tag="Goodwin"/>
+                    <complement>
+                        <has_type tag="Foreigner"/>
+                        <has_type tag="Queen"/>
+                    </complement>
+                </intersect>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="🫂 ALLEGIANCE: THE KINGDOM 🏰"/>
+                    <text text="You are a good citizen of your kingdom, hoping that it survives."/>
+                    <text text="Find out everyone who has killed another person."/>
+                    <text text="Find out who are the leaders of the evil organizations: mafia, vampire coven, sect and rebellion."/>
+                    <text text="When the trial comes, your goal is to vote out the guilty!"/>
+                </join>
+            </handouts>
+        </handout>
+
+        <handout>
+            <players>
+                <intersect>
+                    <has_type tag="Goodwin"/>
+                    <has_type tag="Foreigner"/>
+                    <complement>
+                        <has_type tag="Princess"/>
+                    </complement>
+                </intersect>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="🫂 ALLEGIANCE: THE *ENEMY* KINGDOM 🏯"/>
+                    <text text="This kingdom is very near to total chaos."/>
+                    <text text="Your goal is to prevent the forces of evil from spilling into your own country."/>
+                    <text text="Find out everyone who has killed another person."/>
+                    <text text="Find out who are the leaders of the evil organizations: mafia, vampire coven, sect and rebellion."/>
+                    <text text="When the trial comes, your goal is to vote out the guilty!"/>
+                </join>
+            </handouts>
+        </handout>
+
+        <handout>
+            <players>
+                <intersect>
+                    <has_type tag="Goodwin"/>
+                    <has_type tag="Princess"/>
+                    <has_type tag="Foreigner"/>
+                </intersect>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="🫂 ALLEGIANCE: THE KINGDOM 🏰"/>
+                    <text text="You are a good citizen of your kingdom, hoping that it survives, though you pretend to be a foreigner."/>
+                    <text text="Find out everyone who has killed another person."/>
+                    <text text="Find out who are the leaders of the evil organizations: mafia, vampire coven, sect and rebellion."/>
+                    <text text="When the trial comes, your goal is to vote out the guilty!"/>
+                </join>
+            </handouts>
+        </handout>
+        
+    </actions>
+</rule>

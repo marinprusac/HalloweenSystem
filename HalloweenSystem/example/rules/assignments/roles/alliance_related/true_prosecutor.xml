@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Choose true prosecutor">
+    <actions>
+        <assign>
+
+            <players>
+                <random amount="1">
+                    <intersect>
+                        <has_type tag="Goodwin"/>
+                        <complement>
+                            <has_type tag="Queen"/>
+                            <has_type tag="Princess"/>
+                            <has_type tag="Jury"/>
+                            <has_type tag="Loner"/>
+                        </complement>
+                    </intersect>
+                </random>
+            </players>
+
+            <tags>
+                <tag name="True prosecutor"/>
+            </tags>
+        </assign>
+    </actions>
+</rule>

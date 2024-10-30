@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Puritan fanatic handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Puritan fanatic"/>
+            </players>
+            <handouts>
+                <text text=""/>
+            </handouts>
+        </handout>
+    </actions>
+</rule>

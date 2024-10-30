@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Mafia handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Mafia"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="🫂 ALLEGIANCE: THE MAFIA 🚬"/>
+                    <text text="You are a mafia member."/>
+                    <text text="Your goal is to get the mafia rich by kidnapping a high value target: the princess."/>
+                    <text text="You plan to achieve this by killing all her protectors."/>
+                    <text text="This includes: the queen, princess' maid and princess' fiancee."/>
+                    <text text="Keep the princess alive."/>
+                    <text text="Make sure the godfather stays alive."/>
+                </join>
+            </handouts>
+        </handout>
+
+        <handout>
+            <players>
+                <has_type tag="Godfather"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="👤 IDENTITY: The Godfather 🌹"/>
+                    <text text="As the godfather of the mafia, it is you that has to stay alive!"/>
+                    <text text="Coordinate the mafia!"/>
+                </join>
+            </handouts>
+        </handout>
+
+        <handout>
+            <players>
+                <has_type tag="Mafia"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="ℹ️ INFO: Mafia members"/>
+                    <join>
+                        <text text="Other mafia members are: "/>
+    
+                        <transform separator=", " type="player">
+                            <remove_current_player>
+                                <has_type tag="Mafia"/>
+                            </remove_current_player>
+                        </transform>
+                        <text text="."/>
+                    </join>
+                </join>
+            </handouts>
+        </handout>
+    </actions>
+</rule>

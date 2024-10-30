@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Choose princess">
+    <actions>
+        <assign>
+            <players>
+                <random amount="1">
+                    <complement>
+                        <has_type tag="Queen"/>
+                        <has_type tag="Vampire"/>
+                        <has_type tag="Mafia"/>
+                        <has_type tag="Old"/>
+                        <has_type tag="Archbishop"/>
+                    </complement>
+                </random>
+            </players>
+            <tags>
+                <tag name="Princess"/>
+            </tags>
+        </assign>
+    </actions>
+</rule>

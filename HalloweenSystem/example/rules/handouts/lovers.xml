@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Lovers handout">
+    <actions>
+        <handout>
+            <players>
+                <iterate parameter_type="player" name="player">
+                    <parameter_selector>
+                        <intersect>
+                            <has_type tag="Lover"/>
+                            <complement>
+                                <has_type tag="Cheater"/>
+                            </complement>
+                        </intersect>
+                    </parameter_selector>
+
+                    <iterable_selector>
+                        <intersect>
+                            <parameter name="player"/>
+                            <all_if_any>
+                                <from_player_extract_player tag="Lover">
+                                    <parameter name="player"/>
+                                </from_player_extract_player>
+                            </all_if_any>
+                        </intersect>
+                    </iterable_selector>
+                </iterate>
+            </players>
+
+            <handouts>
+                <join separator="newline">
+                    <text text="♥️ RELATIONSHIP: Lover"/>
+                    <join>
+                        <text text="You are in love with "/>
+                        <transform type="player">
+                            <from_player_extract_player tag="Lover">
+                                <current_player/>
+                            </from_player_extract_player>
+                        </transform>
+                        <text text="!"/>
+                    </join>
+                    <text text="Hang out with your lover and make sure they're not cheating on you..."/>
+                    <text text="But be careful so that archbishop and his enforcers don't find out about your adulterate love!"/>
+                </join>
+            </handouts>
+        </handout>
+
+
+        <handout>
+            <players>
+                <iterate parameter_type="player" name="player">
+                    <parameter_selector>
+                        <has_type tag="Lover"/>
+                    </parameter_selector>
+
+                    <iterable_selector>
+                        <intersect>
+                            <has_any_tag>
+                                <players>
+                                    <parameter name="player"/>
+                                </players>
+                                <tags>
+                                    <all_if_any>
+                                        <from_player_extract_tag tag="Lover">
+                                            <parameter name="player"/>
+                                        </from_player_extract_tag>
+                                    </all_if_any>
+                                </tags>
+                            </has_any_tag>
+                        </intersect>
+                    </iterable_selector>
+                </iterate>
+            </players>
+
+            <handouts>
+                <join separator="newline">
+                    <text text="♥️ RELATIONSHIP: Lover"/>
+                    <join>
+                        <text text="You are in love with the"/>
+                        <transform type="tag">
+                            <from_player_extract_tag tag="Lover">
+                                <current_player/>
+                            </from_player_extract_tag>
+                        </transform>
+                        <text text="!"/>
+                    </join>
+                    <text text="But you don't know who they are."/>
+                    <text text="Find them!"/>
+
+                </join>
+            </handouts>
+        </handout>
+
+
+        <handout>
+            <players>
+                <intersect>
+                    <has_type tag="Lover"/>
+                    <has_type tag="Cheater"/>
+                </intersect>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="♥️ RELATIONSHIP: Cheating on your lovers"/>
+                    <join>
+                        <text text="You are in love with "/>
+                        <transform type="player" separator=", ">
+                            <from_player_extract_player tag="Lover">
+                                <current_player/>
+                            </from_player_extract_player>
+                        </transform>
+                        <text text=" and you love them equally, for what they're worth to you anyway..."/>
+                    </join>
+                    <text text="Give them the attention they need, but don't let them find out about your affairs!"/>
+                    <text text="Also definitely make sure that the archbishop and his enforcers don't find out as well."/>
+                </join>
+            </handouts>
+        </handout>
+    </actions>
+
+</rule>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Assign roles">
+    <actions>
+        <activate>
+            <rule name="Choose evil"/>
+            <rule name="Choose necromancer"/>
+            <rule name="Assign goodwin"/>
+            <rule name="Choose princess"/>
+            <rule name="Choose bastard"/>
+            <rule name="Choose fiancee"/>
+            <rule name="Choose frog"/>
+            <rule name="Choose vigilante"/>
+            <rule name="Choose maid"/>
+            <rule name="Choose princess pretender"/>
+            <rule name="Choose stalker"/>
+            <rule name="Choose gossip girl"/>
+            <rule name="Choose true prosecutor"/>
+            <rule name="Choose fake prosecutor"/>
+            <rule name="Choose medium"/>
+            <rule name="Choose seer"/>
+            <rule name="Choose witch"/>
+            <rule name="Choose spell thief"/>
+            <rule name="Choose poisoner"/>
+            <rule name="Choose drug dealer"/>
+            <rule name="Choose forger"/>
+            <rule name="Choose puritan fanatic"/>
+            <rule name="Choose exorcist"/>
+            <rule name="Choose sympathizer"/>
+            <rule name="Choose spy"/>
+            <rule name="Choose wanderer"/>
+            <rule name="Choose paranoid"/>
+            <rule name="Choose drunk"/>
+            <rule name="Choose drug addict"/>
+            <rule name="Choose unmarried"/>
+            <rule name="Choose gold digger"/>
+            <rule name="Choose pen pal"/>
+        </activate>
+    </actions>
+</rule>

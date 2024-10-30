@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Choose frog">
+    <requirements>
+        <has_type tag="Fiancee"/>
+    </requirements>
+
+    <actions>
+        <assign>
+            <players>
+                <random amount="1">
+                    <intersect>
+                        <union>
+                            <has_type tag="Goodwin"/>
+                            <has_type tag="Sectarian"/>
+                            <has_tag>
+                                <tags>
+                                    <group_tag name="Alliance members">
+                                        <player_assigned_tag>
+                                            <players>
+                                                <has_type tag="Princess"/>
+                                            </players>
+                                        </player_assigned_tag>
+                                    </group_tag>
+                                </tags>
+                            </has_tag>
+                        </union>
+                        <complement>
+                            <has_type tag="Queen"/>
+                            <has_type tag="Princess"/>
+                            <has_type tag="Fiancee"/>
+                            <has_type tag="Bastard"/>
+                            <has_type tag="Rebellion leader"/>
+                            <has_type tag="Old"/>
+                        </complement>
+                    </intersect>
+                </random>
+            </players>
+
+            <tags>
+                <tag name="Frog"/>
+                <tag name="Visited">
+                    <tags>
+                        <tag name="Woods"/>
+                    </tags>
+                </tag>
+            </tags>
+            
+        </assign>
+    </actions>
+</rule>

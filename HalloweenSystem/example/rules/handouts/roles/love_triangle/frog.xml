@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Frog handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Frog"/>
+            </players>
+            <handouts>
+
+                <join separator="newline">
+                    <text text="👤 IDENTITY: The Frog 🐸"/>
+                    <text text="You've been so in love with the princess, but a witch cursed you and now you two can't recognize each other."/>
+                    <text text="Ever since then, you've been called the 'frog'. Like the unfortunate character from the popular fairy take"/>
+                </join>
+                
+                <join separator="newline">
+                    <text text="☑️ TASK: Head over heels for the princess"/>
+                    <text text="You can't live like this. You have to find the princess."/>
+                    <text text="Get her kiss to lift the curse so you can see each other as you could before."/>
+                    <text text="Exchange signatures so you can finally get married!"/>
+                    <text text="But be careful, if the fiancee finds out who you are, they may harm you very badly."/>
+                </join>
+
+                <join separator="newline">
+                    <text text="☑️ TASK: Protect princess"/>
+                    <text text="Make sure that the princess doesn't die under any circumstance."/>
+                    <text text="Her life is more important to you than yours!"/>
+                </join>
+            </handouts>
+        </handout>
+    </actions>
+</rule>

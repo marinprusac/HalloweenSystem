@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Seer handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Seer"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="👤 IDENTITY: The Seer 🧿"/>
+                    <text text="You were once a magicless being."/>
+                    <text text="You wanted this to change, but it came with a cost."/>
+                    <text text="A powerful warlock has given you the power of a seer, but you were also cursed."/>
+                    <text text="The curse caused you some pain in the beginning, but now it is starting to consume your life, nearing your death."/>
+                </join>
+                
+                
+                <join separator="newline">
+                    <text text="☑️ TASK: Lift the curse"/>
+                    <text text="Your days are numbered and it is urgent to find a charm to list the curse."/>
+                    <text text="You have to find the witch and get her signature which will lift the curse."/>
+                </join>
+            </handouts>
+        </handout>
+    </actions>
+</rule>
+
+<!-- TODO: write seer info -->

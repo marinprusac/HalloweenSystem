@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Vigilante handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Vigilante"/>
+            </players>
+            <handouts>
+
+                <join separator="newline">
+                    <text text="👤 IDENTITY: The Vigilante 🗡️"/>
+                    <text text="You are disgusted by the sketchy people of this world."/>
+                    <text text="Vampires, sectarians, mafia, rebellion and criminals included."/>
+                    <text text="Honest people work their asses of, only for those people to ruin everything and take the spoils of war."/>
+                    <text text="You are waiting for the perfect moment to cancel out some of this disgrace."/>
+                </join>
+                
+                <join separator="newline">
+                    <text text="☑️ TASK: Justice in your own hands"/>
+                    <text text="You are to kill whoever is contributing to the evil in this world."/>
+                    <text text="Those are any of these:"/>
+                    <transform separator=", " type="tag">
+                        <group_tag name="Sketchy"/>
+                    </transform>
+                    <text text="But first, you have to find your trusted dagger that you left in the tavern some time ago..."/>
+                </join>
+            </handouts>
+        </handout>
+    </actions>
+</rule>

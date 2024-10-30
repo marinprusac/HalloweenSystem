@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Unmarried handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Unmarried"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="☑️ TASK: Secure the bloodline"/>
+                    <text text="Being a lord is hard work, but even harder is finding a good love match to prolong your bloodline."/>
+                    <text text="Find that one person at this party and give them your signature or take their signature."/>
+                    <text text="Be sure that they won't just use you for your wealth."/>
+                </join>
+            </handouts>
+        </handout>
+    </actions>
+</rule>

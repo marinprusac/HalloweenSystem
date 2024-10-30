@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Forger handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Forger"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="👤 IDENTITY: The Forger 🖋️"/>
+                    <text text="Life is sometimes tough, but you found freedom in getting people's consent, without fighting for it."/>
+                    <text text="People might think that you are able to actually copy people's signatures..."/>
+                    <text text="But actually, you are just observant enough to find many leftover signed letters and documents."/>
+                </join>
+
+                <join separator="newline">
+                    <text text="☑️ TASK: Find the leftover signatures"/>
+                    <text text="There are surely some signatures left in this tavern, look at all these drunk people!"/>
+                    <text text="Find as many signatures as you can."/>
+                </join>
+
+                <join separator="newline">
+                    <text text="☑️ TASK: Sell the signatures"/>
+                    <text text="Some of these signatures could be useful."/>
+                    <text text="But many are probably not as worth as thew money people are willing to pay for them."/>
+                    <text text="Earn at least 15 gold, selling signatures!"/>
+                </join>
+            </handouts>
+        </handout>
+    </actions>
+</rule>

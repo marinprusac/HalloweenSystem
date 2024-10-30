@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Princess-fiancee engaged">
+    
+    <requirements>
+        <intersect>
+            <all_if_any>
+                <has_type tag="Princess"/>
+            </all_if_any>
+            <all_if_any>
+                <has_type tag="Fiancee"/>
+            </all_if_any>
+        </intersect>
+    </requirements>
+    
+    
+    <actions>
+        <assign>
+            <players>
+                <has_type tag="Princess"/>
+            </players>
+            <tags>
+                <tag name="Engaged">
+                    <players>
+                        <has_type tag="Fiancee"/>
+                    </players>
+                </tag>
+            </tags>
+        </assign>
+
+        <assign>
+            <players>
+                <has_type tag="Fiancee"/>
+            </players>
+            <tags>
+                <tag name="Engaged">
+                    <players>
+                        <has_type tag="Princess"/>
+                    </players>
+                </tag>
+            </tags>
+        </assign>
+    </actions>
+    
+</rule>

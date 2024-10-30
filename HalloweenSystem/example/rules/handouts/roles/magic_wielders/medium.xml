@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Medium handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Medium"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="👤 IDENTITY: The Medium 🔮"/>
+                    <text text="You have the ability to talk communicate with ghosts!"/>
+                    <text text="In order to communicate, ask a ghost a question and deal them 7 random mysterium park cards (without looking)."/>
+                    <text text="They, then, return an arbitrary number of those cards to you, describing their answer the best possible."/>
+                    <text text="You may use this ability three times per ghost, and they are not obligated to answer truthfully."/>
+                </join>
+            </handouts>
+        </handout>
+    </actions>
+</rule>

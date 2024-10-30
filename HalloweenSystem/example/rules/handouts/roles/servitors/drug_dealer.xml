@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Drug dealer handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Drug dealer"/>
+            </players>
+            <handouts>
+                
+                <join separator="newline">
+                    <text text="☑️ TASK: Drug essence business"/>
+                    <text text="You've perfected the creation of the magical essence."/>
+                    <text text="Some use it for good and evil spells, some for rituals and some for recreational drug use."/>
+                    <text text="Either way, you don't see the use of having all this essence for your own and you plan to sell it."/>
+                    <text text="Earn at least 20 gold selling the magical essence."/>
+                </join>
+                
+            </handouts>
+        </handout>
+    </actions>
+</rule>
+
+<!-- TODO -->

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Assign relationships">
+    <actions>
+        <activate>
+            <rule name="Princess-fiancee engaged"/>
+            <rule name="Princess-frog lovers"/>
+            <rule name="Assign random lovers"/>
+        </activate>
+    </actions>
+</rule>

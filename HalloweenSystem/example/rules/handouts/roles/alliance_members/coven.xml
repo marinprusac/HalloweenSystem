@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Vampire handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Vampire"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="🫂 ALLEGIANCE: THE VAMPIRE COVEN 🩸"/>
+                    <text text="You are a vampire."/>
+                    <text text="Your goal is to get the vampires back on the throne where they belong."/>
+                    <text text="You plan to achieve this by killing the queen and converting the princess into a vampire."/>
+                    <text text="Coven elder is the only one who can convert her."/>
+                    <text text="Make sure the coven elder stays alive."/>
+                </join>
+            </handouts>
+        </handout>
+
+        <handout>
+            <players>
+                <has_type tag="Elder"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="👤 IDENTITY: The Coven Elder 🧛"/>
+                    <text text="As the coven elder, it is you that has to stay alive!"/>
+                    <text text="Convert the princess by getting her signature. After that, get her into a room and perform the conversion ritual."/>
+                </join>
+            </handouts>
+        </handout>
+
+        <handout>
+            <players>
+                <has_type tag="Vampire"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="ℹ️ INFO: Coven members"/>
+                    <join>
+                        <text text="Other coven members are: "/>
+                        <transform separator=", " type="player">
+                            <remove_current_player>
+                                <has_type tag="Vampire"/>
+                            </remove_current_player>
+                        </transform>
+                        <text text="."/>
+                    </join>
+                </join>
+            </handouts>
+        </handout>
+    </actions>
+</rule>

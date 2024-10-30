@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Clergy visiting">
+    <actions>
+        <assign>
+            <players>
+                <has_group name="Clergy"/>
+            </players>
+            <tags>
+                <tag name="Visited">
+                    <tags>
+                        <tag name="Church"/>
+                    </tags>
+                </tag>
+            </tags>
+        </assign>
+    </actions>
+</rule>

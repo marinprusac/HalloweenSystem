@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Drunk handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Drunk"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="☑️ TASK: Drink it all!"/>
+                    <text text="While some other things may be important on this party. Nothing is more important than drinking. It's a tavern after all!"/>
+                    <text text="Drink drink drink!"/>
+                </join>
+            </handouts>
+        </handout>
+    </actions>
+</rule>

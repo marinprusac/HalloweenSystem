@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Merchants visiting">
+    <actions>
+        <assign>
+            <players>
+                <union>
+                    <has_type tag="Merchant"/>
+                    <has_type tag="Servitor"/>
+                </union>
+            </players>
+            
+            <tags>
+                <tag name="Visited">
+                    <tags>
+                        <tag name="Market"/>
+                    </tags>
+                </tag>
+            </tags>
+        </assign>
+    </actions>
+    
+</rule>

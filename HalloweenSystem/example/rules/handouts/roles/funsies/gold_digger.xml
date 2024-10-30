@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Gold digger handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Gold digger"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="☑️ TASK: Marry rich!"/>
+                    <text text="Your financial situation is... not the best. And at this point you've given up on love."/>
+                    <text text="You hear that some rich aristocrat here is in search of a partner."/>
+                    <text text="Try to seduce them and get their signature."/>
+                    <text text="If they somehow die during the party... oh well, it is the gold that matters."/>
+                </join>
+            </handouts>
+        </handout>
+    </actions>
+</rule>

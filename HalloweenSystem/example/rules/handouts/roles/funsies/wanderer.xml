@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Wanderer handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Wanderer"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="☑️ TASK: Feed the curiosity"/>
+                    <text text="There are so much things to explore."/>
+                    <text text="Spend no more than 10 continuous minutes at the same place."/>
+                </join>
+            </handouts>
+        </handout>
+    </actions>
+</rule>

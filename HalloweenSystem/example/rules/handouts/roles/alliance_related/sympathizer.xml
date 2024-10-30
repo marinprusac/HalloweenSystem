@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Sympathizer handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Sympathizer"/>
+            </players>
+            <handouts>
+
+                <join separator="newline">
+                    <text text="👤 IDENTITY: The Vampire Sympathizer ❣️"/>
+                    <text text="Ever since you learned about vampire you grew to love them... to desire them!"/>
+                    <text text="You don't agree with the coven's goals of becoming the ruling dynasty again, but you would like to try some vampire!"/>
+                </join>
+                
+                <join separator="newline">
+                    <text text="☑️ TASK: Seduce a vampire"/>
+                    <text text="Find out who is a vampire, but NOT the elder."/>
+                    <text text="Seduce them, get their signature and protect them!"/>
+                </join>
+            </handouts>
+        </handout>
+    </actions>
+</rule>

@@ -20,8 +20,9 @@ namespace HalloweenSystem.GameLogic.Selectors.GenericSelectors
 		/// <returns>An enumerable collection of game objects selected based on the specified probability.</returns>
 		public IEnumerable<T> Evaluate(Context context)
 		{
-			var objects = nestedSelector.Evaluate(context);
+			var objects = nestedSelector.Evaluate(context).ToList();
 			var random = new Random();
+			context.Setting.Statistics.LogCombination(2^objects.Distinct().Count());
 			var chosen = objects.Where(gameObject => random.NextSingle() < probability).ToList();
 			return chosen;
 		}

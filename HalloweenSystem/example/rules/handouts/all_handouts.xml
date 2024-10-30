@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Give handouts">
+    <actions>
+        <activate>
+
+            <rule name="Signature handout"/>
+
+            <rule name="Lovers handout"/>
+            
+            <rule name="Queen handout"/>
+            <rule name="Vampire handout"/>
+            <rule name="Mafia handout"/>
+            <rule name="Rebel handout"/>
+            <rule name="Sectarian handout"/>
+            <rule name="Reaper handout"/>
+            <rule name="Goodwin handout"/>
+            
+            <rule name="Princess handout"/>
+            <rule name="Bastard handout"/>
+            <rule name="Fiancee handout"/>
+            <rule name="Frog handout"/>
+            <rule name="Vigilante handout"/>
+            <rule name="Maid handout"/>
+            <rule name="Pretender handout"/>
+            <rule name="Stalker handout"/>
+            <rule name="Gossip girl handout"/>
+            <rule name="True prosecutor handout"/>
+            <rule name="Fake prosecutor handout"/>
+            <rule name="Medium handout"/>
+            <rule name="Seer handout"/>
+            <rule name="Witch handout"/>
+            <rule name="Spell thief handout"/>
+            <rule name="Poisoner handout"/>
+            <rule name="Drug dealer handout"/>
+            <rule name="Forger handout"/>
+            <rule name="Puritan fanatic handout"/>
+            <rule name="Exorcist handout"/>
+            <rule name="Sympathizer handout"/>
+            <rule name="Foreign spy handout"/>
+            <rule name="Wanderer handout"/>
+            <rule name="Paranoid handout"/>
+            <rule name="Drunk handout"/>
+            <rule name="Drug addict handout"/>
+            <rule name="Unmarried handout"/>
+            <rule name="Gold digger handout"/>
+            <rule name="Pen pal handout"/>
+
+            
+            <rule name="Dark market vendor handout"/>
+            <rule name="Dark market customer handout"/>
+            <rule name="Seen handout"/>
+        </activate>
+    </actions>
+</rule>

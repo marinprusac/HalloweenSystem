@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Choose poisoner">
+    <actions>
+        <assign>
+            <players>
+                <random amount="1">
+                    <intersect>
+                        <complement>
+                            <has_type tag="Queen"/>
+                            <has_type tag="Mafia"/>
+                            <has_type tag="Sect"/>
+                            <has_type tag="Vigilante"/>
+                            <has_group name="Servitor"/>
+                        </complement>
+                        <union>
+                            <has_type tag="Librarian"/>
+                            <has_type tag="Smart"/>
+                        </union>
+                    </intersect>
+                </random>
+            </players>
+            <tags>
+                <tag name="Poisoner"/>
+
+            </tags>
+        </assign>
+    </actions>
+</rule>

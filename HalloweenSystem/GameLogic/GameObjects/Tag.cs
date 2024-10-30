@@ -20,12 +20,12 @@ public class Tag(string name = "", IEnumerable<Player>? players = null, IEnumera
     /// <summary>
     /// Gets the collection of players associated with the tag.
     /// </summary>
-    public HashSet<Player> PlayerParameters { get; } = (players ?? []).ToHashSet();
+    public HashSet<Player> playerParameters { get; } = (players ?? []).ToHashSet();
 
     /// <summary>
     /// Gets the collection of tags associated with the tag.
     /// </summary>
-    public HashSet<string> TagTypeParameters { get; } = (tags ?? []).ToHashSet();
+    public HashSet<string> tagTypeParameters { get; } = (tags ?? []).ToHashSet();
 
     /// <summary>
     /// Retrieves all game objects associated with the tag in the given context.
@@ -34,7 +34,7 @@ public class Tag(string name = "", IEnumerable<Player>? players = null, IEnumera
     /// <returns>A collection of game objects associated with the tag.</returns>
     protected override IEnumerable<GameObject> _everything(Context context)
     {
-        var tags = context.Setting.Tags ?? throw new ArgumentException("Tags are not defined in the setting");
+        var tags = context.Setting.tags ?? throw new ArgumentException("Tags are not defined in the setting");
         return tags.Select(tag => new Tag(tag));
     }
 
@@ -84,7 +84,7 @@ public class Tag(string name = "", IEnumerable<Player>? players = null, IEnumera
     /// Retrieves the intersection of the given sets of game objects.
     /// </summary>
     /// <param name="objectSets">The sets of game objects to intersect.</param>
-    /// <returns>A collection of game objects that are in all of the given sets.</returns>
+    /// <returns>A collection of game objects that are in all the given sets.</returns>
     /// <exception cref="ArgumentException">Thrown if the list of object sets is empty.</exception>
     protected override IEnumerable<GameObject> _intersect(IEnumerable<IEnumerable<GameObject>> objectSets)
     {
@@ -120,8 +120,8 @@ public class Tag(string name = "", IEnumerable<Player>? players = null, IEnumera
     {
         if (tag.Name != Name)
             throw new ArgumentException("Cannot update tag with different type");
-        PlayerParameters.UnionWith(tag.PlayerParameters);
-        TagTypeParameters.UnionWith(tag.TagTypeParameters);
+        playerParameters.UnionWith(tag.playerParameters);
+        tagTypeParameters.UnionWith(tag.tagTypeParameters);
     }
 
     /// <summary>
@@ -129,12 +129,12 @@ public class Tag(string name = "", IEnumerable<Player>? players = null, IEnumera
     /// </summary>
     /// <param name="tag">The tag to restrict with.</param>
     /// <exception cref="ArgumentException">Thrown if the tag names do not match.</exception>
-    public void Restrict(Tag tag)
+    private void Restrict(Tag tag)
     {
         if (tag.Name != Name)
             throw new ArgumentException("Cannot update tag with different type");
-        PlayerParameters.IntersectWith(tag.PlayerParameters);
-        TagTypeParameters.IntersectWith(tag.TagTypeParameters);
+        playerParameters.IntersectWith(tag.playerParameters);
+        tagTypeParameters.IntersectWith(tag.tagTypeParameters);
     }
 
     /// <summary>
@@ -146,8 +146,8 @@ public class Tag(string name = "", IEnumerable<Player>? players = null, IEnumera
     {
         return Name ==
                tag.Name
-               && PlayerParameters.IsSupersetOf(tag.PlayerParameters)
-               && TagTypeParameters.IsSupersetOf(tag.TagTypeParameters);
+               && playerParameters.IsSupersetOf(tag.playerParameters)
+               && tagTypeParameters.IsSupersetOf(tag.tagTypeParameters);
     }
 
     /// <summary>
@@ -156,7 +156,7 @@ public class Tag(string name = "", IEnumerable<Player>? players = null, IEnumera
     /// <returns>A new tag that is a copy of the current tag.</returns>
     public Tag Copy()
     {
-        return new Tag(Name, PlayerParameters, TagTypeParameters);
+        return new Tag(Name, playerParameters, tagTypeParameters);
     }
 
     /// <summary>
@@ -197,16 +197,16 @@ public class Tag(string name = "", IEnumerable<Player>? players = null, IEnumera
     {
         var text = Name;
 
-        if (PlayerParameters.Count > 0 || TagTypeParameters.Count > 0)
+        if (playerParameters.Count > 0 || tagTypeParameters.Count > 0)
         {
             text += "[";
 
-            text += string.Join(", ", PlayerParameters.Select(p => p.Name)); 
+            text += string.Join(", ", playerParameters.Select(p => p.Name)); 
 
-            if (PlayerParameters.Count > 0 && TagTypeParameters.Count > 0)
+            if (playerParameters.Count > 0 && tagTypeParameters.Count > 0)
                 text += ", ";
             
-            text += string.Join(", ", TagTypeParameters); 
+            text += string.Join(", ", tagTypeParameters); 
 
             text += "]";
         }

@@ -11,49 +11,57 @@ namespace HalloweenSystem.GameLogic.Utilities;
 /// </summary>
 /// <typeparam name="T">The type of the objects to be limited, which must be a GameObject.</typeparam>
 /// <param name="amount">The amount to limit the objects by, either as a percentage or a fixed number.</param>
-public class Limit<T>(string amount) where T : GameObject
+public static class Limit
 {
+    public static int GetCount(string amount, int gameObjectCount)
+    {
+        int selectedCount;
+        try
+        {
+            if (amount.Contains('%'))
+            {
+                var success = int.TryParse(amount.Replace("%", ""), out var result);
+                if(success) selectedCount = (int)Math.Ceiling(gameObjectCount * (result / 100f));
+                else throw new Exception();
+            }
+            else
+            {
+                var success = int.TryParse(amount, out var result);
+                if (success) selectedCount = result;
+                else throw new Exception();
+            }
+        }
+        catch (ArgumentException)
+        {
+            throw new ArgumentException($"Invalid amount: {amount}. Amount must be a valid percentage or number.");
+        }
+        return selectedCount;
+    }
+
+
     /// <summary>
     /// Evaluates the given collection of objects and returns a limited collection based on the specified amount.
     /// </summary>
     /// <param name="objects">The collection of objects to be limited.</param>
+    /// <param name="selectedCount"></param>
     /// <returns>A limited collection of objects of type T.</returns>
     /// <exception cref="ArgumentException">Thrown when the amount is not a valid percentage or number.</exception>
-    public IEnumerable<T> Evaluate(IEnumerable<T> objects)
+    public static IEnumerable<T> ChooseRandom<T>(IEnumerable<T> objects, int selectedCount)
     {
         var enumerable = objects.ToList();
-        var count = enumerable.Count;
-        int selectedCount;
-        if (amount.Contains('%'))
-        {
-            var success = int.TryParse(amount.Replace("%", ""), out var result);
-            if(success) selectedCount = (int)Math.Ceiling(count * (result / 100f));
-            else throw new ArgumentException();
-        }
-        else
-        {
-            var success = int.TryParse(amount, out var result);
-            if (success) selectedCount = result;
-            else throw new ArgumentException();
-        }
-
-
-        if (typeof(T) == typeof(Player))
-            return EvaluateForPlayers(enumerable.Cast<Player>().ToList(), selectedCount).Cast<T>();
-
+        if (typeof(T) == typeof(Player)) return EvaluateForPlayers(enumerable.Cast<Player>().ToList(), selectedCount).Cast<T>();
         var random = new Random();
         var selected = enumerable.ToList();
-        for(var i = 0; i < count - selectedCount; i++)
+        for(var i = 0; i < enumerable.Count - selectedCount; i++)
         {
             if(selected.Count == 0) break;
             selected.RemoveAt(random.Next(selected.Count));
         }
-
         return selected;
     }
 
 
-    private IEnumerable<Player> EvaluateForPlayers(List<Player> players, int selectedCount)
+    private static List<Player> EvaluateForPlayers(List<Player> players, int selectedCount)
     {
         
         if(players.Count <= selectedCount) return players;
@@ -95,17 +103,5 @@ public class Limit<T>(string amount) where T : GameObject
         }
 
         return selectedPlayers;
-    }
-    
-    private IEnumerable<Player> EvaluateForPlayersV2(List<Player> players, int selectedCount)
-    {
-        
-        if(players.Count <= selectedCount) return players;
-        var playerArray = players.ToArray();
-        var random = new Random();
-        random.Shuffle(playerArray);
-        var playerList = playerArray.ToList();
-        playerList.Sort((p1, p2) => p1.AssignedTags.Count <= p2.AssignedTags.Count ? -1 : 1);
-        return playerList.GetRange(0, selectedCount);
     }
 }

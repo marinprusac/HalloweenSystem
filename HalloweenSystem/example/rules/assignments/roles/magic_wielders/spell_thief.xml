@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Choose spell thief">
+    <actions>
+        <assign>
+            <players>
+                <random amount="1">
+                    <intersect>
+                        <complement>
+                            <has_type tag="Magic wielders"/>
+                            <has_type tag="Clergy"/>
+                            <has_type tag="Seer"/>
+                            <has_type tag="Frog"/>
+                            <has_type tag="Princess"/>
+                            <has_type tag="Queen"/>
+                        </complement>
+                    </intersect>
+                </random>
+            </players>
+            <tags>
+                <tag name="Spell thief"/>
+            </tags>
+        </assign>
+    </actions>
+</rule>

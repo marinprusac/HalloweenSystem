@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Fake prosecutor handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Fake prosecutor"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="☑️ TASK: Acting like a true prosecutor"/>
+                    <text text="You work as an insider fake prosecutor for the benefit of your alliance."/>
+                    <text text="Collect 'fake' evidence by collecting people's signatures (or buying them) and their statements."/>
+                    <text text="Present the evidence to the jury at the trial and make sure your leader and killers survive the trial."/>
+                </join>
+            </handouts>
+        </handout>
+    </actions>
+</rule>

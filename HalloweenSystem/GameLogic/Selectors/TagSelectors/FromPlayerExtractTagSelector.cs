@@ -28,7 +28,7 @@ public class FromPlayerExtractTagSelector(string tagType, ISelector<Player>? pla
 		var tags = players.Select(p => p.AssignedTags.AsEnumerable());
 		var unionizedTags = GameObject.Union<Tag>(tags);
 		var filtered = unionizedTags.Where(t => t.Name == tagType).Cast<Tag>();
-		var extractedTypes = filtered.SelectMany(t => t.TagTypeParameters.AsEnumerable());
+		var extractedTypes = filtered.SelectMany(t => t.tagTypeParameters.AsEnumerable());
 		var transformed = extractedTypes.Select(e => new Tag(e));
 		var distinct = transformed.Distinct();
 		return distinct;

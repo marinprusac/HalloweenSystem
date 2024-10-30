@@ -20,8 +20,8 @@ public class RuleSelector(string ruleName) : ISelector<Rule>, IParser<RuleSelect
     /// <returns>A collection containing the specified rule.</returns>
     public IEnumerable<Rule> Evaluate(Context context)
     {
-        var rule = context.Setting.Rules.FirstOrDefault(r => r.Name == ruleName);
-        if (rule == null) throw new ArgumentException("Rule not found.");
+        var rule = context.Setting.rules.FirstOrDefault(r => r.Name == ruleName);
+        if (rule == null) throw new ArgumentException("Rule not found: " + ruleName);
         return [rule];
     }
 

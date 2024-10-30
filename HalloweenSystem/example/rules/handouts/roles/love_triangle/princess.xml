@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Princess handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Princess"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="👤 IDENTITY: The Princess 👸"/>
+                    <text text="As such, your goal is to secure your place at the royal throne."/>
+                    
+                    <join>
+                        <text text="You've been locked in your castle long enough, but you finally managed to force your mother and queen, "/>
+                        <transform type="player">
+                            <has_type tag="Queen"/>
+                        </transform>
+                        <text text=", to let you enjoy life this time."/>
+                    </join>
+                    
+                    <text text="She told you to be very careful. But you don't need her protection anymore."/>
+                    
+                    <join>
+                        <text text="You have your trusted maid, "/>
+                        <transform type="player">
+                            <has_type tag="Maid"/>
+                        </transform>
+                        <text text=", who will try very hard to protect you from evil doers."/>
+                    </join>
+                    
+                    <join>
+                        <text text="Your fiancee, "/>
+                        <transform type="player">
+                            <has_type tag="Fiancee"/>
+                        </transform>
+                        <text text=", is also here to protect you, most likely. You don't like them very much, but the queen forced you to get engaged."/>
+                    </join>
+                </join>
+            </handouts>
+        </handout>
+        
+        <handout>
+            <players>
+                <intersect>
+                    <has_type tag="Princess"/>
+                    <all_if_any>
+                        <has_type tag="Frog"/>
+                    </all_if_any>
+                </intersect>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="☑️ TASK: Find your true love"/>
+                    <text text="The arranged marriage with your fiancee is not your dream love."/>
+                    <text text="But a person you met some time ago at the tourney is. You believe that they are your soulmate."/>
+                    <text text="They've been cursed with a witch's spell which makes it impossible for you to recognize them and their image of you also got deleted."/>
+                    <text text="They promised you that they will be attending the party, you just gotta find them a revert the spell with a kiss."/>
+                    <text text="Don't let your fiancee find out about the affair."/>
+                </join>
+            </handouts>
+        </handout>
+
+        <handout>
+            <players>
+                <intersect>
+                    <has_type tag="Princess"/>
+                    <all_if_any>
+                        <has_type tag="Bastard"/>
+                    </all_if_any>
+                </intersect>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="☑️ TASK: Defeat the bastard challenger"/>
+                    <text text="There is a bastard what is trying to challenge your succession right."/>
+                    <text text="Get rid of them or make sure that they don't get the favor of the aristocracy."/>
+                </join>
+            </handouts>
+        </handout>
+        
+        
+    </actions>
+</rule>

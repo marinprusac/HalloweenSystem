@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Pen pal handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Pen pal"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="☑️ TASK: Find your lost friend"/>
+                </join>
+            </handouts>
+        </handout>
+    </actions>
+</rule>
+<!-- TODO -->

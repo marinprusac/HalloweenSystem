@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Social visiting">
+    <actions>
+        <assign>
+            <players>
+                <has_type tag="Social"/>
+            </players>
+            <tags>
+                <tag name="Visited">
+                    <tags>
+                        <random amount="1">
+                            <group_tag name="Locations"/>
+                        </random>
+                    </tags>
+                </tag>
+            </tags>
+        </assign>
+    </actions>
+</rule>

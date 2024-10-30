@@ -23,9 +23,16 @@ public class RandomSelector<T>(string amount, ISelector<T>? nestedSelector=null)
 	public IEnumerable<T> Evaluate(Context context)
 	{
 		_nestedSelector ??= new AllSelector<T>();
-		var gameObjects = _nestedSelector.Evaluate(context);
-		var limit = new Limit<T>(amount);
-		return limit.Evaluate(gameObjects);
+		var gameObjects = _nestedSelector.Evaluate(context).ToList();
+		var selectedCount = Limit.GetCount(amount, gameObjects.Count);
+		
+		if(selectedCount >= gameObjects.Count) return gameObjects;
+		
+		var combinations = Statistics.Factorial(gameObjects.Count) / Statistics.Factorial(gameObjects.Count - selectedCount) / Statistics.Factorial(selectedCount) ;
+		
+		context.Setting.Statistics.LogCombination(combinations);
+		
+		return Limit.ChooseRandom(gameObjects, selectedCount);
 	}
 
 	public static RandomSelector<T> Parse(XmlNode node)

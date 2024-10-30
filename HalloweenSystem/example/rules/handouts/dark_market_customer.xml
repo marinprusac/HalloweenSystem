@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Dark market customer handout">
+    <actions>
+        <handout together="yes">
+            <players>
+                <intersect>
+                    <has_group name="Customer"/>
+                    <complement>
+                        <has_type tag="Vigilante"/>
+                        <has_group name="Servitor"/>
+                    </complement>
+                </intersect>
+            </players>
+            <handouts>
+
+                <join separator="newline">
+                    <text text="ℹ️ INFO: Dark market location"/>
+                    <text text="As a regular customer on the dark market, you are familiar with the common dark market locations."/>
+
+                    <join>
+                        <text text="During the following party, the handover of good and services will happen in the "/>
+                        <transform type="tag">
+                            <random amount="1">
+                                <group_tag name="Dark market event places"/>
+                            </random>
+                        </transform>
+                        <text text="."/>
+                    </join>
+
+                    <text text="Your trusted vendors and fellow customers will be there."/>
+                    <text text="Keep the information about the dark market location secret. You don't want other people to out-demand the supply!"/>
+
+                </join>
+
+            </handouts>
+        </handout>
+    </actions>
+</rule>

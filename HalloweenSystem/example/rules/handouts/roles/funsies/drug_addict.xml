@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Drug addict handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Drug addict"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="☑️ TASK: Get them drugs"/>
+                    <text text="Your addiction is forcing you to find at least two drugs this night and keep them to the end."/>
+                    <text text="You know that there are some drugs dealt in the dark market place in this tavern."/>
+                </join>
+            </handouts>
+        </handout>
+    </actions>
+</rule>

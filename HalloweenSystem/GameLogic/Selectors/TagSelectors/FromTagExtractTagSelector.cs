@@ -25,7 +25,7 @@ public class FromTagExtractTagSelector(ISelector<Tag> tagSelector)
 	public IEnumerable<Tag> Evaluate(Context context)
 	{
 		var tags = tagSelector.Evaluate(context);
-		var extractedTags = tags.SelectMany(tag => tag.TagTypeParameters).ToHashSet();
+		var extractedTags = tags.SelectMany(tag => tag.tagTypeParameters).ToHashSet();
 		return extractedTags.Select(tag => new Tag(tag));
 	}
 

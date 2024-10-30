@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Sectarian handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Sectarian"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="🫂 ALLEGIANCE: THE SECT 🕎"/>
+                    <text text="You are a sect member."/>
+                    <text text="Your goal is to satisfy your god by performing rituals and ultimately sacrificing another person."/>
+                    <text text="You also want the queen dead for acting against the will of your god."/>
+                    <text text="Collect the ritual resources (drugs and candles) and let your sect leader perform the rituals."/>
+                    <text text="When the time for the final ritual comes, take another person with you and perform the sacrificial ritual."/>
+                    <text text="Make sure the sect leader stays alive."/>
+                </join>
+            </handouts>
+        </handout>
+
+        <handout>
+            <players>
+                <has_type tag="Sect leader 🪔"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="👤 IDENTITY: The Sect Leader ♒"/>
+                    <text text="As the leader of the sect, it is you that has to stay alive!"/>
+                    <text text="Coordinate the sect and perform the rituals!"/>
+                </join>
+            </handouts>
+        </handout>
+
+        <handout>
+            <players>
+                <has_type tag="Sectarian"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="ℹ️ INFO: Sect members"/>
+                    <join>
+                        <text text="Other sect members are: "/>
+    
+                        <transform separator=", " type="player">
+                            <remove_current_player>
+                                <has_type tag="Sectarian"/>
+                            </remove_current_player>
+                        </transform>
+                        
+                        <text text="."/>
+                    </join>
+                </join>
+            </handouts>
+        </handout>
+    </actions>
+</rule>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Enemy kingdom visiting">
+    <actions>
+        <assign>
+            <players>
+                <has_type tag="Foreign spy"/>
+                <has_type tag="Army general"/>
+                <has_type tag="Foreigner"/>
+                <has_type tag="Soldier"/>
+            </players>
+            <tags>
+                <tag name="Visited">
+                    <tags>
+                        <tag name="Enemy kingdom"/>
+                    </tags>
+                </tag>
+            </tags>
+        </assign>
+    </actions>
+</rule>

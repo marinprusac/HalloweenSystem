@@ -11,10 +11,10 @@ namespace HalloweenSystem.GameLogic.Selectors.HandoutSelectors;
 /// Represents a selector that transforms and joins handouts based on the evaluation of a nested selector.
 /// </summary>
 /// <typeparam name="TN">The type of game object that the nested selector evaluates.</typeparam>
-/// <param name="joinString">The string used to join the text representations of the selected game objects.</param>
+/// <param name="separator">The string used to join the text representations of the selected game objects.</param>
 /// <param name="placeholder">The placeholder text to use if no game objects are selected.</param>
 /// <param name="nestedSelector">The nested selector that evaluates to a collection of game objects.</param>
-public class TransformHandoutSelector<TN>(string joinString, string placeholder, ISelector<TN> nestedSelector)
+public class TransformHandoutSelector<TN>(string separator, string placeholder, ISelector<TN> nestedSelector)
 	: ISelector<Handout>, IParser<TransformHandoutSelector<TN>> where TN : GameObject, new()
 {
 	/// <summary>
@@ -29,7 +29,7 @@ public class TransformHandoutSelector<TN>(string joinString, string placeholder,
 		var texts = objects.Select(obj => obj.ToHandoutText()).ToList();
 		if (texts.Count != 0)
 		{
-			text = string.Join(joinString, texts);
+			text = string.Join(separator == "newline" ? "\n" : separator, texts);
 		}
 
 		var handout = new Handout(text);

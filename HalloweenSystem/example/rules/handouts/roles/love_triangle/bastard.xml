@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Bastard handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Bastard"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="👤 IDENTITY: The Bastard 💩"/>
+                    <text text="You are a child of your mother's love affair. She tried to get rid of you, but you survived."/>
+                    <text text="As her first child, you have the right to sit on the kingdom's throne after she dies, but not without enough aristocratic support..."/>
+                </join>
+
+                <join separator="newline">
+                    <text text="☑️ TASK: Get aristocratic support"/>
+                    <text text="Getting signatures from the aristocracy expressing support for your claim is of great importance."/>
+                    <text text="You may ask the aristocrats directly, or... get their signature forgeries at the dark market."/>
+                </join>
+            </handouts>
+        </handout>
+    </actions>
+</rule>

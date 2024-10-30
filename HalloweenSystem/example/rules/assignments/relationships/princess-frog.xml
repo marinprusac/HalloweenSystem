@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Princess-frog lovers">
+
+    <requirements>
+        <intersect>
+            <all_if_any>
+                <has_type tag="Princess"/>
+            </all_if_any>
+            <all_if_any>
+                <has_type tag="Frog"/>
+            </all_if_any>
+        </intersect>
+    </requirements>
+
+
+    <actions>
+        <assign>
+            <players>
+                <has_type tag="Princess"/>
+            </players>
+            <tags>
+                <tag name="Lover">
+                    <tags>
+                        <tag name="Frog"/>
+                    </tags>
+                </tag>
+            </tags>
+        </assign>
+
+        <assign>
+            <players>
+                <has_type tag="Frog"/>
+            </players>
+            <tags>
+                <tag name="Lover">
+                    <tags>
+                        <tag name="Princess"/>
+                    </tags>
+                </tag>
+            </tags>
+        </assign>
+    </actions>
+
+</rule>

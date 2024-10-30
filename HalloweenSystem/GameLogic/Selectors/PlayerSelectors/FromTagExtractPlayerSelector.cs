@@ -25,7 +25,7 @@ public class FromTagExtractPlayerSelector(ISelector<Tag> nestedSelector)
 	{
 		var tags = nestedSelector.Evaluate(context);
 
-		var playerParameters = tags.Select(tag => tag.PlayerParameters.AsEnumerable());
+		var playerParameters = tags.Select(tag => tag.playerParameters.AsEnumerable());
 
 		return GameObject.Union<Player>(playerParameters).Cast<Player>();
 	}

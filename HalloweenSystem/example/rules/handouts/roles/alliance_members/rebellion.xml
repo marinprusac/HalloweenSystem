@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Rebel handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Rebel"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="🫂 ALLEGIANCE: THE REBELLION 🔥"/>
+                    <text text="You are a part of the rebellion against the kingdom."/>
+                    <text text="You want to crush the current monarchical dynasty, and install a fair country leadership."/>
+                    <join separator="">
+                        <text text="You plan to achieve this by killing all the non-rebel royalty among the following: "/>
+                        <transform separator=", " type="tag">
+                            <intersect>
+                                <list>
+                                    <tag name="Princess"/>
+                                    <tag name="Queen"/>
+                                    <tag name="Bastard"/>
+                                    <tag name="Fiancee"/>
+                                </list>
+                                <complement>
+                                    <player_assigned_tag>
+                                        <players>
+                                            <current_player/>
+                                        </players>
+                                        <tags>
+                                            <tag name="Princess"/>
+                                            <tag name="Queen"/>
+                                            <tag name="Bastard"/>
+                                            <tag name="Fiancee"/>
+                                        </tags>
+                                    </player_assigned_tag>
+                                </complement>
+                            </intersect>
+                        </transform>
+                        <text text="."/>
+                    </join>
+                    <text text="You don't know who other rebellion members are but the most important thing is to keep the rebellion leader alive."/>
+                </join>
+            </handouts>
+        </handout>
+
+        <handout>
+            <players>
+                <has_type tag="Rebellion leader"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="👤 IDENTITY: The Rebellion Leader ✊"/>
+                    <text text="Try to find out who other rebels are and work together to crush the kingdom once and for all."/>
+                </join>
+            </handouts>
+        </handout>
+    </actions>
+</rule>

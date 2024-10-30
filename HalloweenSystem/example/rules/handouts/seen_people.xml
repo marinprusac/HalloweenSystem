@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Seen handout">
+    <actions>
+        <handout>
+
+            <players>
+                <complement>
+                    <has_type tag="Queen"/>
+                </complement>
+            </players>
+
+            <handouts>
+
+                <join separator="newline">
+
+                    <text text="ℹ️ INFO: People you've seen"/>
+                    <text text="Up until know, you've seen the following people on the locations you visited:"/>
+
+                    <iterate name="location" parameter_type="tag">
+
+                        <parameter_selector>
+                            <from_player_extract_tag tag="Visited">
+                                <current_player/>
+                            </from_player_extract_tag>
+                        </parameter_selector>
+
+                        <iterable_selector>
+                            <join>
+                                <text text="In the "/>
+                                <transform type="tag">
+                                    <parameter name="location"/>
+                                </transform>
+                                <text text=" you have seen: "/>
+
+                                <transform separator=", " placeholder="nobody" type="player">
+                                    <chance probability="0.5">
+                                        <has_tag>
+                                            <players>
+                                                <remove_current_player>
+                                                    <all/>
+                                                </remove_current_player>
+                                            </players>
+                                            <tags>
+                                                <tag name="Visited">
+                                                    <tags>
+                                                        <parameter name="location"/>
+                                                    </tags>
+                                                </tag>
+                                            </tags>
+                                        </has_tag>
+
+                                    </chance>
+                                </transform>
+
+                            </join>
+
+                        </iterable_selector>
+
+                    </iterate>
+                </join>
+
+            </handouts>
+
+        </handout>
+    </actions>
+</rule>
