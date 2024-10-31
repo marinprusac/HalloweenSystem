@@ -8,21 +8,16 @@
             <handouts>
                 <join separator="newline">
                     <text text="👤 IDENTITY: The Foreign Spy 🕵️"/>
-                    <text text="You are sent by the neighboring, enemy kingdom, to find some crucial information and execute an important target."/>
+                    <text text="Sent by your home kingdom, you breached the security checks and ended up deep into the heart of the enemy territory."/>
                 </join>
-
+                
                 <join separator="newline">
-                    <text text="☑️ TASK: Find some info"/>
-                    <text text="TODO"/>
-                </join>
-
-                <join separator="newline">
-                    <text text="☑️ TASK: Execute"/>
-                    <text text="TODO"/>
+                    <text text="☑️ TASK: Sabotage the army"/>
+                    <text text="Now that you're here, you are to kill the army general."/>
+                    <text text="Killing them will give your kingdom a better chance to overpower this already crumbling kingdom."/>
+                    <text text="You couldn't bring along your weapon into the tavern, but you know of a place where you can get some alternative tools - the dark market."/>
                 </join>
             </handouts>
         </handout>
     </actions>
 </rule>
-
-<!-- TODO -->

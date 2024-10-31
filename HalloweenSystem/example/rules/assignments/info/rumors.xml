@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Rumor assignment">
+    <actions>
+        <assign>
+            <players>
+                <complement>
+                    <has_type tag="Gossip girl"/>
+                    <has_type tag="Queen"/>
+                </complement>
+            </players>
+            
+            <tags>
+                <tag name="Rumor">
+                    <tags>
+                        <random amount="2">
+                            <intersect>
+                                <group_tag name="Gossips"/>
+                                <player_assigned_tag>
+                                    <tags>
+                                        <all/>
+                                    </tags>
+                                </player_assigned_tag>
+                                <complement>
+                                    <player_assigned_tag>
+                                        <tags>
+                                            <all/>
+                                        </tags>
+                                        <players>
+                                            <current_player/>
+                                        </players>
+                                    </player_assigned_tag>
+                                    <from_player_extract_tag tag="Knows">
+                                        <current_player/>
+                                    </from_player_extract_tag>
+                                </complement>
+                            </intersect>
+                        </random>
+                    </tags>
+                </tag>
+            </tags>
+        </assign>
+
+        <assign>
+            <players>
+                <has_type tag="Gossip girl"/>
+            </players>
+
+            <tags>
+                <tag name="Rumor">
+                    <tags>
+                        <random amount="4">
+                            <intersect>
+                                <group_tag name="Gossips"/>
+                                <player_assigned_tag>
+                                    <tags>
+                                        <all/>
+                                    </tags>
+                                </player_assigned_tag>
+                                <complement>
+                                    <player_assigned_tag>
+                                        <tags>
+                                            <all/>
+                                        </tags>
+                                        <players>
+                                            <current_player/>
+                                        </players>
+                                    </player_assigned_tag>
+                                    <from_player_extract_tag tag="Knows">
+                                        <current_player/>
+                                    </from_player_extract_tag>
+                                </complement>
+                            </intersect>
+                        </random>
+                    </tags>
+                </tag>
+            </tags>
+        </assign>
+    </actions>
+</rule>

@@ -12,11 +12,12 @@
                         <has_type tag="Maid"/>
                         <has_type tag="Bastard"/>
                         <has_type tag="Old"/>
+                        <has_group name="Clergy"/>
                     </complement>
                 </random>
             </players>
             <tags>
-                <tag name="Pretender"/>
+                <tag name="Princess pretender"/>
             </tags>
         </assign>
     </actions>

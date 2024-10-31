@@ -6,7 +6,31 @@
                 <has_type tag="Exorcist"/>
             </players>
             <handouts>
-                <text text=""/>
+                <join separator="newline">
+                    <text text="👤 IDENTITY: The Exorcist 📛"/>
+                    <text text="Throughout your life you've been suffering at the hand of evil magic."/>
+                    <text text="You decided to devote your life to ensure that those using witchcraft to spill blood are revealed to the light of day and God!"/>
+                </join>
+
+                <join separator="newline">
+                    <text text="☑️ TASK: Find all the mages"/>
+                    <text text="Your archbishop, "/>
+                    <join>
+                        <transform type="player">
+                            <has_type tag="Archbishop"/>
+                        </transform>
+                        <text text=", recognizes your potential and tasked you to find all the unlicensed mages."/>
+                    </join>
+                    <text text="This includes any type of these: "/>
+                    <transform type="tag" separator="newline">
+                        <intersect>
+                            <group_tag name="Magic wielders"/>
+                            <complement>
+                                <tag name="Court mage"/>
+                            </complement>
+                        </intersect>
+                    </transform>
+                </join>
             </handouts>
         </handout>
     </actions>

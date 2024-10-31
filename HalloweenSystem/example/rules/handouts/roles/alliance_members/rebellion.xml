@@ -9,7 +9,23 @@
                 <join separator="newline">
                     <text text="🫂 ALLEGIANCE: THE REBELLION 🔥"/>
                     <text text="You are a part of the rebellion against the kingdom."/>
-                    <text text="You want to crush the current monarchical dynasty, and install a fair country leadership."/>
+                    <text text="The recent efforts by the crown to please the common people are petty."/>
+                    <text text="It is becoming apparent that the only solution for this kingdom is it's destruction."/>
+                    <text text="In the chaotic workings of the rebellion, you don't know who other rebels are, but you know you're not alone."/>
+                </join>
+            </handouts>
+        </handout>
+
+
+        <handout>
+            <players>
+                <has_type tag="Rebel"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+
+                    <text text="*️⃣ ALLIANCE OBJECTIVE: Rule of the people"/>
+                    <text text="You want to crush the current monarchical dynasty, and install a fair country leadership serving the people."/>
                     <join separator="">
                         <text text="You plan to achieve this by killing all the non-rebel royalty among the following: "/>
                         <transform separator=", " type="tag">
@@ -37,7 +53,9 @@
                         </transform>
                         <text text="."/>
                     </join>
-                    <text text="You don't know who other rebellion members are but the most important thing is to keep the rebellion leader alive."/>
+                    <text text="The most important thing is to keep the rebellion leader alive."/>
+                    <text text="How you plan to kill them is up to you, but you know that there are weapon vendors somewhere within the dark market."/>
+
                 </join>
             </handouts>
         </handout>
@@ -50,6 +68,7 @@
                 <join separator="newline">
                     <text text="👤 IDENTITY: The Rebellion Leader ✊"/>
                     <text text="Try to find out who other rebels are and work together to crush the kingdom once and for all."/>
+                    <text text="You are the symbol or resistance, and if you die, the rebellion dies with you. Don't die."/>
                 </join>
             </handouts>
         </handout>

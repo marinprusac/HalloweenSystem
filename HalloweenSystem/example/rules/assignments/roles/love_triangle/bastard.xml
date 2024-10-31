@@ -7,8 +7,8 @@
                     <intersect>
                         <union>
                             <has_type tag="Goodwin"/>
-                            <iterate name="tag" parameter_type="tag">
-                                <parameter_selector>
+                            <iterate name="tag" type="tag">
+                                <parameter>
                                     <group_tag name="Alliance members">
                                         <complement>
                                             <player_assigned_tag>
@@ -18,15 +18,15 @@
                                             </player_assigned_tag>
                                         </complement>
                                     </group_tag>
-                                </parameter_selector>
+                                </parameter>
 
-                                <iterable_selector>
+                                <iterable>
                                     <has_tag>
                                         <tags>
                                             <parameter name="tag"/>
                                         </tags>
                                     </has_tag>
-                                </iterable_selector>
+                                </iterable>
                             </iterate>
                         </union>
                         <complement>
@@ -35,6 +35,7 @@
                             <has_type tag="Old"/>
                             <has_type tag="Vampire"/>
                             <has_type tag="Foreigner"/>
+                            <has_group name="Clergy"/>
                         </complement>
                         <has_type tag="Commoner"/>
                     </intersect>

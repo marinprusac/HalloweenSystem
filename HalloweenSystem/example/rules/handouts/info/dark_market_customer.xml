@@ -4,7 +4,11 @@
         <handout together="yes">
             <players>
                 <intersect>
-                    <has_group name="Customer"/>
+                    <union>
+                        <has_group name="Customer"/>
+                        <has_type tag="Spymaster"/>
+                        <has_type tag="Foreign spy"/>
+                    </union>
                     <complement>
                         <has_type tag="Vigilante"/>
                         <has_group name="Servitor"/>
@@ -15,16 +19,16 @@
 
                 <join separator="newline">
                     <text text="ℹ️ INFO: Dark market location"/>
-                    <text text="As a regular customer on the dark market, you are familiar with the common dark market locations."/>
+                    <text text="You are familiar with the common dark market locations."/>
 
                     <join>
-                        <text text="During the following party, the handover of good and services will happen in the "/>
+                        <text text="During the following party, the handover of good and services will happen in the **"/>
                         <transform type="tag">
                             <random amount="1">
                                 <group_tag name="Dark market event places"/>
                             </random>
                         </transform>
-                        <text text="."/>
+                        <text text="**."/>
                     </join>
 
                     <text text="Your trusted vendors and fellow customers will be there."/>

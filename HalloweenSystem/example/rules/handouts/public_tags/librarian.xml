@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Librarian handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Librarian"/>
+            </players>
+
+            <handouts>
+                <join separator="newline">
+                    <text text="🗣️ PUBLIC IDENTITY: The Librarian"/>
+                    <text text="You've served as the librarian in the capital."/>
+                    <text text="You've seen all kinds of people enter and borrow books."/>
+                    <text text="But it's not only books, it's also travelogues and drama scenarios."/>
+                    <text text="Customers like to explore topics that are unique to them. One can tell a lot about a person based on the literature they read."/>
+                    <text text="Your customers often write reviews upon returning the books which you also like to read about."/>
+                </join>
+
+                <join separator="newline">
+                    <text text="☑️ TASK: Connect the dots"/>
+                    <text text="The tavern has a 'rich' library of books."/>
+                    <text text="You've stored some of your books there too along with some book, exploration and review notes."/>
+                    <text text="Take a look at (or between) those books again and see what you can conclude."/>
+                </join>
+            </handouts>
+        </handout>
+    </actions>
+</rule>

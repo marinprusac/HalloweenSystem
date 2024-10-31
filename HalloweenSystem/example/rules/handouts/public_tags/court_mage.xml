@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Court mage handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Court mage"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="🗣️ PUBLIC IDENTITY: The Court Mage 🧙‍♂️"/>
+                    <text text="Being a licensed magic caster allows you to use your magical capabilities in public life."/>
+                    <text text="You have long served as your queen's servant, but you feel that this party will be more than serving your queen."/>
+                    <text text="Powerful magics are around you, and, for the first time, you feel like you're in presence of someone even more powerful than you."/>
+                </join>
+
+                <join separator="newline">
+                    <text text="☑️ TASK: Where is that damn Spellbook?"/>
+                    <text text="Find the spellbook you've accidentally dropped somewhere in the tavern."/>
+                    <text text="It should contain three spells: Expelliarmus, Veritaserum Magicus and Imperio."/>
+                </join>
+            </handouts>
+        </handout>
+    </actions>
+</rule>

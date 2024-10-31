@@ -9,21 +9,15 @@
                 
                 <join separator="newline">
                     <text text="👤 IDENTITY: The Fianceé 💍"/>
-                    <text text="You are engaged to the princess!"/>
-                    <text text="The queen gave you two her blessing and are about to soon be wed!"/>
-                    <text text="But you have some burning doubts..."/>
-                </join>
-
-                <join separator="newline">
-                    <text text="ℹ️ INFO: Princess' true identity"/>
                     <join>
-                        <text text="You know who the princess is. It is "/>
+                        <text text="You are engaged to the princess - "/>
                         <transform type="player">
                             <has_type tag="Princess"/>
                         </transform>
-                        <text text="."/>
+                        <text text="!"/>
                     </join>
-                    <text text="You might want to keep that information private."/>
+                    <text text="The queen gave you two her blessing and are about to soon be wed!"/>
+                    <text text="But you have some burning doubts..."/>
                 </join>
 
                 <join separator="newline">

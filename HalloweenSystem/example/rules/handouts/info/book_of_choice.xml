@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Book handout">
+    <actions>
+        <handout>
+            <players>
+                <complement>
+                    <has_type tag="Librarian"/>
+                </complement>
+            </players>
+            
+            <handouts>
+                <join separator="newline">
+                    <text text="‼️ OUT-OF-CHARACTER TASK: Borrowed book"/>
+                    <join>
+                        <text text="You've been very curious how you can be better at being "/>
+                        <transform type="tag">
+                            <random amount="1">
+                                <intersect>
+                                    <union>
+                                        <group_tag name="Gossips"/>
+                                        <tag name="Mafia"/>
+                                        <tag name="Sectarian"/>
+                                        <tag name="Vampire"/>
+                                        <tag name="Rebel"/>
+                                        <tag name="Queen"/>
+                                    </union>
+                                    <player_assigned_tag>
+                                        <players>
+                                            <current_player/>
+                                        </players>
+                                        <tags>
+                                            <all/>
+                                        </tags>
+                                    </player_assigned_tag>
+                                </intersect>
+                            </random>
+                        </transform>
+                        <text text="."/>
+                    </join>
+                    <text text="Take two pieces of paper."/>
+                    <text text="On the first piece write the name of a REAL book, drama or place that your character would've likely explored in pursuit of more knowledge regarding the above."/>
+                    <text text="On the second piece write a short review about that book, drama or place your character hypothetically explored."/>
+                    <text text="Sign your name on the second piece without mentioning the name written on the first paper."/>
+                    <text text="Flip both pieces of paper and write 'LIBRARIAN' on the backsides of those paper pieces."/>
+                    <text text="Place both pieces somewhere BETWEEN different books in the tavern (NOT INSIDE THE BOOKS)."/>
+                </join>
+            </handouts>
+        </handout>
+    </actions>
+</rule>

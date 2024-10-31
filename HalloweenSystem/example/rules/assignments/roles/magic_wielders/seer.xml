@@ -11,7 +11,7 @@
                             <has_group name="Magic wielders"/>
                             <has_group name="Clergy"/>
                             <has_type tag="Frog"/>
-                            <has_type tag="Pretender"/>
+                            <has_type tag="Princess pretender"/>
                             <has_type tag="Princess"/>
                             <has_type tag="Queen"/>
                         </complement>
@@ -21,7 +21,7 @@
                         <complement>
                             <has_group name="Magic wielders"/>
                             <has_type tag="Frog"/>
-                            <has_type tag="Pretender"/>
+                            <has_type tag="Princess pretender"/>
                             <has_type tag="Princess"/>
                             <has_group name="Clergy"/>
                             <has_type tag="Queen"/>

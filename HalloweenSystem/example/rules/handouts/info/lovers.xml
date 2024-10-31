@@ -3,17 +3,17 @@
     <actions>
         <handout>
             <players>
-                <iterate parameter_type="player" name="player">
-                    <parameter_selector>
+                <iterate type="player" name="player">
+                    <parameter>
                         <intersect>
                             <has_type tag="Lover"/>
                             <complement>
                                 <has_type tag="Cheater"/>
                             </complement>
                         </intersect>
-                    </parameter_selector>
+                    </parameter>
 
-                    <iterable_selector>
+                    <iterable>
                         <intersect>
                             <parameter name="player"/>
                             <all_if_any>
@@ -22,7 +22,7 @@
                                 </from_player_extract_player>
                             </all_if_any>
                         </intersect>
-                    </iterable_selector>
+                    </iterable>
                 </iterate>
             </players>
 
@@ -47,12 +47,12 @@
 
         <handout>
             <players>
-                <iterate parameter_type="player" name="player">
-                    <parameter_selector>
+                <iterate type="player" name="player">
+                    <parameter>
                         <has_type tag="Lover"/>
-                    </parameter_selector>
+                    </parameter>
 
-                    <iterable_selector>
+                    <iterable>
                         <intersect>
                             <has_any_tag>
                                 <players>
@@ -67,7 +67,7 @@
                                 </tags>
                             </has_any_tag>
                         </intersect>
-                    </iterable_selector>
+                    </iterable>
                 </iterate>
             </players>
 
@@ -75,7 +75,7 @@
                 <join separator="newline">
                     <text text="♥️ RELATIONSHIP: Lover"/>
                     <join>
-                        <text text="You are in love with the"/>
+                        <text text="You are in love with the "/>
                         <transform type="tag">
                             <from_player_extract_tag tag="Lover">
                                 <current_player/>

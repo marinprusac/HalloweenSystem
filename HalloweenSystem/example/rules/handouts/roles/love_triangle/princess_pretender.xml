@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rule name="Pretender handout">
+<rule name="Princess pretender handout">
     <actions>
         <handout>
             <players>
-                <has_type tag="Pretender"/>
+                <has_type tag="Princess pretender"/>
             </players>
             <handouts>
                 

@@ -6,6 +6,13 @@
                 <has_type tag="Drug dealer"/>
             </players>
             <handouts>
+
+                <join separator="newline">
+                    <text text="‼️ OUT-OF-CHARACTER TASK: Drug essence inventory"/>
+                    <text text="Go to the out-of-game room while nobody's watching."/>
+                    <text text="Take ONE black essence, ONE red essence and THREE blue essence drugs, and no more than that."/>
+                    <text text="You can use these essence drugs or sell them at the dark market."/>
+                </join>
                 
                 <join separator="newline">
                     <text text="☑️ TASK: Drug essence business"/>
@@ -19,5 +26,3 @@
         </handout>
     </actions>
 </rule>
-
-<!-- TODO -->

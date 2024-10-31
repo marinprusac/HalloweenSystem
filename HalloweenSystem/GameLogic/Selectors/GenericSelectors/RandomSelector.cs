@@ -28,9 +28,6 @@ public class RandomSelector<T>(string amount, ISelector<T>? nestedSelector=null)
 		
 		if(selectedCount >= gameObjects.Count) return gameObjects;
 		
-		var combinations = Statistics.Factorial(gameObjects.Count) / Statistics.Factorial(gameObjects.Count - selectedCount) / Statistics.Factorial(selectedCount) ;
-		
-		context.Setting.Statistics.LogCombination(combinations);
 		
 		return Limit.ChooseRandom(gameObjects, selectedCount);
 	}

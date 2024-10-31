@@ -9,7 +9,7 @@
                         <has_type tag="Vampire"/>
                         <has_type tag="Mafia"/>
                         <has_type tag="Old"/>
-                        <has_type tag="Archbishop"/>
+                        <has_group name="Clergy"/>
                     </complement>
                 </random>
             </players>

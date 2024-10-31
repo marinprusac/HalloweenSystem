@@ -8,19 +8,20 @@ var setting = Parser.LoadGame(path);
 
 var playerTags = new Dictionary<string, List<string>>()
 {
-	{ "Marin", ["Old", "Social", "Commoner", "Tavern keeper"] },
-	{ "Patrik", ["Loner", "Foreigner", "Commoner", "Librarian"] },
-	{ "Juraj", ["Young", "Scary", "Aristocrat", "Army general"] },
-	{ "Borna", ["Old", "Scary", "Commoner", "Merchant"] },
-	{ "Jelena", ["Social", "Foreigner", "Commoner", "Soldier"] },
-	{ "Tin", ["Smart", "Foreigner", "Aristocrat", "Court mage"] },
-	{ "Lucija", ["Social", "Smart", "Aristocrat", "Inheritor"] },
-	{ "Silvija", ["Scary", "Romantic", "Aristocrat", "Inheritor"] },
-	{ "Rino", ["Social", "Romantic", "Aristocrat", "Spymaster"] },
-	{ "Nika", ["Queen"] },
-	{ "Michelle", ["Young", "Loner", "Commoner", "Executioner"] },
-	{ "Mathea", ["Old", "Scary", "Commoner", "Soldier"] },
-	{ "Mia", ["Scary", "Foreigner", "Commoner", "Librarian"] },
+	{ "Colin Douglass", ["Old", "Social", "Commoner", "Tavern keeper"] },
+	{ "Webster", ["Loner", "Foreigner", "Commoner", "Librarian"] },
+	{ "Vyncis Lannister", ["Young", "Scary", "Aristocrat", "Army general"] },
+	{ "'Crazy Eyes'", ["Old", "Scary", "Commoner", "Merchant"] },
+	{ "Marina Ivanova", ["Social", "Foreigner", "Commoner", "Soldier"] },
+	{ "Percival", ["Smart", "Foreigner", "Aristocrat", "Court mage"] },
+	{ "Adeline Pandora Cavendish", ["Social", "Smart", "Aristocrat", "Inheritor"] },
+	{ "Eleanor Charity Godwin", ["Social", "Romantic", "Aristocrat", "Inheritor"] },
+	{ "Cedric Sulyvahn Lothric", ["Social", "Romantic", "Aristocrat", "Spymaster"] },
+	{ "Queen Victoria", ["Queen"] },
+	{ "Ezra", ["Young", "Loner", "Commoner", "Executioner"] },
+	{ "Colonel Grimwood", ["Old", "Scary", "Commoner", "Soldier"] },
+	{ "Josephine McCrea", ["Scary", "Foreigner", "Commoner", "Librarian"] },
+	{ "Father Dominik Morgan", ["Social", "Smart", "Aristocrat", "Archbishop"] },
 };
 
 

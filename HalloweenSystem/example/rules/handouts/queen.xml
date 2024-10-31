@@ -48,16 +48,16 @@ You hope that her fiancee and her best friend and maid, "/>
             <join separator="newline">
                 <text text="ℹ️ INFO: Your councillors"/>
                     <text text="You see that some of your court councillors and loyal advisors are present: "/>
-                    <iterate parameter_type="player" name="councillor">
-                        <parameter_selector>
+                    <iterate type="player" name="councillor">
+                        <parameter>
                             <union>
                                 <has_type tag="Spymaster"/>
                                 <has_type tag="Court mage"/>
                                 <has_type tag="Army general"/>
                                 <has_type tag="Royal advisor"/>
                             </union>
-                        </parameter_selector>
-                        <iterable_selector>
+                        </parameter>
+                        <iterable>
                             <join>
                                 <transform type="player">
                                     <parameter name="councillor"/>
@@ -78,7 +78,7 @@ You hope that her fiancee and her best friend and maid, "/>
                                     </player_assigned_tag>
                                 </transform>
                             </join>
-                        </iterable_selector>
+                        </iterable>
                     </iterate>
                 </join>
                 

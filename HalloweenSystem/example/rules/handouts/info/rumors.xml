@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Rumor handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Rumor"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="ℹ️ INFO: Rumors you've overheard"/>
+                    <text text="Spending some time in society, one can hear a lot of rumors."/>
+                    <text text="Here are some, you've heard of:"/>
+                    <iterate name="rumor" type="tag">
+                        <parameter>
+                            <from_player_extract_tag tag="Rumor">
+                                <current_player/>
+                            </from_player_extract_tag>
+                        </parameter>
+
+                        <iterable>
+
+                            <join>
+                                <text text="- One of these is the "/>
+                                <transform type="tag">
+                                    <parameter name="rumor"/>
+                                </transform>
+                                <text text=": "/>
+                                <transform type="player" separator=", ">
+                                    <shuffle>
+                                        <has_tag>
+                                            <tags>
+                                                <parameter name="rumor"/>
+                                            </tags>
+                                        </has_tag>
+                                        <random amount="2">
+                                            <remove_current_player>
+                                                <complement>
+                                                    <has_tag>
+                                                        <tags>
+                                                            <parameter name="rumor"/>
+                                                        </tags>
+                                                    </has_tag>
+                                                    <has_type tag="Queen"/>
+                                                </complement>
+                                            </remove_current_player>
+                                        </random>
+                                    </shuffle>
+                                </transform>
+                                <text text="."/>
+                            </join>
+                        </iterable>
+                    </iterate>
+                </join>
+            </handouts>
+        </handout>
+
+        <handout>
+            <players>
+                <has_any_tag>
+                    <tags>
+                        <from_player_extract_tag tag="Rumor">
+                            <all/>
+                        </from_player_extract_tag>
+                    </tags>
+                </has_any_tag>
+            </players>
+
+            <handouts>
+                <join separator="newline">
+
+                    <text text="ℹ️ INFO: Rumors about you!"/>
+                    <text text="Hearing rumors about other is all fun and games, but when the rumor is about you, it can be scary."/>
+                    <text text="Some of the present people may be aware of some of your secret identities:"/>
+
+                    <iterate name="knows" type="player">
+
+                        <parameter>
+                            <has_any_tag>
+                                <tags>
+                                    <iterate type="tag" name="rumored">
+                                        <parameter>
+                                            <player_assigned_tag>
+                                                <players>
+                                                    <current_player/>
+                                                </players>
+                                                <tags>
+                                                    <all/>
+                                                </tags>
+                                            </player_assigned_tag>
+                                        </parameter>
+                                        <iterable>
+                                            <tag name="Rumor">
+                                                <tags>
+                                                    <parameter name="rumored"/>
+                                                </tags>
+                                            </tag>
+                                        </iterable>
+                                    </iterate>
+                                </tags>
+                            </has_any_tag>
+                        </parameter>
+
+                        <iterable>
+                            <join>
+                                <text text="- One of these is suspecting that you're the "/>
+                                <transform type="tag" separator=" or ">
+                                    <intersect>
+                                        <from_player_extract_tag tag="Rumor">
+                                            <parameter name="knows"/>
+                                        </from_player_extract_tag>
+                                        <player_assigned_tag>
+                                            <players>
+                                                <current_player/>
+                                            </players>
+                                            <tags>
+                                                <all/>
+                                            </tags>
+                                        </player_assigned_tag>
+                                    </intersect>
+                                </transform>
+                                <text text=": "/>
+                                <transform type="player" separator=", ">
+                                    <shuffle>
+                                        <parameter name="knows"/>
+                                        <random amount="2">
+                                            <remove_current_player>
+                                                <complement>
+                                                    <parameter name="knows"/>
+                                                    <has_type tag="Queen"/>
+                                                </complement>
+                                            </remove_current_player>
+                                        </random>
+                                        
+                                    </shuffle>
+                                </transform>
+                                <text text="."/>
+                            </join>
+                        </iterable>
+
+
+                    </iterate>
+                </join>
+            </handouts>
+
+        </handout>
+    </actions>
+</rule>

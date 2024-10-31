@@ -9,10 +9,25 @@
                 <join separator="newline">
                     <text text="🫂 ALLEGIANCE: THE VAMPIRE COVEN 🩸"/>
                     <text text="You are a vampire."/>
+                    <text text="That fact would've given you praise a long time ago, but today you have to stay in hiding."/>
+                    <text text="The powerful vampire dynasty has been defeated by humans and their demon they bargained with."/>
+                    <text text="You will not die accepting this fate."/>
+                </join>
+            </handouts>
+        </handout>
+
+        <handout>
+            <players>
+                <has_type tag="Vampire"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="*️⃣ ALLIANCE OBJECTIVE: Back on the throne"/>
                     <text text="Your goal is to get the vampires back on the throne where they belong."/>
                     <text text="You plan to achieve this by killing the queen and converting the princess into a vampire."/>
                     <text text="Coven elder is the only one who can convert her."/>
                     <text text="Make sure the coven elder stays alive."/>
+                    <text text="How you plan to kill the queen is up to you, but you know that there are weapon vendors somewhere within the dark market."/>
                 </join>
             </handouts>
         </handout>
@@ -25,7 +40,9 @@
                 <join separator="newline">
                     <text text="👤 IDENTITY: The Coven Elder 🧛"/>
                     <text text="As the coven elder, it is you that has to stay alive!"/>
-                    <text text="Convert the princess by getting her signature. After that, get her into a room and perform the conversion ritual."/>
+                    <text text="To convert the princess (or anyone else), you first have to get her signature and blue or red magic essence."/>
+                    <text text="After that, get her alone into a room."/>
+                    <text text="Show her all the materials you've gathered as proof after which she will know that she is now one of you - another vampire."/>
                 </join>
             </handouts>
         </handout>
@@ -43,6 +60,15 @@
                             <remove_current_player>
                                 <has_type tag="Vampire"/>
                             </remove_current_player>
+                        </transform>
+                        <text text="."/>
+                    </join>
+                    <join>
+                        <text text="Your meeting place is: "/>
+                        <transform separator=", " type="tag">
+                            <from_player_extract_tag tag="Coven's business place">
+                                <current_player/>
+                            </from_player_extract_tag>
                         </transform>
                         <text text="."/>
                     </join>

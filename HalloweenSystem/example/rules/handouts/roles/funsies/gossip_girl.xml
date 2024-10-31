@@ -6,24 +6,56 @@
                 <has_type tag="Gossip girl"/>
             </players>
             <handouts>
+                
                 <join separator="newline">
-                    <text text="☑️ TASK: ALL THE TEA"/>
+                    <text text="👤 IDENTITY: The Gossip Girl 🤭"/>
                     <text text="Apart from the serious business, you want to satisfy your burning desire of..."/>
                     <text text="FINDING ABOUT ALL THE SECRETS!"/>
-                    <text text="Your goal is to find out as many secrets as possible about others that you don't already know!"/>
-                    <text text="Write your findings down."/>
-                    <text text="You may also want to make something up if it makes all the stories juicier!"/>
+                    <text text="Others are spreading rumors, but you are the real deal. You GOSSIP!"/>
                 </join>
                 
                 <join separator="newline">
-                    <text text="☑️ TASK: Whoops, the tea is spilling"/>
+                    <text text="☑️ TASK: ALL THE TEA"/>
+                    <text text="Your goal is to find out as many secrets that you care about."/>
                     <text text="For each secret you've found out about tell at least three other people about it."/>
                     <text text="You may also want to make something up if it makes all the stories juicier!"/>
+                    <text text="These are the secrets you care about, be sure to find out more about them:"/>
+                    <iterate type="tag" name="secret">
+                        <parameter>
+                            <random amount="33%">
+                                <intersect>
+                                    <group_tag name="Gossips"/>
+                                    <complement>
+                                        <player_assigned_tag>
+                                            <players>
+                                                <current_player/>
+                                            </players>
+                                            <tags>
+                                                <all/>
+                                            </tags>
+                                        </player_assigned_tag>
+                                        <from_player_extract_tag tag="Knows">
+                                            <current_player/>
+                                        </from_player_extract_tag>
+                                    </complement>
+                                </intersect>
+                            </random>
+                        </parameter>
+
+                        <iterable>
+                            <join>
+                                <text text="- Who is the "/>
+                                <transform type="tag">
+                                    <parameter name="secret"/>
+                                </transform>
+                                <text text="?"/>
+                            </join>
+                        </iterable>
+                    </iterate>
                 </join>
             </handouts>
         </handout>
-        
-        <!-- TODO: write gossip girl info -->
-        
+
+
     </actions>
 </rule>

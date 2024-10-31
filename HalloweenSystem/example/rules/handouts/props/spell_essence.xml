@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<rule name="Spell essence handout">
+    <actions>
+        
+        
+        <handout>
+            <players>
+                <has_type tag="Exorcist"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="‼️ OUT-OF-CHARACTER TASK: Hide the Magic Essence"/>
+                    <text text="Take all the magical essence packages and bottles in the out-of-game room."/>
+                    <text text="Hide them somewhere around the tavern and inn."/>
+                    <text text="Hide the black and red ones in harder locations (but not too hard) and blue ones in relatively easy ones."/>
+                    <text text="You may use the knowledge of the placement of these essences to observe if they've been taken and by whom."/>
+                    <text text="But you may **NOT** take it, displace it, dispose of it or tell someone else about it once it is placed."/>
+                </join>
+            </handouts>
+        </handout>
+        
+        <handout>
+            <players>
+                <has_group name="Magic wielders"/>
+            </players>
+            
+            <handouts>
+                <join separator="newline">
+                    <text text="ℹ️ INFO: The Magic Essence"/>
+                    <text text="You are aware of the components needed to cast the spells."/>
+                    <text text="Should you choose to cast any spell, you have to find the component required by the spell in question."/>
+                    <text text="This essence can be found at some locations within the tavern and you have the ability to collect it."/>
+                    <text text="Alternatively, you can get them at the dark market location somewhere within the tavern. But where?"/>
+                </join>
+            </handouts>
+        </handout>
+        
+    </actions>
+</rule>

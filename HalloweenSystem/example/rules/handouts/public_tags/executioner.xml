@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Executioner handout">
+    <actions>
+        
+        <handout>
+            
+            <players>
+                <has_type tag="Executioner"/>
+            </players>
+            
+            <handouts>
+                <join separator="newline">
+                    <text text="🗣️ PUBLIC IDENTITY: The Executioner"/>
+                    <text text="You are quite an emotionless being for being able to execute whoever is proclaimed guilty on the spot."/>
+                    <text text="Usually it is the lords making these decisions, but you sense the corruption taking over the kingdom and you know that things are not right."/>
+                    <text text="This time, you will act on your own accord and may execute one innocently proclaimed defendant during the trial that you deem guilty!"/>
+                </join>
+                
+                <join separator="newline">
+                    <text text="☑️ TASK: Your trusted execution weapon"/>
+                    <text text="To perform that execution, you need your favorite tool - the big hammer!"/>
+                    <text text="You had to surrender it to the tavern's guards, but you know that they put it somewhere silly."/>
+                    <text text="You can only use this weapon once and only for the trial execution."/>
+                    <text text="Find the hammer and be ready to alter the future."/>
+                </join>
+            </handouts>
+            
+        </handout>
+        
+    </actions>
+</rule>

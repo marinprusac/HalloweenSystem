@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Army general handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Army general"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="🗣️ PUBLIC IDENTITY: The Army General ⚜️"/>
+                    <text text="You've been chosen by her majesty the queen to lead her royal army."/>
+                    <join>
+                        <text text="Keep your honor high and make sure your soldiers ("/>
+                        <transform type="player" separator=", ">
+                            <has_type tag="Soldier"/>
+                        </transform>
+                        <text text=") do the same."/>
+                    </join>
+                </join>
+            </handouts>
+        </handout>
+    </actions>
+</rule>

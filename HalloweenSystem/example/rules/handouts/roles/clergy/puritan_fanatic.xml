@@ -6,7 +6,22 @@
                 <has_type tag="Puritan fanatic"/>
             </players>
             <handouts>
-                <text text=""/>
+                <join separator="newline">
+                    <text text="👤 IDENTITY: The Puritan Fanatic ✴️"/>
+                    <text text="Allowing this world to turn into an adulterous dystopia would go against all of your beliefs."/>
+                    <text text="You decided to devote your life to ensure that those performing adultery are revealed to the light of day and God!"/>
+                </join>
+
+                <join separator="newline">
+                    <text text="☑️ TASK: Find all the lovers"/>
+                    <text text="Your archbishop, "/>
+                    <join>
+                        <transform type="player">
+                            <has_type tag="Archbishop"/>
+                        </transform>
+                        <text text=", recognizes your potential and tasked you to find all the love couples."/>
+                    </join>
+                </join>
             </handouts>
         </handout>
     </actions>

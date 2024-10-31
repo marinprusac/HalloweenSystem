@@ -25,7 +25,7 @@
             <rule name="Choose forger"/>
             <rule name="Choose puritan fanatic"/>
             <rule name="Choose exorcist"/>
-            <rule name="Choose sympathizer"/>
+            <rule name="Choose vampire sympathizer"/>
             <rule name="Choose spy"/>
             <rule name="Choose wanderer"/>
             <rule name="Choose paranoid"/>
@@ -33,7 +33,6 @@
             <rule name="Choose drug addict"/>
             <rule name="Choose unmarried"/>
             <rule name="Choose gold digger"/>
-            <rule name="Choose pen pal"/>
         </activate>
     </actions>
 </rule>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Court positions handout">
+    <actions>
+        <handout>
+            <players>
+                <intersect>
+                    <has_any_tag>
+                        <tags>
+                            <intersect>
+                                <group_tag name="Courtiers"/>
+                                <complement>
+                                    <tag name="Princess"/>
+                                    <tag name="Maid"/>
+                                    <tag name="Fiancee"/>
+                                    <tag name="Queen"/>
+                                </complement>
+                            </intersect>
+                        </tags>
+                    </has_any_tag>
+                </intersect>
+            </players>
+            <handouts>
+
+                <join separator="newline">
+                    <text text="ℹ️ INFO: The Royal Council"/>
+                    <text text="You are one of the few queen's trusted advisors. Others being:"/>
+
+
+                    <iterate type="tag" name="position">
+                        <parameter>
+                            
+                            <intersect>
+                                <group_tag name="Courtiers"/>
+                                
+                                <complement>
+                                    <tag name="Princess"/>
+                                    <tag name="Maid"/>
+                                    <tag name="Fiancee"/>
+                                    <tag name="Queen"/>
+                                    <tag name="Royal advisor"/>
+                                    <player_assigned_tag>
+                                        <tags>
+                                            <all/>
+                                        </tags>
+                                        <players>
+                                            <current_player/>
+                                        </players>
+                                    </player_assigned_tag>
+                                </complement>
+                            </intersect>
+                            
+                        </parameter>
+                        <iterable>
+                            <join>
+                                <transform type="player">
+                                    <has_any_tag>
+                                        <tags>
+                                            <parameter name="position"/>
+                                        </tags>
+                                    </has_any_tag>
+                                </transform>
+    
+                                <text text=" - the "/>
+    
+                                <transform type="tag">
+                                    <parameter name="position"/>
+                                </transform>
+                            </join>
+
+                        </iterable>
+                    </iterate>
+                    
+                    <text text="Be careful! You are a valuable target..."/>
+
+                </join>
+
+            </handouts>
+        </handout>
+    </actions>
+</rule>

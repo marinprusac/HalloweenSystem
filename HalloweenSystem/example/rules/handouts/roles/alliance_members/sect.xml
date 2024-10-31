@@ -8,23 +8,45 @@
             <handouts>
                 <join separator="newline">
                     <text text="🫂 ALLEGIANCE: THE SECT 🕎"/>
-                    <text text="You are a sect member."/>
-                    <text text="Your goal is to satisfy your god by performing rituals and ultimately sacrificing another person."/>
-                    <text text="You also want the queen dead for acting against the will of your god."/>
-                    <text text="Collect the ritual resources (drugs and candles) and let your sect leader perform the rituals."/>
-                    <text text="When the time for the final ritual comes, take another person with you and perform the sacrificial ritual."/>
-                    <text text="Make sure the sect leader stays alive."/>
+                    <text text="You are a member of the old sect serving the god who freed the humans from vampire rule."/>
+                    <text text="Some call him a demon, but that 'demon' has done much more for the people of Caripati peninsula than any other 'diety' that others falsely preach."/>
+                    <text text="The betrayal of the human-ruled kingdom your god can hardly forgive, but there is a way you can pay him back."/>
+
                 </join>
             </handouts>
         </handout>
 
         <handout>
             <players>
-                <has_type tag="Sect leader 🪔"/>
+                <has_type tag="Sectarian"/>
             </players>
             <handouts>
                 <join separator="newline">
-                    <text text="👤 IDENTITY: The Sect Leader ♒"/>
+                    <text text="*️⃣ ALLIANCE OBJECTIVE: Summon your god"/>
+                    <text text="Your goal is to satisfy your god by performing rituals and ultimately sacrificing a person of high value to the kingdom."/>
+                    <text text="You also want the queen dead for acting against your god."/>
+                    <text text="How you plan to kill her is up to you, but you know that there are weapon vendors somewhere within the dark market."/>
+                    <text text="You have to perform three ritual preparations, each on a whole hour (example: 9pm, 10pm, 11pm)"/>
+                    <text text="If you miss it, you have to perform it on the next half hour, or else the ritual is failed."/>
+                    <text text="For each ritual preparation, you have to collect a purple candle and a magical essence."/>
+                    <text text="The purple candles can be found around the tavern, but the magical essence might be a bit harder to get."/>
+                    <text text="Try the dark market for it as well."/>
+                    <text text="Each ritual preparation has to be done in a different room and the sect leader has to incantate three times: invoco propo saluto"/>
+                    <text text="Light the candle on fire and pour the essence around it. The preparation is then complete."/>
+                    <text text="If all the preparations are completed, the god can be summoned by sacrificing the high value target."/>
+                    <text text="Bring their dead body to one of the rooms with a candle and the sect leader has to incantate five times: invoco domino servio ultimano"/>
+                    <text text="The ritual is then complete, and the dead body is fully consumed for the summoning of your god."/>
+                </join>
+            </handouts>
+        </handout>
+
+        <handout>
+            <players>
+                <has_type tag="Sect leader"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="👤 IDENTITY: The Sect Leader 🪔"/>
                     <text text="As the leader of the sect, it is you that has to stay alive!"/>
                     <text text="Coordinate the sect and perform the rituals!"/>
                 </join>
@@ -40,13 +62,21 @@
                     <text text="ℹ️ INFO: Sect members"/>
                     <join>
                         <text text="Other sect members are: "/>
-    
                         <transform separator=", " type="player">
                             <remove_current_player>
                                 <has_type tag="Sectarian"/>
                             </remove_current_player>
                         </transform>
-                        
+                        <text text="."/>
+                    </join>
+
+                    <join>
+                        <text text="Your meeting place is: "/>
+                        <transform separator=", " type="tag">
+                            <from_player_extract_tag tag="Sect's business place">
+                                <current_player/>
+                            </from_player_extract_tag>
+                        </transform>
                         <text text="."/>
                     </join>
                 </join>

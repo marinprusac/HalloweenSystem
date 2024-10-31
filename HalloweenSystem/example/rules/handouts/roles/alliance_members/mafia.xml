@@ -8,12 +8,33 @@
             <handouts>
                 <join separator="newline">
                     <text text="🫂 ALLEGIANCE: THE MAFIA 🚬"/>
-                    <text text="You are a mafia member."/>
+                    <text text="You are a member of the Mafia."/>
+                    <text text="The Mafia has had a period of great success until the kingdom managed to bring to the brink of extinction."/>
+                    <text text="Now you're ready to make a comeback and the prize of gold will be immeasurable."/>
+                    <text text="But there may be an impostor among us..."/>
+                </join>
+            </handouts>
+        </handout>
+
+        <handout>
+            <players>
+                <has_type tag="Mafia"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="*️⃣ ALLIANCE OBJECTIVE: Princess' weight in gold"/>
                     <text text="Your goal is to get the mafia rich by kidnapping a high value target: the princess."/>
                     <text text="You plan to achieve this by killing all her protectors."/>
                     <text text="This includes: the queen, princess' maid and princess' fiancee."/>
                     <text text="Keep the princess alive."/>
-                    <text text="Make sure the godfather stays alive."/>
+                    <join>
+                        <text text="Make sure the godfather "/>
+                        <transform type="player">
+                            <has_type tag="Godfather"/>
+                        </transform>
+                        <text text=" stays alive."/>
+                    </join>
+                    <text text="How you plan to kill them is up to you, but you know that there are weapon vendors somewhere within the dark market."/>
                 </join>
             </handouts>
         </handout>
@@ -26,7 +47,10 @@
                 <join separator="newline">
                     <text text="👤 IDENTITY: The Godfather 🌹"/>
                     <text text="As the godfather of the mafia, it is you that has to stay alive!"/>
-                    <text text="Coordinate the mafia!"/>
+                    <text text="Keep an eye on your mafia members, one of them COULD be snitching."/>
+                    <text text="If you're certain that someone is snitching, write their name on your will paper, they will suffer great consequences."/>
+                    <text text="If you wrongfully accuse someone, you lose the game."/>
+                    <text text="Coordinate the mafia and get that bounty!"/>
                 </join>
             </handouts>
         </handout>
@@ -40,7 +64,6 @@
                     <text text="ℹ️ INFO: Mafia members"/>
                     <join>
                         <text text="Other mafia members are: "/>
-    
                         <transform separator=", " type="player">
                             <remove_current_player>
                                 <has_type tag="Mafia"/>
@@ -48,8 +71,46 @@
                         </transform>
                         <text text="."/>
                     </join>
+
+                    <join>
+                        <text text="Your meeting place is: "/>
+                        <transform separator=", " type="tag">
+                            <from_player_extract_tag tag="Mafia's business place">
+                                <current_player/>
+                            </from_player_extract_tag>
+                        </transform>
+                        <text text="."/>
+                    </join>
+
                 </join>
             </handouts>
+        </handout>
+
+        <handout>
+
+            <players>
+                <has_type tag="Snitch"/>
+            </players>
+
+            <handouts>
+                <join separator="newline">
+                    <text text="👤 IDENTITY: The Snitch 🤫"/>
+                    <text text="You no longer believe in the leadership of your godfather."/>
+                    <text text="They made so many mistakes and now you're at the point of total organization failure."/>
+                    <text text="You believe that in order for the mafia to succeed, the current godfather needs to go."/>
+                    <text text="You still believe in the goals of the mafia, but want to see the godfather go!"/>
+                    <text text="Be careful of the godfather finding out. If they do, your life is over (you lose the game)."/>
+                </join>
+
+                <join separator="newline">
+                    <text text="☑️ TASK: Snitch on the godfather"/>
+                    <text text="Betray your godfather by revealing his identity to another person."/>
+                    <text text="Do so in a way that the godfather doesn't find out, nor does the person you tell about them find out you're a part of the mafia."/>
+                    <text text="Survive to see the godfather die at the party or the trial."/>
+                </join>
+            </handouts>
+
+
         </handout>
     </actions>
 </rule>

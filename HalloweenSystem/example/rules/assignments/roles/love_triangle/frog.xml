@@ -30,6 +30,7 @@
                             <has_type tag="Fiancee"/>
                             <has_type tag="Bastard"/>
                             <has_type tag="Rebellion leader"/>
+                            <has_group name="Clergy"/>
                             <has_type tag="Old"/>
                         </complement>
                     </intersect>

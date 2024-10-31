@@ -21,6 +21,7 @@
                             </has_tag>
                         </union>
                         <complement>
+                            <has_group name="Clergy"/>
                             <has_type tag="Princess"/>
                             <has_type tag="Queen"/>
                             <has_type tag="Loner"/>

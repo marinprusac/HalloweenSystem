@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Archbishop handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Archbishop"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="🗣️ PUBLIC IDENTITY: The Archbishop ☦️"/>
+                    <text text="In this sinful world, being the archbishop is no easy task."/>
+                    <text text="You, yourself, are not perfect, but at least you try to favor the word of God."/>
+                    <text text="But as the archbishop, you have to make sure the others favor it as well!"/>
+                </join>
+                
+                <join separator="newline">
+                    <text text="☑️ TASK: Coordinate your enforcers"/>
+                    <join>
+                        <text text="You appointed "/>
+                        <transform type="player">
+                            <has_type tag="Exorcist"/>
+                        </transform>
+                        <text text=" as your loyal exorcist who will reveal the magic wielders and "/>
+                        <transform type="player">
+                            <has_type tag="Puritan fanatic"/>
+                        </transform>
+                        <text text=" as your trusted puritan fanatic who will reveal the adulterers."/>
+                    </join>
+                    <text text="Your goal is to make sure that they succeed so that you may inact 'suitable' measures for those revealed to be the greatest sinners among us."/>
+                </join>
+            </handouts>
+        </handout>
+    </actions>
+</rule>

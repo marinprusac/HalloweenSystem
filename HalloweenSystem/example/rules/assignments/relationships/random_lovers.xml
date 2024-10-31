@@ -82,11 +82,11 @@
         <assign>
             <players>
                 
-                <iterate name="p" parameter_type="player">
-                    <parameter_selector>
+                <iterate name="p" type="player">
+                    <parameter>
                         <has_type tag="Lover"/>
-                    </parameter_selector>
-                    <iterable_selector>
+                    </parameter>
+                    <iterable>
                         <intersect>
                             <all_if_any>
                                 <intersect>
@@ -104,7 +104,7 @@
                             </all_if_any>
                             <parameter name="p"/>
                         </intersect>
-                    </iterable_selector>
+                    </iterable>
                 </iterate>
             </players>
             

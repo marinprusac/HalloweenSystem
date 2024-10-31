@@ -11,9 +11,10 @@
                             <has_type tag="Frog"/>
                             <has_type tag="Fiancee"/>
                             <has_type tag="Queen"/>
-                            <has_type tag="Clergy"/>
-                            <has_type tag="Pretender"/>
+                            <has_type tag="Princess pretender"/>
                             <has_type tag="Old"/>
+                            <has_type tag="Lover"/>
+                            <has_group name="Clergy"/>
                         </complement>
                     </intersect>
                 </random>

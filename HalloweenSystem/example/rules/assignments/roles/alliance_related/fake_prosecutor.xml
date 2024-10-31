@@ -3,8 +3,8 @@
     <actions>
         <assign>
             <players>
-                <iterate name="alliance" parameter_type="tag">
-                    <parameter_selector>
+                <iterate name="alliance" type="tag">
+                    <parameter>
                         <intersect>
                             <group_tag name="Alliance members"/>
                             <complement>
@@ -13,9 +13,9 @@
                                 <tag name="Assassin"/>
                             </complement>
                         </intersect>
-                    </parameter_selector>
+                    </parameter>
                     
-                    <iterable_selector>
+                    <iterable>
                         <random amount="1">
                             <intersect>
                                 <has_tag>
@@ -29,7 +29,7 @@
                                 </complement>
                             </intersect>
                         </random>
-                    </iterable_selector>
+                    </iterable>
                     
                 </iterate>
             </players>

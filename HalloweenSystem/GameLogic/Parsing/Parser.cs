@@ -14,7 +14,6 @@ public static class Parser
 {
 	private static List<string> GetRuleFiles(string ruleDirPath)
 	{
-		
 		var ruleFiles = Directory.GetFiles(ruleDirPath).ToList();
 
 		foreach (var d in Directory.GetDirectories(ruleDirPath))
@@ -25,7 +24,7 @@ public static class Parser
 
 		return ruleFiles;
 	}
-	
+
 	public static Setting LoadGame(string path)
 	{
 		var settingPath = path + "/setting.xml";
@@ -54,7 +53,7 @@ public static class Parser
 			.ToArray();
 
 		if (ruleNodes.Count != validRules.Length) throw new XmlException("Invalid rule file.");
-		
+
 		setting.LoadRules(validRules);
 
 		return setting;
@@ -74,6 +73,7 @@ public static class Parser
 			"list" => ListSelector<T>.Parse(node),
 			"parameter" => ParameterSelector<T>.Parse(node),
 			"random" => RandomSelector<T>.Parse(node),
+			"shuffle" => ShuffleSelector<T>.Parse(node),
 			"union" => UnionSelector<T>.Parse(node),
 			"join" => (ISelector<T>)JoinHandoutSelector.Parse(node),
 			"text" => (ISelector<T>)TextHandoutSelector.Parse(node),
@@ -94,7 +94,7 @@ public static class Parser
 			"tag" => (ISelector<T>)TagSelector.Parse(node),
 			"type_filter" => (ISelector<T>)TypeFilterTagSelector.Parse(node),
 			"used_tag" => (ISelector<T>)UsedTagSelector.Parse(node),
-			
+
 			_ => throw new XmlException($"Unknown selector: {node.Name}")
 		};
 	}
@@ -112,14 +112,14 @@ public static class Parser
 
 	private static ISelector<T> ParseIteratingSelector<T>(XmlNode node) where T : GameObject, new()
 	{
-		if (node.Attributes?["parameter_type"] == null) throw new XmlException("Expected 'parameter_type' attribute.");
-		var parameterType = node.Attributes["parameter_type"]!.Value;
+		if (node.Attributes?["type"] == null) throw new XmlException("Expected 'type' attribute.");
+		var parameterType = node.Attributes["type"]!.Value;
 		return parameterType switch
 		{
-			"player" => (ISelector<T>)IteratingSelector<Player, T>.Parse(node),
-			"tag" => (ISelector<T>)IteratingSelector<Tag, T>.Parse(node),
-			"rule" => (ISelector<T>)IteratingSelector<Rule, T>.Parse(node),
-			"handout" => (ISelector<T>)IteratingSelector<Handout, T>.Parse(node),
+			"player" => IteratingSelector<Player, T>.Parse(node),
+			"tag" => IteratingSelector<Tag, T>.Parse(node),
+			"rule" => IteratingSelector<Rule, T>.Parse(node),
+			"handout" => IteratingSelector<Handout, T>.Parse(node),
 			_ => throw new XmlException($"Unknown parameter type: {parameterType}")
 		};
 	}

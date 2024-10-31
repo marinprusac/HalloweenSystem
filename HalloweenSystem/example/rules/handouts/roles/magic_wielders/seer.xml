@@ -13,16 +13,71 @@
                     <text text="A powerful warlock has given you the power of a seer, but you were also cursed."/>
                     <text text="The curse caused you some pain in the beginning, but now it is starting to consume your life, nearing your death."/>
                 </join>
-                
-                
+
                 <join separator="newline">
                     <text text="☑️ TASK: Lift the curse"/>
                     <text text="Your days are numbered and it is urgent to find a charm to list the curse."/>
-                    <text text="You have to find the witch and get her signature which will lift the curse."/>
+                    <text text="You have to find some blue essence."/>
+                    <text text="You also have to find the witch."/>
+                    <text text="Her signature along with the blue essence will lift your curse."/>
+                    <text text="The blue essence is then disposed of."/>
+                </join>
+
+                <join separator="newline">
+                    <text text="ℹ️ INFO: The supernatural vibes"/>
+                    <text text="Reading the vibes from the party participants you were able to methodically eliminate some possibilities:"/>
+
+                    <iterate name="player" type="player">
+                        <parameter>
+                            <complement>
+                                <has_type tag="Queen"/>
+                                <current_player/>
+                            </complement>
+                        </parameter>
+
+                        <iterable>
+                            <join>
+                                <text text="- "/>
+                                <transform type="player">
+                                    <parameter name="player"/>
+                                </transform>
+                                <text text=" is definitely NOT "/>
+                                <transform type="tag">
+                                    <random amount="1">
+                                        <intersect>
+                                            <group_tag name="Gossips"/>
+                                            <complement>
+                                                <from_player_extract_tag tag="Knows">
+                                                    <current_player/>
+                                                </from_player_extract_tag>
+                                                <player_assigned_tag>
+                                                    <players>
+                                                        <current_player/>
+                                                    </players>
+                                                    <tags>
+                                                        <all/>
+                                                    </tags>
+                                                </player_assigned_tag>
+                                                <player_assigned_tag>
+                                                    <players>
+                                                        <parameter name="player"/>
+                                                    </players>
+                                                    <tags>
+                                                        <all/>
+                                                    </tags>
+                                                </player_assigned_tag>
+                                            </complement>
+                                        </intersect>
+                                    </random>
+                                </transform>
+                                <text text="."/>
+                            </join>
+                        </iterable>
+                    </iterate>
+
+
                 </join>
             </handouts>
         </handout>
     </actions>
 </rule>
-
-<!-- TODO: write seer info -->

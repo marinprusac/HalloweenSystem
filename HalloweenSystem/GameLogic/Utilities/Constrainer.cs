@@ -38,11 +38,17 @@ public class Constrainer
 	{
 		float grade;
 		Context ctx;
+		float highestGrade = 0;
 
 		do
 		{
 			ctx = setting.RunWithTags(players);
 			grade = Evaluate(ctx);
+			if (grade > highestGrade)
+			{
+				highestGrade = grade;
+				Console.WriteLine(highestGrade);
+			}
 
 		} while (grade < minimum);
 
@@ -53,7 +59,7 @@ public class Constrainer
 
 	public static readonly Func<Context, float> ContentDistributionGrade = (context) =>
 	{
-		var counts = context.Players.Where(p => p.Name != "Nika").Select(p => p.Handouts.Count).ToList();
+		var counts = context.Players.Where(p => !p.AssignedTags.Exists(t => t.Name=="Queen") ).Select(p => p.Handouts.Count).ToList();
 		var min = counts.Min();
 		var max = counts.Max();
 		return 1 - (max - min) / (float)max;

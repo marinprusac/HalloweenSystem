@@ -2,8 +2,17 @@
 <rule name="Give handouts">
     <actions>
         <activate>
-
+            
             <rule name="Signature handout"/>
+            <rule name="Book handout"/>
+            
+            <rule name="Archbishop handout"/>
+            <rule name="Army general handout"/>
+            <rule name="Spymaster handout"/>
+            <rule name="Executioner handout"/>
+            <rule name="Librarian handout"/>
+
+            <rule name="Court positions handout"/>
 
             <rule name="Lovers handout"/>
             
@@ -21,21 +30,25 @@
             <rule name="Frog handout"/>
             <rule name="Vigilante handout"/>
             <rule name="Maid handout"/>
-            <rule name="Pretender handout"/>
+            <rule name="Princess pretender handout"/>
             <rule name="Stalker handout"/>
             <rule name="Gossip girl handout"/>
             <rule name="True prosecutor handout"/>
             <rule name="Fake prosecutor handout"/>
+            
             <rule name="Medium handout"/>
             <rule name="Seer handout"/>
             <rule name="Witch handout"/>
             <rule name="Spell thief handout"/>
+
+            <rule name="Spell essence handout"/>
+            
             <rule name="Poisoner handout"/>
             <rule name="Drug dealer handout"/>
             <rule name="Forger handout"/>
             <rule name="Puritan fanatic handout"/>
             <rule name="Exorcist handout"/>
-            <rule name="Sympathizer handout"/>
+            <rule name="Vampire sympathizer handout"/>
             <rule name="Foreign spy handout"/>
             <rule name="Wanderer handout"/>
             <rule name="Paranoid handout"/>
@@ -43,12 +56,12 @@
             <rule name="Drug addict handout"/>
             <rule name="Unmarried handout"/>
             <rule name="Gold digger handout"/>
-            <rule name="Pen pal handout"/>
-
             
             <rule name="Dark market vendor handout"/>
             <rule name="Dark market customer handout"/>
+
             <rule name="Seen handout"/>
+            <rule name="Rumor handout"/>
         </activate>
     </actions>
 </rule>

@@ -12,13 +12,13 @@
                     <text text="As a regular vendor on the dark market, you are familiar with the common dark market locations."/>
 
                     <join>
-                        <text text="During the following party, the handover of good and services will happen in the "/>
+                        <text text="During the following party, the handover of good and services will happen in the **"/>
                         <transform type="tag">
                             <random amount="1">
                                 <group_tag name="Dark market event places"/>
                             </random>
                         </transform>
-                        <text text="."/>
+                        <text text="**."/>
                     </join>
 
                     <text text="Some of your trusted customers and fellow vendors will be there. But some you might have to inform about location."/>

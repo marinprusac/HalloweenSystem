@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<rule name="Choose sympathizer">
+<rule name="Choose vampire sympathizer">
     <requirements>
         <intersect>
             <has_type tag="Vampire"/>
@@ -27,7 +27,7 @@
             </players>
             
             <tags>
-                <tag name="Sympathizer"/>
+                <tag name="Vampire sympathizer"/>
             </tags>
         </assign>
     </actions>

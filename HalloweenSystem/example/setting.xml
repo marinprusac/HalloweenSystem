@@ -135,6 +135,7 @@
             <tag name="Royal advisor"/>
             <tag name="Court mage"/>
             <tag name="Spymaster"/>
+            <tag name="Archbishop"/>
         </tag_group>
         
         <tag_group name="Need signature">
@@ -143,7 +144,7 @@
             <tag name="Bastard"/>
             <tag name="Seer"/>
             <tag name="Stalker"/>
-            <tag name="Pretender"/>
+            <tag name="Princess pretender"/>
             <tag name="Frog"/>
             <tag name="Princess"/>
             <tag name="Fake prosecutor"/>
@@ -157,11 +158,26 @@
             <tag name="Unmarried"/>
         </tag_group>
 
-        <tag_group name="Gossip">
+        <tag_group name="Gossips">
+            <tag name="Vigilante"/>
+            <tag name="True prosecutor"/>
             <tag name="Princess"/>
             <tag name="Maid"/>
             <tag name="Fiancee"/>
             <tag name="Frog"/>
+            <tag name="Witch"/>
+            <tag name="Spell thief"/>
+            <tag name="Forger"/>
+            <tag name="Drug dealer"/>
+            <tag name="Poisoner"/>
+            <tag name="Seer"/>
+            <tag name="Reaper"/>
+            <tag name="Princess pretender"/>
+            <tag name="Reaper"/>
+            <tag name="Gold digger"/>
+            <tag name="Stalker"/>
+            <tag name="Unmarried"/>
+            <tag name="Vampire sympathizer"/>
         </tag_group>
     </tag_groups>
     
@@ -169,6 +185,8 @@
         <rule name="Assign roles"/>
         <rule name="Assign relationships"/>
         <rule name="Assign visits"/>
+        <rule name="Identity knowledge assignment"/>
+        <rule name="Rumor assignment"/>
         <rule name="Give handouts"/>
     </order>
     

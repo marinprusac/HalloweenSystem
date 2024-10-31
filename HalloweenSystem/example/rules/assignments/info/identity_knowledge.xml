@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<rule name="Identity knowledge assignment">
+    <actions>
+        <assign>
+            <players>
+                <has_type tag="Queen"/>
+            </players>
+            <tags>
+                <tag name="Knows">
+                    <tags>
+                        <tag name="Princess"/>
+                        <tag name="Maid"/>
+                        <tag name="Fiancee"/>
+                    </tags>
+                </tag>
+            </tags>
+        </assign>
+        <assign>
+            <players>
+                <has_type tag="Princess"/>
+            </players>
+            <tags>
+                <tag name="Knows">
+                    <tags>
+                        <tag name="Fiancee"/>
+                        <tag name="Maid"/>
+                    </tags>
+                </tag>
+            </tags>
+        </assign>
+        <assign>
+            <players>
+                <has_type tag="Fiancee"/>
+            </players>
+            <tags>
+                <tag name="Knows">
+                    <tags>
+                        <tag name="Princess"/>
+                    </tags>
+                </tag>
+            </tags>
+        </assign>
+        <assign>
+            <players>
+                <has_type tag="Maid"/>
+            </players>
+            <tags>
+                <tag name="Knows">
+                    <tags>
+                        <tag name="Princess"/>
+                    </tags>
+                </tag>
+            </tags>
+        </assign>
+        <assign>
+            <players>
+                <has_type tag="Witch"/>
+            </players>
+            <tags>
+                <tag name="Knows">
+                    <tags>
+                        <tag name="Frog"/>
+                    </tags>
+                </tag>
+            </tags>
+        </assign>
+        <assign>
+            <players>
+                <has_type tag="Archbishop"/>
+            </players>
+            <tags>
+                <tag name="Knows">
+                    <tags>
+                        <tag name="Exorcist"/>
+                        <tag name="Puritan fanatic"/>
+                    </tags>
+                </tag>
+            </tags>
+        </assign>
+        <assign>
+            <players>
+                <has_type tag="Princess pretender"/>
+            </players>
+            <tags>
+                <tag name="Knows">
+                    <tags>
+                        <tag name="Frog"/>
+                    </tags>
+                </tag>
+            </tags>
+        </assign>
+        
+        
+    </actions>
+</rule>

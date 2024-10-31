@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rule name="Sympathizer handout">
+<rule name="Vampire sympathizer handout">
     <actions>
         <handout>
             <players>
-                <has_type tag="Sympathizer"/>
+                <has_type tag="Vampire sympathizer"/>
             </players>
             <handouts>
 

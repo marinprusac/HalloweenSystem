@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule name="Spymaster handout">
+    <actions>
+        <handout>
+            <players>
+                <has_type tag="Spymaster"/>
+            </players>
+            <handouts>
+                <join separator="newline">
+                    <text text="🗣️ PUBLIC IDENTITY: The Spymaster 🎩"/>
+                    <text text="Gathering essential information for the kingdom is an important job."/>
+                    <text text="You have people everywhere, informing you about the activities of others."/>
+                    <text text="How will you use this knowledge it is completely up to you..."/>
+                </join>
+
+                <join separator="newline">
+                    <text text="ℹ️ INFO: The top secret knowledge"/>
+
+
+                    <iterate name="location" type="tag">
+                        <parameter>
+                            <group_tag name="Locations"/>
+                        </parameter>
+
+                        <iterable>
+                            <join>
+                                <text text="- People who visited the "/>
+                                <transform type="tag">
+                                    <parameter name="location"/>
+                                </transform>
+
+                                <text text=" are: "/>
+
+                                <transform type="player" placeholder="nobody" separator=", ">
+                                    <has_tag>
+                                        <players>
+                                            <remove_current_player>
+                                                <all/>
+                                            </remove_current_player>
+                                        </players>
+
+                                        <tags>
+                                            <tag name="Visited">
+                                                <tags>
+                                                    <parameter name="location"/>
+                                                </tags>
+                                            </tag>
+                                        </tags>
+                                    </has_tag>
+                                </transform>
+
+                                <text text="."/>
+                            </join>
+                        </iterable>
+                    </iterate>
+
+                </join>
+
+            </handouts>
+        </handout>
+    </actions>
+</rule>

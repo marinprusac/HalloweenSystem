@@ -7,17 +7,17 @@
                 <random amount="1">
                     <intersect>
                         <complement>
-                            <iterate name="tag" parameter_type="tag">
-                                <parameter_selector>
+                            <iterate name="tag" type="tag">
+                                <parameter>
                                     <group_tag name="Alliance members"/>
-                                </parameter_selector>
-                                <iterable_selector>
+                                </parameter>
+                                <iterable>
                                     <has_tag>
                                         <tags>
                                             <parameter name="tag"/>
                                         </tags>
                                     </has_tag>
-                                </iterable_selector>
+                                </iterable>
                             </iterate>
                             <has_type tag="Queen"/>
                             <has_group name="Magic wielders"/>
